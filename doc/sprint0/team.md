@@ -1,5 +1,6 @@
 | Full Name | UTORID | Student ID | Email | Best Wayto Contact | Discord Username|
 |-----------|--------|------------|-------|---------------------|------------------|
-|Nicholas Segovia | segovian | 1006202921 | nicholas.segovia@mail.utoronto.ca | discord | stug564|
+|Nicholas Segovia | segovian | 1006202921 | nicholas.segovia@mail.utoronto.ca | discord | stug564#9054|
 |Louis Scheffer V | scheffe8 | 1005879284 | louis.scheffer@mail.utoronto.ca | discord | The Neon Narwhal#6421|
 |Jack McKinney | mckinn91 | 1004383295 | jack.mckinney@mail.utoronto.ca | discord | Jackimus#8634 |
+|Tian Yue Dong | dongti12 | 1006209577 | tianyue.dong@mail.utoronto.ca | discord | Joker1812#5852 |
