@@ -11,7 +11,7 @@ We are using an Angular frontend, Nodejs with the express framework for the serv
 
 To get started, install Nodejs and the node package manager.
 To get started with angular and express run the commands:
-npm install -g @angular/cli
+npm install -g @angular/cli;
 npm install express --save
 
 Use npm to run the project, and run MongoDB locally.
