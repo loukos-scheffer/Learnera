@@ -4,6 +4,17 @@ In our modern world, people who want to expand their business struggle acquiring
 
 Our project solves all these problems by creating a platform that packages an eLearning, and a social media focused in creating professional relationships around companies and people.
 
+# Installation & Setup
+
+Our project will be using the MEAN Stack.
+We are using an Angular frontend, Nodejs with the express framework for the server, and MongoDB as our database technology.
+
+To get started, install Nodejs and the node package manager.
+To get started with angular and express run the commands:
+npm install -g @angular/cli
+npm install express --save
+
+Use npm to run the project, and run MongoDB locally.
 
 # Contribution
 
