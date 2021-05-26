@@ -1,5 +1,5 @@
 ## Product Backlog
-|User Storys |
+|User Stories|
 |-----------|
 |As a logged in user I want to be able to edit my profile: things like profile, bio, company name, etc.|
 |As a logged in user I want to be able to locate E-Learning videos relevant to my business|
