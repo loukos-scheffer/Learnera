@@ -16,3 +16,9 @@ Decision making in our team is done by conducting a majority vote.
 # Meeting
 
 1-3 hour mandatory meetings within our team are conducted weekly on Wednesdays, with additional meetings scheduled as needed. Attendance of these additional meetings is not required.
+
+# Reflection and the next phase
+
+During sprint 0, the team worked well together to establish our goal. During meetings, meeting minutes were recorded and we kept an organized section of what is remaining to do for future meetings.
+
+For the next phase of the project, we will continue following the organization, and work stategies we have already been using. We are looking to also explore new strategies to divide work.
