@@ -7,4 +7,5 @@
 |Karampreet Daid | daidkara | 1005592805 | karam.daid@mail.utoronto.ca | discord | agdisc#6082 |
 |Joshua Carrasco Sousa | carras28 | 1004948934 | j.carrascosousa@mail.utoronto.ca | discord | asdy#1862 |
 |Haiyang Gu | guhai | 1004923265 | jasonghy.gu@mail.utoronto.ca | discord | ( > ω・)ゞ#5428 |
-|https://discord.gg/agx7fy7SaU|
+
+Discord Invite: https://discord.gg/agx7fy7SaU
