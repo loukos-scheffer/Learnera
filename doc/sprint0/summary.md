@@ -21,5 +21,5 @@ Jamal is interested in using the E-learing website to master marketing strategie
 
 # The Key Principles
 The website to be easy to navigate and accessible by everyone. 
-The E-community should provide an inclusive environment 
-The E-learning platofrm should improve user-accessibility and time flexibility to engage learners in the learning process.
+The E-community should provide an inclusive environment.  
+The E-learning platofrm should improve user-accessibility and time flexibility to engage learners in the learning process. 
