@@ -1,7 +1,10 @@
 # The Project Objective
 
-# The Key Personas
+# The Key Objective
+Build an web app to help African entrepreneures to grow their business. To learn and 
+certify themselves in new business techniques. 
 
+# The Key Personas
 ### Zuri Okonkwo
 Zuri is 32-year-old entrepreneur from Mombasa Kenya, she is a mother of three children.   
 Zuri is looking to expand her successful small business that exports premium Kenyan tea. Zuri  
@@ -31,3 +34,6 @@ that would help him and his company find steady clientele.
 
 
 # The Key Principles
+The website to be easy to navigate and accessible by everyone. 
+The E-community should provide an inclusive environment 
+The E-learning platofrm should improve user-accessibility and time flexibility to engage learners in the learning process.
