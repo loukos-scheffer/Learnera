@@ -24,6 +24,5 @@ A local business owner with one location wants to expand their business but does
 
 All of the above products focus to much on connecting people around the world while our product is more concerned with creating a tight knit community. The users for our product are small business owners who may not have enough money for high monthly/yearly fee services.
 
-Our goal is to build profesional relationships that will benefit everyone while our competitors are more focused on numbers rather than the benefit of the general 
-user.
+
 
