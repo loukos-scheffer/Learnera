@@ -1,8 +1,9 @@
 # The Project Objective
 
 # The Key Objective
-Build an web app to help African entrepreneures to grow their business. To learn and 
-certify themselves in new business techniques. 
+Build an web app to help African entrepreneures to grow their business, to learn and 
+certify themselves in new business practices through an user-friendly platform that provides
+community and e-learning. 
 
 # The Key Personas
 ### Zuri Okonkwo
@@ -21,5 +22,5 @@ Jamal is interested in using the E-learing website to master marketing strategie
 
 # The Key Principles
 The website to be easy to navigate and accessible by everyone. 
-The E-community should provide an inclusive environment.  
-The E-learning platofrm should improve user-accessibility and time flexibility to engage learners in the learning process. 
+The E-community platform should provide an inclusive environment to allow networking. 
+The E-learning platofrm should be interactive and have time flexibilty to engage learners in the learning process. 
