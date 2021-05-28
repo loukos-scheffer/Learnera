@@ -11,7 +11,7 @@
 |8. As a logged in user, I would like to reply to comments under E-learning videos|
 |9. As a logged in user, I would like to report users for misconduct|
 |10. As a logged in user I would like to look for people in the community with specific interests.|
-|11. As a logged in user I would like to private message other users invidually  as well as create group chats.|
+|11. As a logged in user I would like to private message other users invdidually  as well as in group chats.|
 |12. As a logged in user I would like to create private group chats.|
 |13. As a logged in user I would like to advertise my business’ services|
 |14. As a logged in user I would like to access video conference events|
