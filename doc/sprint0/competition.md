@@ -2,7 +2,7 @@
 * [Linkedin](https://ca.linkedin.com/)  
     * Professional networking platform primarily used for job postings  
     * Connects employers with employees  
-* [Canvas](https://canvas.northwestern.edu/courses/44486/pages/sample-canvas-course-layouts?module_item_id=520943 "Canvas Demos") 
+* [Canvas](https://canvas.northwestern.edu/courses/44486/pages/sample-canvas-course-layouts?module_item_id=520943 "Canvas Demo") 
     * Learning management system  
     * Used by educational institutions to organize learning materials  
 * [Google Classroom](https://classroom.google.com/)  
@@ -24,6 +24,6 @@ A local business owner with one location wants to expand their business but does
 
 All of the above products focus to much on connecting people around the world while our product is more concerned with creating a tight knit community. The users for our product are small business owners who may not have enough money for high monthly/yearly fee services.
 
-Our goal is to build profesional relationships that will benefit everyone lol
+Our goal is to build profesional relationships that will benefit everyone while our competitors are more focused on numbers rather than the benefit of the general 
+user.
 
-The above products may be interested in making a product similar to ours but without large communities it will be hard to make profits. At the same time a scaling user base erodes a sense of community and locality that our product strives for.
