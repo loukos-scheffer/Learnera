@@ -21,6 +21,6 @@ Jamal is interested in using the E-learing side of the app to master marketing s
 
 
 # The Key Principles
-The website to be easy to navigate and accessible by everyone. 
-The E-community platform should provide an inclusive environment to allow networking. 
-The E-learning platofrm should be interactive and have time flexibilty to engage learners in the learning process. 
+The website must be easy to navigate and accessible by everyone. 
+We strive to create an inclusive environment for the E-community platform.
+The E-learning platform should be interactive and flexible to make the learning process comfortable.
