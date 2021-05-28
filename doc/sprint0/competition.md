@@ -1,13 +1,13 @@
 ## Existing products  
-* Linkedin   
+* [Linkedin](https://ca.linkedin.com/)  
     * Professional networking platform primarily used for job postings  
     * Connects employers with employees  
-* Canvas  
+* [Canvas](https://canvas.northwestern.edu/courses/44486/pages/sample-canvas-course-layouts?module_item_id=520943) 
     * Learning management system  
     * Used by educational institutions to organize learning materials  
-*Google Classroom  
+* [Google Classroom](https://classroom.google.com/)  
     * Used by teachers   
-* Udemy  
+* [Udemy](https://www.udemy.com/)  
     * Comprehensive e-learning platform
 
 
