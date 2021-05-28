@@ -1,6 +1,4 @@
 # The Project Objective
-
-# The Key Objective
 Build an web app to help African entrepreneures to grow their business, to learn and 
 certify themselves in new business practices through an user-friendly platform that provides
 community and e-learning. 
