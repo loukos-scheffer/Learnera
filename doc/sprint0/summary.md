@@ -14,10 +14,10 @@ Jamal Kalu is a 22-year-old Office supplier. Jamal resides in Nairobi Kenya and 
 
 # The Key Scenarios
 ### Key Scenario 01
-Zuri is looking to learn about how she would go about finding companies to partner with and how to collaborate with other companies. She would like to find insightful information about how to professionally contact other companies and effectively grow her business by doing so. She would also like to create a profile on the community side of the app to get her company exposure. 
+Zuri is looking to browse the community side of the app to find companies to partner/collaborate with. She would also like to create a profile to use community side of the app to get her company exposure and have access to contacting other companies. 
 
 ### Key Scenario 02
-Jamal is interested in using the E-learing website to master marketing strategies that would help him and his company find steady clientele. 
+Jamal is interested in using the E-learing side of the app to master marketing strategies that would help him and his company find steady clientele. 
 
 
 # The Key Principles
