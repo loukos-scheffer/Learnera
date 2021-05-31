@@ -73,7 +73,7 @@
     - 1 mark  = Part of the stories do not mention persona
     - 0 marks = No personas mentioned in user stories
 
-    Your mark: 0
+    Your mark: 1
 
   - All user stories identify goal/desire and all identify why/benefit (max 2 marks) 
 
@@ -93,7 +93,7 @@
 
     Your mark: 2
 
-  PB.md Total Mark: 4 / 8
+  PB.md Total Mark: 5 / 8
 
 ---
 
@@ -251,7 +251,7 @@
 
 ## Total Mark  
 
-Sprint 0 Total Mark : 38 / 45   
+Sprint 0 Total Mark : 39 / 45   
 
 **Notes:** Please place the README in the root of your repository.
 
