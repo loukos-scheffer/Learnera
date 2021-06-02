@@ -1,8 +1,7 @@
 # The Project Objective
-
-# The Key Objective
-Build an web app to help African entrepreneures to grow their business. To learn and 
-certify themselves in new business techniques. 
+Build an web app to help African entrepreneures to grow their business, to learn and 
+certify themselves in new business practices through an user-friendly platform that provides
+community and e-learning. 
 
 # The Key Personas
 ### Zuri Okonkwo
@@ -13,13 +12,13 @@ Jamal Kalu is a 22-year-old Office supplier. Jamal resides in Nairobi Kenya and 
 
 # The Key Scenarios
 ### Key Scenario 01
-Zuri is looking to learn about how she would go about finding companies to partner with and how to collaborate with other companies. She would like to find insightful information about how to professionally contact other companies and effectively grow her business by doing so. She would also like to create a profile on the community side of the app to get her company exposure. 
+Zuri is looking to browse the community side of the app to find companies to partner/collaborate with. She would also like to create a profile to use community side of the app to get her company exposure and have access to contacting other companies. 
 
 ### Key Scenario 02
-Jamal is interested in using the E-learing website to master marketing strategies that would help him and his company find steady clientele. 
+Jamal is interested in using the E-learing side of the app to master marketing strategies that would help him and his company find steady clientele. 
 
 
 # The Key Principles
-The website to be easy to navigate and accessible by everyone. 
-The E-community should provide an inclusive environment.  
-The E-learning platofrm should improve user-accessibility and time flexibility to engage learners in the learning process. 
+The website must be easy to navigate and accessible by everyone. 
+We strive to create an inclusive environment for the E-community platform.
+The E-learning platform should be interactive and flexible to make the learning process comfortable.

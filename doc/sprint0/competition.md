@@ -1,19 +1,19 @@
 ## Existing products  
-* Linkedin   
+* [Linkedin](https://ca.linkedin.com/)  
     * Professional networking platform primarily used for job postings  
     * Connects employers with employees  
-* Canvas  
+* [Canvas](https://canvas.northwestern.edu/courses/44486/pages/sample-canvas-course-layouts?module_item_id=520943 "Canvas Demo") 
     * Learning management system  
     * Used by educational institutions to organize learning materials  
-*Google Classroom  
+* [Google Classroom](https://classroom.google.com/)  
     * Used by teachers   
-* Udemy  
+* [Udemy](https://www.udemy.com/)  
     * Comprehensive e-learning platform
 
 
 ## How is your product different?
 
-Our virtual platform offers a combination of features of the above products. While the above products are good at what they do individually, they do not provide integration between all products. Our product is different from the above products as it provides deep integration between different products.
+Our virtual platform offers a combination of features of the above products. While the above products are good at what they do individually, they do not provide a good integration between community and E-learning platforms. Our product is different from the above products as it provides a focus on both community and E-learning.
 
 
 ## Who are the users and/or what are the scenarios? 
@@ -22,6 +22,7 @@ A local business owner with one location wants to expand their business but does
 
 ## Why do you think the competitors didn’t focus on these users and/or scenarios? And, what would it take from them to do so?
 
-All of the above products are for-profit products and there is very little to make from small business owners. The users for our product are small business owners who may not have enough money for high monthly/yearly fee services.
+All of the above products focus to much on connecting people around the world while our product is more concerned with creating a tight knit community. The users for our product are small business owners who may not have enough money for high monthly/yearly fee services.
 
-The above products may be interested in making a product similar to ours but without a scaling user base it will be hard to make profits. At the same time a scaling user base erodes a sense of community and locality that our product strives for.
+
+

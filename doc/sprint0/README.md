@@ -1,8 +1,8 @@
 # Motivation and Project Description
 
-In our modern world, people who want to expand their business struggle acquiring the knowledge to create successful businesses, struggle making a community around their business, and struggle hiring the right people. Our motivation is to solve these problems.
+In our modern world, people who want to expand their business struggle to acquire the knowledge to create successful businesses, struggle to make a community around their business, and struggle to hire the right people. Our motivation is to solve these problems.
 
-Our project solves all these problems by creating a platform that packages an eLearning, and a social media focused in creating professional relationships around companies and people.
+Our project solves all these problems by creating a platform that packages an e-Learning, and a social media focused in creating professional relationships around companies and people.
 
 # Installation & Setup
 
@@ -11,7 +11,7 @@ We are using an Angular frontend, Nodejs with the express framework for the serv
 
 To get started, install Nodejs and the node package manager.
 To get started with angular and express run the commands:
-npm install -g @angular/cli
+npm install -g @angular/cli;
 npm install express --save
 
 Use npm to run the project, and run MongoDB locally.
