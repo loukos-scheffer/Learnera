@@ -29,13 +29,13 @@ app.post('/api/user/register', (req, res) =>{
     res.status(200).send({msg: 'User Created Succesfully'});
 });
 
-user.find({name: 'f1'}, (error, data)=>{
-    if(error){
-        console.log(error);
-    }else{
-        console.log(data);
-    }
-});
+// user.find({name: 'f1'}, (error, data)=>{
+//     if(error){
+//         console.log(error);
+//     }else{
+//         console.log(data);
+//     }
+// });
 
 // const test_user1 = new user();
 // test_user1.name = '21';
