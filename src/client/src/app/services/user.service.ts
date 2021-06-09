@@ -16,7 +16,7 @@ export class UserService {
 
   register(user: User) {
     var url = "/api/user/register";
-
+    
     return this.http.post(url, user).toPromise();
   }
 }

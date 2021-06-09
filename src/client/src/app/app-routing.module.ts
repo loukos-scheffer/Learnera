@@ -5,7 +5,6 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
-
 const routes: Routes = [
   // { path: '', redirectTo: '/home', pathMatch: 'full' }, // default routing
   { path: '', component: LoginComponent },
@@ -24,5 +23,6 @@ export class AppRoutingModule { }
 
 export const routingComponents = [
   LandingPageComponent,
-  LoginComponent
+  LoginComponent,
+  RegisterComponent
 ]

@@ -9,13 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { UserService } from './services/user.service';
-import { RegisterComponent } from './register/register.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents,
-    RegisterComponent
+    routingComponents
   ],
   imports: [
     BrowserModule,
