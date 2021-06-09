@@ -29,24 +29,6 @@ app.post('/api/user/register', (req, res) =>{
     res.status(200).send({msg: 'User Created Succesfully'});
 });
 
-// user.find({name: 'f1'}, (error, data)=>{
-//     if(error){
-//         console.log(error);
-//     }else{
-//         console.log(data);
-//     }
-// });
-
-// const test_user1 = new user();
-// test_user1.name = '21';
-// test_user1.uid = '21';
-// test_user1.email ='2';
-// test_user1.password='te2st';
-// test_user1.firstName='te22st';
-// test_user1.lastName ='te2222st';
-// test_user1.save();
-
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log('Server started on port ' + PORT));
 
