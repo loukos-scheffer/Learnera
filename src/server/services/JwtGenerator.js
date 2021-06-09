@@ -1,5 +1,6 @@
 const sign = require('jwt-encode');
-const secret = 'BRUTEFORCESOLUTIONSsasszszzz';
+const config = require('config');
+const secret = config.get('SECRET_KEY');
 
 module.exports.generateAuthJwt = function (user) {
     let data = {
@@ -7,6 +8,6 @@ module.exports.generateAuthJwt = function (user) {
     };
 
     const jwt = sign(data, secret);
-
+    
     return jwt;
 }
