@@ -5,6 +5,7 @@ const UuidService = require("../../services/UuidService");
 const JwtGenerator = require("../../services/JwtGenerator");
 
 const User = require('../../models/userModel');
+const Auth = require('../../models/authModel');
 let router = express.Router();
 
 router.post("/login", (req, res) => {
@@ -26,7 +27,9 @@ router.post('/register', (req, res) => {
 
     let jwt = JwtGenerator.generateAuthJwt(new_user);
 
-    // TODO, Save the jwt to a database called 'auth'
+    const new_auth = new Auth();
+    new_auth.jwt = jwt;
+    new_auth.save();
     
     res.status(200).send({
         msg: 'User Created Succesfully',
