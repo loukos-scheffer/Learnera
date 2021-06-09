@@ -9,6 +9,35 @@ const Auth = require('../../models/authModel');
 let router = express.Router();
 
 router.post("/login", (req, res) => {
+    if(!req.body.email || !req.body.password){
+        return res.status(400).json({msg: "Please fill out all fields"});
+    }
+
+    User.find({email: req.body.email, password: req.body.password}, (err, data) => {
+        if(err) console.log(err);
+        
+        if (data.length === 1) {
+            let found_user = data[0];
+
+            let jwt = JwtGenerator.generateAuthJwt(found_user);
+            const new_auth = new Auth();
+            new_auth.jwt = jwt;
+            new_auth.save();
+
+            res.status(200).send({
+                msg: 'LOGIN SUCESSFUL',
+                body: {
+                    jwtToken: jwt
+                }
+            });
+
+        } else {
+            res.status(401).send({
+                msg: 'LOGIN FAILED'
+            });
+        }     
+
+    })
 
 });
 
