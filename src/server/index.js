@@ -1,34 +1,28 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const { v4: uuidv4 } = require('uuid');
+const config = require('config');
 
 const app = express();
 app.use(express.json());
 
-const user = require('./models/userModel');
+// Routes
+var userRoutes = require('./routes/user/user-routes');
+app.use("/api/user", userRoutes);
 
-mongoose.connect('mongodb://localhost:27017/bruteforceDB', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+var threadRoutes = require('./routes/threads/thread-routes');
+app.use("/api/thread", threadRoutes);
+
+var messageRoutes = require('./routes/messages/message-routes');
+app.use("/api/message", messageRoutes);
+
+// Connect to database
+mongoose.connect(config.get('dbConfig'), { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to database'));
 
-
-app.post('/api/user/register', (req, res) =>{
-    // creates new user
-    if(!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName){
-        return res.status(400).json({msg: "Please fill out all fields"});
-    }
-    const new_user = new user();
-    new_user.uid = uuidv4();
-    new_user.email = req.body.email;
-    new_user.password = req.body.password;
-    new_user.firstName = req.body.firstName;
-    new_user.lastName = req.body.lastName;
-    new_user.save();
-    res.status(200).send({msg: 'User Created Succesfully'});
-});
-
-const PORT = process.env.PORT || 5000;
+// Listen to requests
+const PORT = config.get('PORT') || process.env.PORT || 5000;
 app.listen(PORT, () => console.log('Server started on port ' + PORT));
 
