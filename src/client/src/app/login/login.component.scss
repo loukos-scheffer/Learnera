@@ -1,0 +1,35 @@
+.background {
+    background: blue;
+}
+.login-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 150px;
+    width: 500px;
+
+    form {
+        display: table;
+        width: 100%;
+
+        .form-field {
+            display: table-row;
+
+            mat-label, input {
+                display: table-cell;
+                margin-bottom: 5px;
+            }
+
+            input {
+                width: 90%;
+            }
+        }
+    }
+
+    button {
+        float: right;
+    }
+
+}
