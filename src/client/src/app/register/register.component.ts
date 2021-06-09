@@ -5,12 +5,13 @@ import { User } from '../classes/user/user';
 import { UserService } from '../services/user.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class LoginComponent implements OnInit {
-  loggingInUser = new User("", "", "", "");
+export class RegisterComponent implements OnInit {
+
+  registerUser = new User("","", "", "");
 
   constructor(private _userService: UserService,
     private routerService: Router) { }
@@ -18,17 +19,18 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onLogin() {
+  async onRegister() {
     try {
-      let res:any = await this._userService.login(this.loggingInUser);
+      let res:any = await this._userService.register(this.registerUser);
 
-      if(res.statusCode == 200) {
+      if(res.statusCode == 200){
         this.routerService.navigateByUrl("home");
       }
 
-    }catch(e) {
+    } catch(e) {
       console.log('err');
       console.log(e);
     }
   }
+
 }

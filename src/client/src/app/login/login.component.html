@@ -5,10 +5,7 @@
     </mat-card-header>
 
     <form class="login-form" #userForm="ngForm">
-        <div class="form-field name-field">
-            <mat-label>Name:</mat-label>
-            <input type="text" [(ngModel)]="loggingInUser.name" name="name">
-          </div>
+        
         <div class="form-field email-field">
           <mat-label>Email:</mat-label>
           <input type="email" placeholder="Ex. pat@example.com" [(ngModel)]="loggingInUser.email" name="email">
@@ -18,16 +15,10 @@
             <mat-label>Password:</mat-label>
             <input type="password" [(ngModel)]="loggingInUser.password" name="password">
         </div>
-
-        <div class="form-field phone-field">
-            <mat-label>Phone:</mat-label>
-            <input type="text" [(ngModel)]="loggingInUser.phone" name="phone">
-        </div>
-
-
+      
       </form>  
       <br>  
+      <a href="/register">Register</a>
       <button mat-raised-button class="form-control" color="accent" (click)="onLogin()">Login</button>
-  
 </mat-card>
 
