@@ -8,8 +8,8 @@ import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { UserService } from './services/user.service';
-
+import { UserService } from './services/user/user.service';
+import { RestApiService } from './services/rest-api/rest-api.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,10 @@ import { UserService } from './services/user.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [
+    UserService, 
+    RestApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

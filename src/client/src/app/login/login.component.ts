@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../classes/user/user';
-import { UserService } from '../services/user.service';
+import { UserService } from '../services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,17 +18,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async onLogin() {
-    try {
-      let res:any = await this._userService.login(this.loggingInUser);
-
-      if(res.statusCode == 200) {
+  onLogin() {
+    this._userService.login(this.loggingInUser).subscribe((data: any) => {
+      if(data.status == 200){
         this.routerService.navigateByUrl("home");
       }
-
-    }catch(e) {
-      console.log('err');
-      console.log(e);
-    }
+    });
   }
 }
