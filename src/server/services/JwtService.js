@@ -19,7 +19,7 @@ module.exports.getUserFromJwt = async function (jwt) {
     try {
         let decoded = jwtService.verify(jwt, secret);
         let user = await User.findOne({ uid: decoded.uid }).exec();
-        return {user};
+        return user;
     } catch (e) {
         return null;
     }

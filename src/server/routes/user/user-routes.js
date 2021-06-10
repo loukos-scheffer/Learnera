@@ -67,4 +67,27 @@ router.get('/me', AuthService.validateCookie, async (req, res) => {
     res.status(200).send({body: user});
 });
 
+router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
+    // updates an existing user
+    if(!req.body.email || !req.body.firstName || !req.body.lastName){
+        return res.status(400).json({msg: "Please fill out all fields"});
+    }
+    let user = await JwtService.getUserFromJwt(req.cookies.session_id);
+
+    if (!user){
+        res.status(404).send({
+            msg: 'User Not Found'
+        });
+    }
+
+    user.email = req.body.email;
+    user.firstName = req.body.firstName;
+    user.lastName = req.body.lastName;
+    user.save();
+
+    res.status(200).send({
+        msg: 'User Updated Succesfully'
+    });
+});
+
 module.exports = router;
