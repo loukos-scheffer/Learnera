@@ -69,7 +69,7 @@ router.get('/me', AuthService.validateCookie, async (req, res) => {
 
 router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
     // updates an existing user
-    if(!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName){
+    if(!req.body.email || !req.body.firstName || !req.body.lastName){
         return res.status(400).json({msg: "Please fill out all fields"});
     }
     let user = await JwtService.getUserFromJwt(req.cookies.session_id);
@@ -81,7 +81,6 @@ router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
     }
 
     user.email = req.body.email;
-    user.password = req.body.password;
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.save();
