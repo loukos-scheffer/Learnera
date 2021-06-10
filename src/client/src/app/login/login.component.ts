@@ -3,6 +3,8 @@ import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/form
 import { Router } from '@angular/router';
 import { User } from '../classes/user/user';
 import { UserService } from '../services/user.service';
+//import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component'
+import { NavigationBarComponent } from '../navigation-bar/navigation-bar.component';
 
 @Component({
   selector: 'app-login',
