@@ -7,10 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-import { UserService } from './services/user.service';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
-
+import { UserService } from './services/user/user.service';
+import { RestApiService } from './services/rest-api/rest-api.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +25,10 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     FormsModule,
     HttpClientModule
   ],
-  providers: [UserService],
+  providers: [
+    UserService, 
+    RestApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
