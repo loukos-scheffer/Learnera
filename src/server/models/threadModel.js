@@ -27,6 +27,9 @@ const threadSchema = new mongoose.Schema({
         type: Number,
         default: 0
     }
-})
+},
+{
+    versionKey: false
+});
 
 module.exports = mongoose.model('threads', threadSchema);

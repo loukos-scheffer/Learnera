@@ -1,47 +1,50 @@
 // Contains all end points matching /api/user/*
-
 const express = require("express");
+let router = express.Router();
+
+const AuthService = require("../../services/AuthService");
 const UuidService = require("../../services/UuidService");
-const JwtGenerator = require("../../services/JwtGenerator");
+const JwtService = require("../../services/JwtService");
+const CookieService = require('../../services/CookieService');
 
 const User = require('../../models/userModel');
 const Auth = require('../../models/authModel');
-let router = express.Router();
 
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
     if(!req.body.email || !req.body.password){
         return res.status(400).json({msg: "Please fill out all fields"});
     }
 
-    User.find({email: req.body.email, password: req.body.password}, (err, data) => {
+    User.find({email: req.body.email, password: req.body.password}, async (err, data) => {
         if(err) console.log(err);
         
         if (data.length === 1) {
             let found_user = data[0];
 
-            let jwt = JwtGenerator.generateAuthJwt(found_user);
+            let jwt = JwtService.generateAuthJwt(found_user);
             const new_auth = new Auth();
             new_auth.jwt = jwt;
-            new_auth.save();
+            new_auth.uid = found_user.uid;
+
+            if(await AuthService.docExists(new_auth.uid) == null) {
+                new_auth.save();
+            }
+
+            CookieService.sendCookie(res, jwt);
 
             res.status(200).send({
-                msg: 'LOGIN SUCESSFUL',
-                body: {
-                    jwtToken: jwt
-                }
+                msg: 'LOGIN SUCESSFUL'
             });
 
         } else {
             res.status(401).send({
                 msg: 'LOGIN FAILED'
             });
-        }     
-
+        }
     })
-
 });
 
-router.post('/register', (req, res) => {
+router.post('/register', async (req, res) => {
     // creates new user
     if(!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName){
         return res.status(400).json({msg: "Please fill out all fields"});
@@ -54,18 +57,14 @@ router.post('/register', (req, res) => {
     new_user.lastName = req.body.lastName;
     new_user.save();
 
-    let jwt = JwtGenerator.generateAuthJwt(new_user);
-
-    const new_auth = new Auth();
-    new_auth.jwt = jwt;
-    new_auth.save();
-    
     res.status(200).send({
-        msg: 'User Created Succesfully',
-        body: {
-            jwtToken: jwt
-        }
+        msg: 'User Created Succesfully'
     });
+});
+
+router.get('/me', AuthService.validateCookie, async (req, res) => {
+    let user = await JwtService.getUserFromJwt(req.cookies.session_id);
+    res.status(200).send({body: user});
 });
 
 module.exports = router;
