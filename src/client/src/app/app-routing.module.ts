@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/home', pathMatch: 'full' }, // default routing
@@ -24,5 +25,6 @@ export class AppRoutingModule { }
 export const routingComponents = [
   LandingPageComponent,
   LoginComponent,
-  RegisterComponent
+  RegisterComponent,
+  HomepageComponent
 ]
