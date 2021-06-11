@@ -5,6 +5,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserProfileComponent} from './user-profile/user-profile.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/home', pathMatch: 'full' }, // default routing
@@ -27,5 +28,6 @@ export const routingComponents = [
   LandingPageComponent,
   LoginComponent,
   RegisterComponent,
-  UserProfileComponent
+  UserProfileComponent,
+  HomepageComponent
 ]
