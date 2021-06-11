@@ -7,14 +7,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { UserService } from './services/user/user.service';
 import { RestApiService } from './services/rest-api/rest-api.service';
+import { ELearningComponent } from './e-learning/e-learning.component';
+import { CommunityComponent } from './community/community.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    NavigationBarComponent,
+    ELearningComponent,
+    CommunityComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
