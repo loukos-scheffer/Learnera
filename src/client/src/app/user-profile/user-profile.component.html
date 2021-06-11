@@ -1,1 +1,34 @@
-<p>user-profile works!</p>
+<mat-card class="profile-card">
+    <mat-card-header>
+        <div mat-card-avatar></div>
+        <mat-card-title>Your Profile</mat-card-title>
+    </mat-card-header>
+
+    <form class="profile-form" #userForm="ngForm">
+        <div class="form-field name-field">
+            <mat-label>First Name:</mat-label>
+            <input type="text" placeholder="John" name="firstName">
+        </div>
+        <div class="form-field name-field">
+            <mat-label>Last Name:</mat-label>
+            <input type="text" placeholder="Smith" name="lastName">
+        </div>
+        <div class="form-field email-field">
+          <mat-label>Email:</mat-label>
+          <input type="email" placeholder="johnsmith@example.com" name="email">
+        </div>
+
+        <div class="form-field password-field">
+            <mat-label>Password:</mat-label>
+            <input type="password" placeholder="**********" name="password">
+        </div>
+
+        <div class="form-field password-field">
+            <mat-label>Confirm New Password:</mat-label>
+            <input type="password" placeholder="**********" name="password">
+        </div>
+      </form>  
+      <br>  
+
+      <button mat-raised-button class="form-control" color="accent">Update</button>
+</mat-card>
