@@ -29,4 +29,22 @@ export class UserService {
       catchError(err => this._restApiService.handleError(err))
     );
   }
+
+  updateUser(user: User): Observable<{}> {
+    var url = "/api/user/updateuser";
+
+    return this.http.put(url, user, {observe: 'response'}).pipe(
+      map(this._restApiService.getData),
+      catchError(err => this._restApiService.handleError(err))
+    );
+  }
+
+  me(): Observable<{}> {
+    var url = "/api/user/me";
+
+    return this.http.get(url, {observe: 'response'}).pipe(
+      map(this._restApiService.getData),
+      catchError(err => this._restApiService.handleError(err))
+    );
+  }
 }

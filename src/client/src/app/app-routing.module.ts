@@ -8,12 +8,14 @@ import { EditProfileComponent} from './edit-profile/edit-profile.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserProfileComponent} from './user-profile/user-profile.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/home', pathMatch: 'full' }, // default routing
   { path: '', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: UserProfileComponent },
   { path: 'e-learning', component: ELearningComponent},
   { path: 'community', component: CommunityComponent},
   { path: 'edit-profile', component: EditProfileComponent},
@@ -33,5 +35,6 @@ export const routingComponents = [
   LandingPageComponent,
   LoginComponent,
   RegisterComponent,
+  UserProfileComponent,
   HomepageComponent
 ]
