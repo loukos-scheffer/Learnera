@@ -1,13 +1,27 @@
+import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LandingPageComponent } from './landing-page/landing-page.component';
+import { CommunityComponent } from './community/community.component';
+import { ELearningComponent } from './e-learning/e-learning.component';
+import { EditProfileComponent} from './edit-profile/edit-profile.component';
 
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { UserProfileComponent} from './user-profile/user-profile.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: '/home', pathMatch: 'full' }, // default routing
-  { path: '', component: LandingPageComponent },
+  { path: '', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'profile', component: UserProfileComponent },
+  { path: 'e-learning', component: ELearningComponent},
+  { path: 'community', component: CommunityComponent},
+  { path: 'edit-profile', component: EditProfileComponent},
 
-  // { path: 'home', component: HomePageComponent },
+
+  { path: 'home', component: LandingPageComponent },
   // { path: 'elearning', component: ELearningComponent }
 ];
 
@@ -18,8 +32,9 @@ const routes: Routes = [
 export class AppRoutingModule { }
 
 export const routingComponents = [
-  LandingPageComponent
-  // HomePageComponent,
-  // ELearningComponent,
-  // NavigationPanelComponent
+  LandingPageComponent,
+  LoginComponent,
+  RegisterComponent,
+  UserProfileComponent,
+  HomepageComponent
 ]
