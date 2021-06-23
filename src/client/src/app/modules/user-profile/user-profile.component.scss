@@ -1,0 +1,35 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card {
+    margin: 20%;
+
+    height: 200px;
+    width: 500px;
+
+    form {
+        display: table;
+        width: 100%;
+
+        .form-field {
+            display: table-row;
+
+            mat-label, input {
+                display: table-cell;
+                margin-bottom: 5px;
+            }
+
+            input {
+                width: 90%;
+            }
+        }
+    }
+
+    button {
+        float: right;
+    }
+
+}

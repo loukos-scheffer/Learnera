@@ -1,0 +1,13 @@
+<div class="container">
+    <app-header flexLayout="column"></app-header>
+    <div class="line"></div>
+    <div flexLayout="row" fxFlex class="lower-container">
+        <div fxFlex="20">
+            <app-sidebar></app-sidebar>
+        </div>
+
+        <cdk-virtual-scroll-viewport fxFlex="80" fxFlexFill class="content" itemSize="0">
+            <router-outlet></router-outlet>
+        </cdk-virtual-scroll-viewport>
+    </div>
+</div>

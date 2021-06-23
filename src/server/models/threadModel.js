@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const threadSchema = new mongoose.Schema({
-    tid:{
+    tid: {
         type: String,
         required: true,
         unique: true,
@@ -11,19 +11,23 @@ const threadSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    title:{
+    title: {
         type: String,
         required: true
     },
-    body:{
+    body: {
         type: String,
         required: true
     },
-    date:{
+    date: {
         type: Date,
         default: Date.now
     },
-    likes:{
+    last_updated: {
+        type: Date,
+        default: Date.now
+    },
+    likes: {
         type: Number,
         default: 0
     }
