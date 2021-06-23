@@ -19,6 +19,9 @@ app.use("/api/thread", threadRoutes);
 var messageRoutes = require('./routes/messages/message-routes');
 app.use("/api/message", messageRoutes);
 
+var videoRoutes = require('./routes/videos/video-routes');
+app.use("/api/videos", videoRoutes);
+
 // Connect to database
 mongoose.connect(config.get('dbConfig'), { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 const db = mongoose.connection;
