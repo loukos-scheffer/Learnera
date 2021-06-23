@@ -1,28 +1,48 @@
-import { LEADING_TRIVIA_CHARS } from '@angular/compiler/src/render3/view/template';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CommunityComponent } from './community/community.component';
-import { ELearningComponent } from './e-learning/e-learning.component';
-import { EditProfileComponent} from './edit-profile/edit-profile.component';
+import { AuthGuardService as AuthGuard } from './services/auth/auth-guard.service';
 
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { UserProfileComponent} from './user-profile/user-profile.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { DefaultComponent } from './layouts/default/default.component';
+import { FullscreenComponent } from './layouts/fullscreen/fullscreen.component';
+import { LoginComponent } from './modules/login/login.component';
+import { HomeComponent } from './modules/home/home.component';
+import { LearningComponent } from './modules/learning/learning.component';
+import { UserProfileComponent } from './modules/user-profile/user-profile.component';
+import { RegisterComponent } from './modules/register/register.component';
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/home', pathMatch: 'full' }, // default routing
-  { path: '', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  { path: 'profile', component: UserProfileComponent },
-  { path: 'e-learning', component: ELearningComponent},
-  { path: 'community', component: CommunityComponent},
-  { path: 'edit-profile', component: EditProfileComponent},
-
-
-  { path: 'home', component: LandingPageComponent },
-  // { path: 'elearning', component: ELearningComponent }
+  {
+    path: '', component: DefaultComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'learning',
+        component: LearningComponent
+      },
+      {
+        path: 'profile',
+        component: UserProfileComponent
+      }
+    ],
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'auth', component: FullscreenComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      }
+    ],
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -30,11 +50,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-export const routingComponents = [
-  LandingPageComponent,
-  LoginComponent,
-  RegisterComponent,
-  UserProfileComponent,
-  HomepageComponent
-]
