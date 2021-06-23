@@ -19,17 +19,10 @@ router.post("/login", async (req, res) => {
         if(err) console.log(err);
         
         if (data.length === 1) {
-            let found_user = data[0];
-
+            let found_user = data[0]; 
             let jwt = JwtService.generateAuthJwt(found_user);
-            const new_auth = new Auth();
-            new_auth.jwt = jwt;
-            new_auth.uid = found_user.uid;
 
-            if(await AuthService.docExists(new_auth.uid) == null) {
-                new_auth.save();
-            }
-
+            AuthService.saveAuthDocument(found_user, jwt);
             CookieService.sendCookie(res, jwt);
 
             res.status(200).send({

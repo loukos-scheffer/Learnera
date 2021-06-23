@@ -3,6 +3,6 @@
 module.exports.sendCookie = function (res, jwt) {
     res.cookie('session_id', jwt, {
         httpOnly: true,
-        sameSite: true
+        secure: true
     });
 }
