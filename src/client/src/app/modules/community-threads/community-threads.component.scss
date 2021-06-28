@@ -1,0 +1,17 @@
+.thread-list-item-card {
+    min-height: 60px;
+    display: block;
+    padding: 30px;
+}
+
+.thread-list-item-card > *{
+    padding-left: 10px;
+}
+
+.thread-list-item-card > *:first-child{
+    padding-top: 10px;
+}
+
+.thread-list-item:not(:first-child) {
+    margin-top:20px;
+}

@@ -9,6 +9,7 @@ import { HomeComponent } from './modules/home/home.component';
 import { LearningComponent } from './modules/learning/learning.component';
 import { UserProfileComponent } from './modules/user-profile/user-profile.component';
 import { RegisterComponent } from './modules/register/register.component';
+import { CommunityThreadsComponent } from './modules/community-threads/community-threads.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: UserProfileComponent
+      },
+      {
+        path: 'community',
+        component: CommunityThreadsComponent
       }
     ],
     canActivate: [AuthGuard]

@@ -9,20 +9,22 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/material.module';
 import { UserProfileComponent } from 'src/app/modules/user-profile/user-profile.component';
 import { FormsModule } from '@angular/forms';
-// import { CommunityComponent } from 'src/app/community/community.component';
-
-
+import { CommunityThreadsComponent } from 'src/app/modules/community-threads/community-threads.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
     DefaultComponent,
     LearningComponent,
     HomeComponent,
-    // CommunityComponent
+    CommunityThreadsComponent,
     UserProfileComponent
   ],
   imports: [
+    BrowserModule,
     CommonModule,
+    BrowserAnimationsModule,
     RouterModule,
     FlexLayoutModule,
     SharedModule,
