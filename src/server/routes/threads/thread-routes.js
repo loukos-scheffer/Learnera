@@ -4,17 +4,20 @@ const express = require("express");
 const Thread = require('../../models/threadModel');
 let router = express.Router();
 
+threadid = 0;
+
 router.post("/test", (req, res) => {
 
 });
 
-router.post('/createthread', async (req, res) => {
+router.post('/post', async (req, res) => {
     // creates new thread on the forum
-    if(!req.body.tid || !req.body.uid|| !req.body.title || !req.body.body){
+    if(!req.body.uid|| !req.body.title || !req.body.body){
         return res.status(400).json({msg: "Please fill out all fields"});
     }
     const post = new Thread();
-    post.tid = req.body.tid;
+    post.tid = threadid;
+    threadid++;
     post.uid = req.body.uid;
     post.title = req.body.title;
     post.body = req.body.body;
