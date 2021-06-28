@@ -2,9 +2,8 @@
 
 const express = require("express");
 const Thread = require('../../models/threadModel');
+const UuidService = require("../../services/UuidService");
 let router = express.Router();
-
-threadid = 0;
 
 router.post("/test", (req, res) => {
 
@@ -16,8 +15,7 @@ router.post('/post', async (req, res) => {
         return res.status(400).json({msg: "Please fill out all fields"});
     }
     const post = new Thread();
-    post.tid = threadid;
-    threadid++;
+    post.tid = UuidService.generateUuid();
     post.uid = req.body.uid;
     post.title = req.body.title;
     post.body = req.body.body;
