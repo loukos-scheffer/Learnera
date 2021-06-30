@@ -1,0 +1,13 @@
+.container {
+	display: flex; /* or inline-flex */
+	justify-content: space-between;
+	margin:1cm;
+	flex-basis: auto;
+	row-gap: 1cm;
+	flex-wrap:wrap;
+      }
+
+.title {
+	font-size:large;
+	line-height: 1.6;
+}
