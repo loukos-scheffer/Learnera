@@ -19,6 +19,10 @@ export class SidebarComponent implements OnInit {
       text: "Learning"
     },
     {
+      path: "./community",
+      text: "Community"
+    },
+    {
       path: "./profile",
       text: "User Profile"
     }
