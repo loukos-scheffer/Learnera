@@ -2,19 +2,22 @@
 
 const express = require("express");
 const Comment = require('../../models/commentModel');
+const AuthService = require("../../services/AuthService");
 const UuidService = require("../../services/UuidService");
+const JwtService = require("../../services/JwtService");
 let router = express.Router();
 
 
-router.post('/post', async (req, res) => {
+router.post('/post', AuthService.validateCookie, async (req, res) => {
     // creates new comment on the forum
-    if(!req.body.uid|| !req.body.tid || !req.body.body){
+    let user = await JwtService.getUserFromJwt(req.cookies.session_id);
+    if(!req.body.tid || !req.body.body){
         return res.status(400).json({msg: "Please fill out all fields"});
     }
     const post = new Comment();
     post.cid = UuidService.generateUuid();
     post.tid = req.body.tid;
-    post.uid = req.body.uid;
+    post.uid = user.get("uid");
     post.body = req.body.body;
     post.likes = 0;
     post.date = Date.now();
