@@ -1,5 +1,6 @@
 const Auth = require('../models/authModel');
 const JwtService = require('./JwtService');
+const AuthService = require('./AuthService');
 
 // Middle-ware for authenticated HTTP requests
 // Ensures that the jwt from a cookie exists in the auth collection,
@@ -27,4 +28,20 @@ module.exports.docExists = async function (uid) {
     let user = await Auth.findOne({ uid: uid }).exec();
 
     return user;
+}
+
+// Creates a new document in the auths table for specfied user document,
+// with the specified jwt.
+// If one already exists, it will update the existing document
+module.exports.saveAuthDocument = async function (user, jwt) {
+    let authDoc = await AuthService.docExists(user.uid);
+    if(authDoc == null) { // Token for user d.n.e.
+        const new_auth = new Auth();
+        new_auth.jwt = jwt;
+        new_auth.uid = user.uid;
+        new_auth.save();
+    } else { // token for user exists already
+        authDoc.jwt = jwt;
+        await authDoc.save();
+    }
 }
