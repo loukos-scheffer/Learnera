@@ -13,6 +13,10 @@ const commentSchema = new mongoose.Schema({
         unique: true,
         index: true
     },
+    uid: {
+        type: String,
+        required: true
+    },
     body:{
         type: String,
         required: true
