@@ -10,8 +10,10 @@ const commentSchema = new mongoose.Schema({
     tid: {
         type: String,
         required: true,
-        unique: true,
-        index: true
+    },
+    uid: {
+        type: String,
+        required: true
     },
     body:{
         type: String,
