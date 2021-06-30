@@ -32,16 +32,15 @@ router.post('/post', AuthService.validateCookie, async (req, res) => {
     });
 });
 
-router.get('/search', async (req, res) => {
+router.post('/search', async (req, res) => {
     // creates new thread on the forum
-    if(req.body.query === undefined){
+    if(req.body.query === undefined) {
         return res.status(400).json({msg: "Please fill out all fields"});
     }
+
     if (req.body.query === ""){
         const query = Thread.find({}, async (err, data) => {
             if (err) console.log(err);
-
-            console.log(data);
 
             if (data.length > 0) {
                 res.status(200).send(data);
@@ -55,8 +54,6 @@ router.get('/search', async (req, res) => {
     } else {
         const query = Thread.find({title: {"$regex": req.body.query, "$options": "i"}}, async (err, data) => {
             if (err) console.log(err);
-
-            console.log(data);
 
             if (data.length > 0) {
                 res.status(200).send(data);

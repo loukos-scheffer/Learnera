@@ -1,3 +1,15 @@
+.no-threads-container {
+    .no-threads-header {
+        display: flex;
+        justify-content: center;
+        margin-top: 23%;
+
+        i {
+            color: rgb(128,128,128);
+        }
+    }
+}
+
 .thread-list-item-card {
     min-height: 60px;
     display: block;
