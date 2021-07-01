@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Thread } from 'src/app/classes/thread/thread';
 import { ThreadService } from 'src/app/services/thread/thread.service';
 
@@ -11,7 +12,8 @@ export class CommunityThreadsComponent implements OnInit {
 
   tmpThreads: Thread[] = [];
   
-  constructor(private _threadService: ThreadService) {}
+  constructor(private _threadService: ThreadService, 
+    private routerService: Router) {}
 
   ngOnInit(): void {
     this._threadService.search("").subscribe((data:any) => {
@@ -23,7 +25,7 @@ export class CommunityThreadsComponent implements OnInit {
   }
 
   selectThread(selection: Thread) {
-    console.log(selection);
+    this.routerService.navigate(['community/', selection.tid]);
   }
 
 }

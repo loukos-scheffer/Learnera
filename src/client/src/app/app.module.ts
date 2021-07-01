@@ -13,7 +13,7 @@ import { FullscreenModule } from './layouts/fullscreen/fullscreen.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     // BrowserModule,

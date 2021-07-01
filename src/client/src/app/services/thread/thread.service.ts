@@ -29,4 +29,14 @@ export class ThreadService {
       catchError(err => this._restApiService.handleError(err))
     );
   }
+
+  getThread(tid: String): Observable<{}> {
+    var url = "/api/thread/get-thread";
+
+    return this.http.post(url, {"tid": tid}, {observe: 'response'}).pipe(
+      map(this._restApiService.getData),
+      catchError(err => this._restApiService.handleError(err))
+    );
+  }
+
 }

@@ -1,0 +1,38 @@
+.thread-card {
+    border-radius: 0%;
+    height: 100%;
+    background-size: cover;
+    min-height: 92.5vh;
+}
+  
+.profile-image {
+background-image: url('https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg');
+background-size: cover;
+}
+
+.no-thread-found {
+    .no-thread-header {
+        display: flex;
+        justify-content: center;
+        margin-top: 23%;
+
+        i {
+            color: rgb(128,128,128);
+        }
+    }
+}
+
+:host{
+    background:gray;
+    height: 100%;
+    background-size: cover;
+    border-radius: 0%;
+    background-size: 100% 100%;
+    overflow-y: hidden;
+    display: block;
+
+    
+}
+
+
+
