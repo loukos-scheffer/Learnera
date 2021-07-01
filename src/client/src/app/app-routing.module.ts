@@ -10,6 +10,7 @@ import { LearningComponent } from './modules/learning/learning.component';
 import { UserProfileComponent } from './modules/user-profile/user-profile.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { CommunityThreadsComponent } from './modules/community-threads/community-threads.component';
+import { CommunityThreadComponent } from './modules/community-thread/community-thread.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'community',
         component: CommunityThreadsComponent
+      },
+      {
+        path: 'community/:term',
+        component: CommunityThreadComponent
       }
     ],
     canActivate: [AuthGuard]
