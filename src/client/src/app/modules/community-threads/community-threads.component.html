@@ -1,3 +1,7 @@
+<button mat-raised-button class="thread-create" color="accent" (click)="showCreateThreadForm()" >Create Thread</button>
+<br>
+<br>
+<br>
 <div class="no-threads-container" *ngIf="tmpThreads.length == 0; else threadListContainer">
     <div class="no-threads-header unselectable">
         <i>No community threads found</i>
