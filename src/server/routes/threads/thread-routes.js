@@ -8,10 +8,12 @@ const UuidService = require("../../services/UuidService");
 const JwtService = require("../../services/JwtService");
 let router = express.Router();
 
-router.post("/test", (req, res) => {
-
-});
-//, AuthService.validateCookie
+/** POST /api/thread/post
+ @body: title String, body String
+ @return:
+ - 200 OK: Thread is successfully created and uploaded to the database.
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ */
 router.post('/post', AuthService.validateCookie, async (req, res) => {
     // creates new thread on the forum
     let user = await JwtService.getUserFromJwt(req.cookies.session_id);
@@ -32,6 +34,13 @@ router.post('/post', AuthService.validateCookie, async (req, res) => {
     });
 });
 
+/** POST /api/thread/search
+ @body: query String
+ @return:
+ - 200 OK: Threads with query matching a substring of the title have been located and will be sent as a response.
+ - 400 BAD REQUEST: If the query field does not exist in the request.
+ - 404 NOT FOUND: If no threads are found with query matching a substring of the title.
+ */
 router.post('/search', async (req, res) => {
     // creates new thread on the forum
     if(req.body.query === undefined) {
@@ -67,6 +76,13 @@ router.post('/search', async (req, res) => {
     }
 });
 
+/** POST /api/thread/get-thread
+ @body: tid String
+ @return:
+ - 200 OK: Thread matching tid has been located and will be sent as a response.
+ - 400 BAD REQUEST: If the tid field does not exist in the request.
+ - 404 NOT FOUND: No threads found with the specified tid.
+ */
 router.post("/get-thread", async (req, res) => {
     if(!req.body.tid){
         return res.status(400).json({msg: "Please select a thread"});

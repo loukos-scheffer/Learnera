@@ -7,7 +7,12 @@ const UuidService = require("../../services/UuidService");
 const JwtService = require("../../services/JwtService");
 let router = express.Router();
 
-
+/** POST /api/comment/post
+ @body: tid String, body String
+ @return:
+ - 200 OK: Comment is successfully created and uploaded to the database.
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ */
 router.post('/post', AuthService.validateCookie, async (req, res) => {
     // creates new comment on the forum
     let user = await JwtService.getUserFromJwt(req.cookies.session_id);

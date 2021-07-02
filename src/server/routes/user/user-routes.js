@@ -10,6 +10,12 @@ const CookieService = require('../../services/CookieService');
 const User = require('../../models/userModel');
 const Auth = require('../../models/authModel');
 
+/** POST /api/user/login
+ @body: email String, password String
+ @return:
+ - 200 OK: A user was found matching the username password combination and a token is granted.
+ - 401 UNAUTHORIZED: A user was not found matching the username password combination, so access is denied.
+ */
 router.post("/login", async (req, res) => {
     if(!req.body.email || !req.body.password){
         return res.status(400).json({msg: "Please fill out all fields"});
@@ -37,6 +43,11 @@ router.post("/login", async (req, res) => {
     })
 });
 
+/** POST /api/user/register
+ @body: email String, password String, firstName String, lastName String
+ @return:
+ - 200 OK: A user is created with the information provided.
+ */
 router.post('/register', async (req, res) => {
     // creates new user
     if(!req.body.email || !req.body.password || !req.body.firstName || !req.body.lastName){
@@ -55,11 +66,23 @@ router.post('/register', async (req, res) => {
     });
 });
 
+/** POST /api/user/me
+ @body:
+ @return:
+ - 200 OK: The information of the currently loged in user is provided as a response.
+ */
 router.get('/me', AuthService.validateCookie, async (req, res) => {
     let user = await JwtService.getUserFromJwt(req.cookies.session_id);
     res.status(200).send({body: user});
 });
 
+/** POST /api/user/updateuser
+ @body: email String, firstName String, lastName
+ @return:
+ - 200 OK: A user was found matching the token and the information is updated using the request body.
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ - 401 UNAUTHORIZED: A user was not found matching the current token.
+ */
 router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
     // updates an existing user
     if(!req.body.email || !req.body.firstName || !req.body.lastName){

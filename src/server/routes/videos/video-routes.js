@@ -2,7 +2,11 @@
 const express = require("express");
 let router = express.Router();
 
-
+/** GET /api/videos/get-categories
+ @body:
+ @return:
+ - 200 OK: Sends the categories of E-Learning videos as the response body.
+ */
 router.get("/get-categories", async (req, res) => {
     res.status(200).json({
         categories: [
