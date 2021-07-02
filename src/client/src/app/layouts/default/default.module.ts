@@ -13,6 +13,7 @@ import { CommunityThreadsComponent } from 'src/app/modules/community-threads/com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommunityThreadComponent } from '../../modules/community-thread/community-thread.component';
+import { CreateThreadDialogComponent } from 'src/app/modules/community-threads/create-thread-dialog/create-thread-dialog/create-thread-dialog.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CommunityThreadComponent } from '../../modules/community-thread/communi
     HomeComponent,
     CommunityThreadsComponent,
     UserProfileComponent,
-    CommunityThreadComponent
+    CommunityThreadComponent,
+    CreateThreadDialogComponent
   ],
   imports: [
     BrowserModule,
