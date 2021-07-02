@@ -3,11 +3,23 @@
     color: white;
     display: flex;
     height: 4%;
-    min-height: 30px;
+    width: 100%;
+    min-height: 70px;
 }
 
 b {
     position: relative;
     top:20%;
     padding-left: 30px;
+}
+
+.container {
+    width: 100%;
+}
+
+.search-container{
+    margin-top: 5px;
+    width: 100%;
+    left: 5%;
+
 }
