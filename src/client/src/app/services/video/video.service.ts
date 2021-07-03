@@ -14,7 +14,7 @@ export class VideoService {
     }
     
     getCategories(): Observable<{}> {
-      var url = "/api/videos/get-categories";
+      var url = "/api/video/get-categories";
   
       return this.http.get(url, {observe: 'response'}).pipe(
         map(this._restApiService.getData),

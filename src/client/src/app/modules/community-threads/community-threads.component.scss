@@ -11,21 +11,15 @@
 }
 
 .thread-list-item-card {
-    min-height: 60px;
-    display: block;
-    padding: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    word-wrap: break-word;
+    cursor: pointer;
+    // size: 5;
 }
 
-.thread-list-item-card > *{
-    padding-left: 10px;
-}
-
-.thread-list-item-card > *:first-child{
-    padding-top: 10px;
-}
-
-.thread-list-item:not(:first-child) {
-    margin-top:20px;
+.thread-list-item-card:not(:first-child) {
+    margin-bottom:20px;
 }
 
 .thread-create{

@@ -9,17 +9,23 @@ import { ThreadsService } from '../threads/threads.service';
 export class SearchService {
 
   constructor(private _threadService: ThreadsService) { }
-  //private results = new BehaviorSubject([]);
-  results: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  threadSearchResults: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
 
-  public getResults$(){
-    return this.results.asObservable();
+  public getThreadSearchResults$() {
+    return this.threadSearchResults.asObservable();
   }
-  public search(params: any){
-    //do search and add results to 'results'
-    const result : string[] = [];
+  public searchThread(params: any) {
     this._threadService.searchThread(params).subscribe((res: any) => {
-      this.results.next(res.body);
+      if(res.body === undefined) {
+        this.threadSearchResults.next([]);
+        return;
+      }
+      
+      res?.body.forEach((element: any) => {
+        delete element._id;
+      });
+
+      this.threadSearchResults.next(res?.body);
     });
   }
 }

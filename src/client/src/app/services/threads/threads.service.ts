@@ -12,10 +12,10 @@ export class ThreadsService {
   constructor(private http: HttpClient,
     private _restApiService: RestApiService) { }
 
-  searchThread(query: String): Observable<{}> {
-    var url = "/api/user/updateuser";
+  searchThread(query: string): Observable<{}> {
+    var url = "/api/thread/search";
 
-    return this.http.put(url, query, {observe: 'response'}).pipe(
+    return this.http.post(url, {"query": query}, {observe: 'response'}).pipe(
       map(this._restApiService.getData),
       catchError(err => this._restApiService.handleError(err))
     );
