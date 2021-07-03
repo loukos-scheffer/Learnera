@@ -11,7 +11,6 @@ export class AuthGuardService implements CanActivate {
     public _userService:UserService) {}  
   
   canActivate(): boolean {
-    // console.log('here1');
     this._userService.me().toPromise().then(
       (res:any) => {
         if(res.ok) {
@@ -21,7 +20,6 @@ export class AuthGuardService implements CanActivate {
           return false;
         }
       }, err => {
-        console.log("here err");
         this.router.navigateByUrl("auth/login");
         return false;
       }

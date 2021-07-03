@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Thread } from 'src/app/classes/thread/thread';
+import { SearchService } from 'src/app/services/search/search.service';
 import { ThreadService } from 'src/app/services/thread/thread.service';
-import { CreateThreadDialogComponent } from './create-thread-dialog/create-thread-dialog/create-thread-dialog.component';
+import { CreateThreadDialogComponent } from './create-thread-dialog/create-thread-dialog.component';
 
 @Component({
   selector: 'app-community-threads',
@@ -15,10 +16,20 @@ export class CommunityThreadsComponent implements OnInit {
   tmpThreads: Thread[] = [];
   
   constructor(private _threadService: ThreadService, 
+    private _searchService: SearchService,
     public dialog: MatDialog,
     private routerService: Router) {}
 
   ngOnInit(): void {
+    this._searchService.getThreadSearchResults$().subscribe((data:any)=> {
+      
+      data.forEach((element: any) => {
+        if(element.body.length > 500) {
+          element.body = element.body.substring(0,500) + "...";
+        }
+      });
+      this.tmpThreads = data;
+    });
     this.getThreads();
   }
 
@@ -26,10 +37,9 @@ export class CommunityThreadsComponent implements OnInit {
     this.routerService.navigate(['community/', selection.tid]);
   }
 
-  showCreateThreadForm(){
+  showCreateThreadForm() {
     const dialogRef = this.dialog.open(CreateThreadDialogComponent, {
       width: '500px',
-      // data: {title: this.title, body: this.body}
     });
 
     dialogRef.afterClosed().subscribe(result2 => {
@@ -40,13 +50,7 @@ export class CommunityThreadsComponent implements OnInit {
     });
   }
 
-  getThreads(){
-    this._threadService.search("").subscribe((data:any) => {
-      data.body.forEach((element:any) => {
-        delete element._id;
-      });
-      this.tmpThreads = data.body;
-    });
+  getThreads(): void {
+    this._searchService.searchThread("");
   }
-
 }

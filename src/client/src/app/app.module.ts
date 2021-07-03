@@ -16,11 +16,7 @@ import { FullscreenModule } from './layouts/fullscreen/fullscreen.module';
     AppComponent
   ],
   imports: [
-    // BrowserModule,
     AppRoutingModule,
-    // BrowserAnimationsModule,
-    // MaterialModule,
-    // FormsModule,
     HttpClientModule,
     DefaultModule,
     FullscreenModule

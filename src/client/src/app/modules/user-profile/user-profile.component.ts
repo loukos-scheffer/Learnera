@@ -15,7 +15,6 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this._userService.me().subscribe((data: any) => {
-      // console.log(data.body.body);
       this.currentUser.firstName = data.body.body.firstName;
       this.currentUser.lastName = data.body.body.lastName;
       this.currentUser.email = data.body.body.email;

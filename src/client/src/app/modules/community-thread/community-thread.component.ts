@@ -1,6 +1,5 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Thread } from 'src/app/classes/thread/thread';
 import { ThreadService } from 'src/app/services/thread/thread.service';
 
@@ -17,9 +16,6 @@ export class CommunityThreadComponent implements OnInit {
 
   ngOnInit(): void {
     // router server read the url string, then find the 
-    console.log("josh is here");
-    console.log(this.routerService.url);
-
     let url = this.routerService.url
     let tid = url.substring(url.lastIndexOf('/') + 1);
     this._threadService.getThread(tid).subscribe((data: any) => {
@@ -27,7 +23,6 @@ export class CommunityThreadComponent implements OnInit {
         let thread_info = data.body;
         delete thread_info._id;
         this.thread = thread_info;
-        console.log(this.thread);
       }
 
     });

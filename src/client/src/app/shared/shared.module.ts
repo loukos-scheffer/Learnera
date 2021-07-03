@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
-import { NgxSearchbarModule } from 'ngx-searchbar';
 import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
@@ -20,8 +19,7 @@ import { BrowserModule } from '@angular/platform-browser';
     FlexLayoutModule,
     MaterialModule, 
     BrowserModule, 
-    FormsModule, 
-    NgxSearchbarModule
+    FormsModule
   ],
   exports: [
     HeaderComponent,

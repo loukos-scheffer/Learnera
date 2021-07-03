@@ -9,13 +9,8 @@
 </div>
 <ng-template class="thread-list-container" #threadListContainer>
     <br>
-    <mat-selection-list #threads [multiple]="false" (selectionChange)="selectThread(threads.selectedOptions.selected[0]?.value)">
-        <mat-list-option class="thread-list-item" *ngFor="let thread of tmpThreads" [value]="thread">
-            <mat-card class="thread-list-item-card">
-                <mat-card-title>{{thread.title}}</mat-card-title>
-                <mat-card-content>{{thread.body}}</mat-card-content>
-            </mat-card>
-        </mat-list-option>
-    </mat-selection-list>
-    <br>
+    <mat-card class="thread-list-item-card" *ngFor="let thread of tmpThreads" (click)="selectThread(thread)">
+        <mat-card-title>{{thread.title}}</mat-card-title>
+        <mat-card-content class="thread-list-item-card-content">{{thread.body}}</mat-card-content>
+    </mat-card>
 </ng-template>

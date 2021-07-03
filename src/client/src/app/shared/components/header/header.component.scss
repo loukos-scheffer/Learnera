@@ -2,24 +2,24 @@
     background: rgb(37,37,38);
     color: white;
     display: flex;
-    height: 4%;
     width: 100%;
-    min-height: 70px;
+    height: 100%;
 }
 
 b {
     position: relative;
-    top:20%;
+    margin-top: 23px;
     padding-left: 30px;
 }
 
 .container {
     width: 100%;
-}
+    height: 100%;
 
-.search-container{
-    margin-top: 5px;
-    width: 100%;
-    left: 5%;
-
+    .search-container {
+        margin-top:2px;
+        width: 100%;
+        height: 100%;
+        left: 5%;
+    }
 }
