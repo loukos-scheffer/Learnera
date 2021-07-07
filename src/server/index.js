@@ -25,6 +25,9 @@ app.use("/api/comment", commentRoutes);
 var videoRoutes = require('./routes/videos/video-routes');
 app.use("/api/video", videoRoutes);
 
+var likeRoutes = require('./routes/likes/like-routes');
+app.use("/api/like", likeRoutes);
+
 // Connect to database
 mongoose.connect(config.get('dbConfig'), { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 const db = mongoose.connection;
