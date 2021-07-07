@@ -1,0 +1,38 @@
+<!-- <p>upload-video-dialog works!</p> -->
+<div mat-dialog-content>
+    <p>Enter title of the video</p>
+    <mat-form-field class="title-input-form" appearance="fill">
+      <mat-label>Title</mat-label>
+      <input matInput [(ngModel)]="content.title">
+    </mat-form-field>
+    <p>Enter description of the video</p>
+    <mat-form-field class="body-input-form" appearance="fill">
+      <mat-label>description</mat-label>
+      <textarea matInput class="body-input" [(ngModel)]="content.body"></textarea>
+    </mat-form-field>
+
+    <p>Enter url of the video</p>
+    <mat-form-field class="title-input-form" appearance="fill">
+      <mat-label>url</mat-label>
+      <input matInput [(ngModel)]="content.url">
+    </mat-form-field>
+
+
+    <!-- "Business", "Finance & Accounting", "IT & Software", "Personal Development", "Marketing", "Teaching & Academics" -->
+    <section class="example-section" [formGroup]="categories">
+        <h4>Select your categories:</h4>
+        <p><mat-checkbox formControlName="Business" (change)="onCategoryChange($event, 'Business')" >Business</mat-checkbox></p>
+        <p><mat-checkbox formControlName="Finance & Accounting" (change)="onCategoryChange($event, 'Finance & Accounting')">Finance & Accounting</mat-checkbox></p>
+        <p><mat-checkbox formControlName="IT & Software" (change)="onCategoryChange($event, 'IT & Software')">IT & Software</mat-checkbox></p>
+        <p><mat-checkbox formControlName="Personal Development" (change)="onCategoryChange($event, 'Personal Development')">Personal Development</mat-checkbox></p>
+        <p><mat-checkbox formControlName="Marketing" (change)="onCategoryChange($event, 'Marketing')">Marketing</mat-checkbox></p>
+        <p><mat-checkbox formControlName="Teaching & Academics" (change)="onCategoryChange($event, 'Teaching & Academics')">Teaching & Academics</mat-checkbox></p>
+    </section>
+      
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="content" cdkFocusInitial>Ok</button>
+  </div>
+  
