@@ -17,16 +17,11 @@
       <input matInput [(ngModel)]="content.url">
     </mat-form-field>
 
-
-    <!-- "Business", "Finance & Accounting", "IT & Software", "Personal Development", "Marketing", "Teaching & Academics" -->
-    <section class="example-section" [formGroup]="categories">
+    <section class="example-section">
         <h4>Select your categories:</h4>
-        <p><mat-checkbox formControlName="Business" (change)="onCategoryChange($event, 'Business')" >Business</mat-checkbox></p>
-        <p><mat-checkbox formControlName="Finance & Accounting" (change)="onCategoryChange($event, 'Finance & Accounting')">Finance & Accounting</mat-checkbox></p>
-        <p><mat-checkbox formControlName="IT & Software" (change)="onCategoryChange($event, 'IT & Software')">IT & Software</mat-checkbox></p>
-        <p><mat-checkbox formControlName="Personal Development" (change)="onCategoryChange($event, 'Personal Development')">Personal Development</mat-checkbox></p>
-        <p><mat-checkbox formControlName="Marketing" (change)="onCategoryChange($event, 'Marketing')">Marketing</mat-checkbox></p>
-        <p><mat-checkbox formControlName="Teaching & Academics" (change)="onCategoryChange($event, 'Teaching & Academics')">Teaching & Academics</mat-checkbox></p>
+        <p *ngFor="let category of categoriesList" >
+            <mat-checkbox (change)="onCategoryChange($event, category)" >{{category}} </mat-checkbox>
+        </p>
     </section>
       
   </div>

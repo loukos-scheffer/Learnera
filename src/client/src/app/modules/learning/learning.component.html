@@ -2,6 +2,11 @@
 <br>
 <br>
 <br>
-<div><div class="container" *ngFor="let category of categories">
-	<mat-card><mat-card-title class="title">{{category}}</mat-card-title></mat-card>
-</div></div>
+<div>
+	<div class ="container">
+		<mat-card><mat-card-title class="title" (click)="selectCategory('All')">All</mat-card-title></mat-card>
+	</div>
+	<div class="container" *ngFor="let category of categories">
+		<mat-card><mat-card-title class="title" (click)="selectCategory(category)">{{category}}</mat-card-title></mat-card>
+	</div>
+</div>

@@ -14,18 +14,18 @@ import { CreateThreadDialogComponent } from './create-thread-dialog/create-threa
 export class CommunityThreadsComponent implements OnInit {
 
   tmpThreads: Thread[] = [];
-  
-  constructor(private _threadService: ThreadService, 
+
+  constructor(private _threadService: ThreadService,
     private _searchService: SearchService,
     public dialog: MatDialog,
-    private routerService: Router) {}
+    private routerService: Router) { }
 
   ngOnInit(): void {
-    this._searchService.getThreadSearchResults$().subscribe((data:any)=> {
-      
+    this._searchService.getThreadSearchResults$().subscribe((data: any) => {
+
       data.forEach((element: any) => {
-        if(element.body.length > 500) {
-          element.body = element.body.substring(0,500) + "...";
+        if (element.body.length > 500) {
+          element.body = element.body.substring(0, 500) + "...";
         }
       });
       this.tmpThreads = data;
@@ -42,11 +42,13 @@ export class CommunityThreadsComponent implements OnInit {
       width: '500px',
     });
 
-    dialogRef.afterClosed().subscribe(result2 => {
-      let result = result2;
-      this._threadService.post(new Thread("", "", result.title, result.body, new Date(), new Date(), 0)).subscribe(data => {
-        this.getThreads();
-      });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != null) {
+        this._threadService.post(new Thread("", "", result.title, result.body, new Date(), new Date(), 0)).subscribe(data => {
+          this.getThreads();
+        });
+      }
+
     });
   }
 

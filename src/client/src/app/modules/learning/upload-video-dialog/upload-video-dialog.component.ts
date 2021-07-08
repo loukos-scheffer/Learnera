@@ -3,6 +3,14 @@ import { FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Video } from 'src/app/classes/video/video';
+import { VideoService } from 'src/app/services/video/video.service';
+
+interface Content{
+  title: string;
+  body: string;
+  url: string;
+  categories: string[];
+}
 
 @Component({
   selector: 'app-upload-video-dialog',
@@ -11,20 +19,14 @@ import { Video } from 'src/app/classes/video/video';
 })
 export class UploadVideoDialogComponent implements OnInit {
 
-  content = {"title":"", "body":"", "url":"", "categories":["All"]};
-  categories: FormGroup;
-  //"Business", "Finance & Accounting", "IT & Software", "Personal Development", "Marketing", "Teaching & Academics"
+  content : Content = {"title":"", "body":"", "url":"", "categories": []};
+  categoriesList: string[] = [];
+
   constructor(
     public dialogRef: MatDialogRef<UploadVideoDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Video, fb: FormBuilder) {
-      this.categories = fb.group({
-        "Business": false,
-        "Finance & Accounting": false,
-        "IT & Software": false,
-        "Personal Development": false,
-        "Marketing": false,
-        "Teaching & Academics": false
-      });
+    @Inject(MAT_DIALOG_DATA) public data: Video, 
+    private _videoService: VideoService ) {
+      
     }
 
   onNoClick(): void {
@@ -43,7 +45,17 @@ export class UploadVideoDialogComponent implements OnInit {
     console.log("checked: " + ob.checked);
  } 
 
-  ngOnInit(): void {
-  }
+ ngOnInit(): void {
+  this._videoService.getCategories().subscribe((data: any) => {
+    if(data.status == 200) {
+      this.categoriesList = data.body.categories;
+      let index = this.categoriesList.indexOf("All");
+      if (index > -1) {
+        this.categoriesList.splice(index, 1);
+      }
+    }
+    
+  });
+}
 
 }

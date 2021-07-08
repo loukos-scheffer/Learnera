@@ -11,10 +11,10 @@ import { UploadVideoDialogComponent } from './upload-video-dialog/upload-video-d
 })
 export class LearningComponent implements OnInit {
   categories = [];
-  constructor(private _videoservice: VideoService, public dialog: MatDialog) { }
+  constructor(private _videoService: VideoService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this._videoservice.getCategories().subscribe((data: any) => {
+    this._videoService.getCategories().subscribe((data: any) => {
       if(data.status == 200) {
         this.categories = data.body.categories;
       }
@@ -26,13 +26,16 @@ export class LearningComponent implements OnInit {
       width: '500px',
     });
 
-    dialogRef.afterClosed().subscribe(result2 => {
-      let result = result2;
-      this._videoservice.upload(new Video("", "", result.title, result.body, result.url, result.categories, new Date(), 0)).subscribe(data => {
-        // this.ngOnInit();
-        // console.log("made a video");
-        // console.log(result2.categories);
-      });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != null){
+        this._videoService.upload(new Video("", "", result.title, result.body, result.url, result.categories, new Date(), 0)).subscribe(data => {});
+      }
     });
+  }
+
+  selectCategory(category: string){
+    // TODO: nick 
+    // For the "All" category, display all videos in database
+    console.log(category);
   }
 }
