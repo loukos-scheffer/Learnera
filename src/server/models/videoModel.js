@@ -26,8 +26,7 @@ const videoSchema = new mongoose.Schema({
     },
     categories:{
         type: [String],
-        required: true,
-        default: ["All"]
+        required: true
     },
     date:{
         type: Date,
