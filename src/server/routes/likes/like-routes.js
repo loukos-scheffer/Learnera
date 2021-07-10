@@ -10,7 +10,12 @@ const JwtService = require("../../services/JwtService");
 const LikeService = require("../../services/LikeService");
 let router = express.Router();
 
-
+/** POST /api/like/thread
+ @body: target String
+ @return:
+ - 200 OK: Thread has successfully been liked or unliked
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ */
 router.post('/thread', AuthService.validateCookie, async (req, res) =>{
     if(!req.body.target){
         return res.status(400).json({msg: "Please send like target!"});
@@ -47,7 +52,12 @@ router.post('/thread', AuthService.validateCookie, async (req, res) =>{
     
 });
 
-
+/** POST /api/like/video
+ @body: target String
+ @return:
+ - 200 OK: Video has successfully been liked or unliked
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ */
 router.post('/video', AuthService.validateCookie, async (req, res) =>{
     if(!req.body.target){
         return res.status(400).json({msg: "Please send like target!"});
@@ -86,7 +96,12 @@ router.post('/video', AuthService.validateCookie, async (req, res) =>{
 
 
 
-
+/** POST /api/like/comment
+ @body: target String
+ @return:
+ - 200 OK: Comment has successfully been liked or unliked
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ */
 router.post('/comment', AuthService.validateCookie, async (req, res) =>{
     if(!req.body.target){
         return res.status(400).json({msg: "Please send like target!"});
@@ -122,14 +137,19 @@ router.post('/comment', AuthService.validateCookie, async (req, res) =>{
     }
 });
 
-
+/** POST /api/like/hasLiked
+ @body: target String
+ @return:
+ - 200 OK: Return whether or not the user has liked a target thread/video/comment/etc
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ */
 router.post('/hasLiked', AuthService.validateCookie, async (req, res) => {
     if(!req.body.target){
         return res.status(400).json({msg: "Please send like target!"});
     }
     let user = await JwtService.getUserFromJwt(req.cookies.session_id);
-    let hasLiked = await LikeService.hasLiked(user.uid, req.body.target);
-    res.status(200).send(hasLiked != null);
+    let like = await LikeService.getLike(user.uid, req.body.target);
+    res.status(200).send(like != null);
 });
 
 module.exports = router;
