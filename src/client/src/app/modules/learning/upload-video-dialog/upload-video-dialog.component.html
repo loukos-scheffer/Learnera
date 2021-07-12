@@ -20,7 +20,7 @@
     <section class="example-section">
         <h4>Select your categories:</h4>
         <p *ngFor="let category of categoriesList" >
-            <mat-checkbox (change)="onCategoryChange($event, category)" >{{category}} </mat-checkbox>
+            <mat-checkbox (change)="onCategoryChange($event, category)" >{{category.name}} </mat-checkbox>
         </p>
     </section>
       

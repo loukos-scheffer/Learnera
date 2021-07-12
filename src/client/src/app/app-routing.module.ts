@@ -11,6 +11,7 @@ import { UserProfileComponent } from './modules/user-profile/user-profile.compon
 import { RegisterComponent } from './modules/register/register.component';
 import { CommunityThreadsComponent } from './modules/community-threads/community-threads.component';
 import { CommunityThreadComponent } from './modules/community-thread/community-thread.component';
+import { VideoListComponent } from './modules/learning/video-list/video-list.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
       {
         path: 'community/:term',
         component: CommunityThreadComponent
+      },
+      {
+        path: 'learning/:category',
+        component: VideoListComponent
       }
     ],
     canActivate: [AuthGuard]
