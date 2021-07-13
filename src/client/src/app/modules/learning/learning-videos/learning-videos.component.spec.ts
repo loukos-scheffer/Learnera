@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VideoListComponent } from './video-list.component';
+import { VideoListComponent } from './learning-videos.component';
 
 describe('VideoListComponent', () => {
   let component: VideoListComponent;

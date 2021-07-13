@@ -17,13 +17,15 @@
     cursor: pointer;
     display: flex;
     word-wrap: break-word;
-    .thumbnail{
+    
+    .thumbnail {
         margin-top: 1px;
         margin-bottom: 0px;
         margin-left: 1px;
         max-width: 260px;
-        max-height: 300px;
+        max-height: 146.25px;
     }
+
     .content{
         display: block;
         left: 290px;
@@ -36,8 +38,3 @@
 .video-list-item-card:not(:first-child) {
     margin-bottom:20px;
 }
-
-
-
- 
-

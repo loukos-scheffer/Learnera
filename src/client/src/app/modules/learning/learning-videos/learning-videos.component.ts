@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Video } from 'src/app/classes/video/video';
 import { VideoService } from 'src/app/services/video/video.service';
 
 @Component({
   selector: 'app-video-list',
-  templateUrl: './video-list.component.html',
-  styleUrls: ['./video-list.component.scss']
+  templateUrl: './learning-videos.component.html',
+  styleUrls: ['./learning-videos.component.scss']
 })
 export class VideoListComponent implements OnInit {
   videos: Video[] = [];
   category: String = "";
   searchCategory = "";
 
-  constructor(private routerService: Router, private _videoService: VideoService) { }
+  constructor(
+    private routerService: Router,
+    private router: ActivatedRoute,
+    private _videoService: VideoService
+  ) {}
 
   ngOnInit(): void {
     let url = this.routerService.url;
@@ -21,7 +25,7 @@ export class VideoListComponent implements OnInit {
     if(this.category === "all"){
       this.searchVideos("");
     }
-    else{
+    else {
       this._videoService.getCategories().subscribe((data: any) => {
       if(data.status == 200) {
         data.body.categories.forEach((element: any) => {
@@ -33,24 +37,17 @@ export class VideoListComponent implements OnInit {
       }
     });
     }
-
-
   }
 
   selectVideo(selection: Video) {
-    // TODO: this.routerService.navigate(['community/', selection.tid]);
+    this.routerService.navigate(['./', selection.vid], {relativeTo: this.router});
   }
-
 
   private searchVideos(category: String): void{
     this._videoService.searchVideo("", category).subscribe((data: any)=>{
       if(data.status == 200){
         this.videos = data.body;
-        console.log(this.videos);
       }
     });
-
-
   }
-
 }

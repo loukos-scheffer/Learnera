@@ -14,18 +14,22 @@ export class CommunityThreadComponent implements OnInit {
   thread: Thread | null = null;
   currColor: String = "";
   tid: String = "";
-  constructor(private routerService: Router, 
-    private _threadService: ThreadService, private _likeService: LikeService) { }
+  
+  constructor(
+    private routerService: Router, 
+    private _threadService: ThreadService, 
+    private _likeService: LikeService
+  ) {}
 
   ngOnInit(): void {
     // router server read the url string, then find the 
     let url = this.routerService.url
     this.tid = url.substring(url.lastIndexOf('/') + 1);
-    this.loadLikeCount();
+    this.loadThread();
     this.loadHasLiked();
   }
 
-  loadLikeCount(): void {
+  loadThread(): void {
     this._threadService.getThread(this.tid).subscribe((data: any) => {
       if (data.status == 200){
         let thread_info = data.body;
@@ -33,7 +37,6 @@ export class CommunityThreadComponent implements OnInit {
         this.thread = thread_info;
       }
     });
-
   }
 
   loadHasLiked(): void {
@@ -51,7 +54,7 @@ export class CommunityThreadComponent implements OnInit {
   onLike(): void {
     this._likeService.toggleLikeThread(this.tid).subscribe((data: any) => {
       if (data.status == 200){
-        this.loadLikeCount();
+        this.loadThread();
         this.loadHasLiked();
       }
     });
