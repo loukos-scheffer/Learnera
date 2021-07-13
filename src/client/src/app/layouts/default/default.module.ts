@@ -15,6 +15,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { CommunityThreadComponent } from '../../modules/community-thread/community-thread.component';
 import { CreateThreadDialogComponent } from 'src/app/modules/community-threads/create-thread-dialog/create-thread-dialog.component';
 import { UploadVideoDialogComponent } from '../../modules/learning/upload-video-dialog/upload-video-dialog.component';
+import { VideoListComponent } from '../../modules/learning/video-list/video-list.component';
+import { YoutubeIdPipe } from '../../pipes/youtube-pipe/youtube-id.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { UploadVideoDialogComponent } from '../../modules/learning/upload-video-
     CommunityThreadComponent,
     CreateThreadDialogComponent,
     UploadVideoDialogComponent,
+    VideoListComponent,
+    YoutubeIdPipe,
   ],
   imports: [
     BrowserModule,

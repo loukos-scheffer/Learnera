@@ -31,4 +31,13 @@ export class VideoService {
         catchError(err => this._restApiService.handleError(err))
       );
     }
+    
+    searchVideo(searchQuery: String, searchCategory: String): Observable<{}> {
+      var url = "/api/video/search";
+  
+      return this.http.post(url, {"query": searchQuery, "category": searchCategory}, {observe: 'response'}).pipe(
+        map(this._restApiService.getData),
+        catchError(err => this._restApiService.handleError(err))
+      );
+    }
 }

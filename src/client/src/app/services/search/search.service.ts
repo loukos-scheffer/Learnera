@@ -28,4 +28,6 @@ export class SearchService {
       this.threadSearchResults.next(res?.body);
     });
   }
+
+  
 }

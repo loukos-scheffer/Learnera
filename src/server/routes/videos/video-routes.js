@@ -22,7 +22,6 @@ router.post('/upload', AuthService.validateCookie, async (req, res) => {
     if(!req.body.title || !req.body.body || !req.body.url || !req.body.categories){
         return res.status(400).json({msg: "Please fill out all fields"});
     }
-
     const video = new Video();
     video.vid = UuidService.generateUuid();
     video.uid = user.get("uid");
@@ -38,5 +37,45 @@ router.post('/upload', AuthService.validateCookie, async (req, res) => {
         msg: 'Video uploaded succesfully'
     });
 });
+
+/** POST /api/video/search
+ @body: query String
+ @return:
+ - 200 OK: Threads with query matching a substring of the title have been located and will be sent as a response.
+ - 400 BAD REQUEST: If the query field does not exist in the request.
+ - 404 NOT FOUND: If no threads are found with query matching a substring of the title.
+ */
+ router.post('/search', async (req, res) => {
+    // creates new thread on the forum
+    if(req.body.query === undefined || req.body.category === undefined) {
+        return res.status(400).json({msg: "Please fill out all fields"});
+    }
+
+    if (req.body.query === "" && req.body.category === ""){
+        const query = Video.find({}, async (err, data) => {
+            if (err) console.log(err);
+            res.status(200).send(data);
+        });
+    }
+    else if (req.body.query === "" && req.body.category != "") {
+        const query = Video.find({categories: req.body.category }, async (err, data) => {
+            if (err) console.log(err);
+            res.status(200).send(data);
+        });
+    }
+    else if (req.body.query != "" && req.body.category === ""){
+        const query = Video.find({title: {"$regex": req.body.query, "$options": "i"}}, async (err, data) => {
+            if (err) console.log(err);
+            res.status(200).send(data);
+        });
+    }
+    else {
+        const query = Video.find({title: {"$regex": req.body.query, "$options": "i"}, categories: req.body.category}, async (err, data) => {
+            if (err) console.log(err);
+            res.status(200).send(data);
+        });
+    }
+});
+
 
 module.exports = router;
