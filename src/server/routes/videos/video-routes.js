@@ -77,5 +77,31 @@ router.post('/upload', AuthService.validateCookie, async (req, res) => {
     }
 });
 
+/** POST /api/video/get-video
+ @body: vid String
+ @return:
+ - 200 OK: Video matching vid has been located and will be sent as a response.
+ - 400 BAD REQUEST: If the vid field does not exist in the request.
+ - 404 NOT FOUND: No threads found with the specified vid.
+ */
+ router.post("/get-video", async (req, res) => {
+    if(!req.body || !req.body.vid){
+        return res.status(400).json({msg: "A \'vid\' is required"});
+    }
+
+    Video.find({vid: req.body.vid}, async (err, data) => {
+        if(err) console.log(err);
+        
+        if (data.length === 1) {
+            let found_video = data[0]; 
+            res.status(200).send(found_video);
+        } else {
+            res.status(404).send({
+                msg: 'VIDEO NOT FOUND'
+            });
+        }
+    })
+});
+
 
 module.exports = router;
