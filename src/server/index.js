@@ -1,12 +1,17 @@
 const express = require('express');
 const cookieParser = require("cookie-parser");
 
-const path = require('path');
 const mongoose = require('mongoose');
 const config = require('config');
+const errorHandler = require('./services/ErrorHandler');
 
 const app = express();
 app.use(express.json());
+app.use ((error, req, res, next) => {
+    //Catch json parsing error
+    errorHandler.sendJsonError(res);
+});
+
 app.use(cookieParser());
 
 // Routes
