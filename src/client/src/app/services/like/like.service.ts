@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { Thread } from 'src/app/classes/thread/thread';
 import { RestApiService } from '../rest-api/rest-api.service';
 
 @Injectable({
@@ -20,6 +19,7 @@ export class LikeService {
       catchError(err => this._restApiService.handleError(err))
     );
   }
+
   toggleLikeThread(tid: String): Observable<{}> {
     var url = "/api/like/thread";
 
@@ -28,6 +28,7 @@ export class LikeService {
       catchError(err => this._restApiService.handleError(err))
     );
   }
+
   toggleLikeVideo(vid: String): Observable<{}> {
     var url = "/api/like/video";
 
@@ -36,6 +37,7 @@ export class LikeService {
       catchError(err => this._restApiService.handleError(err))
     );
   }
+
   toggleLikeComment(cid: String): Observable<{}> {
     var url = "/api/like/comment";
 

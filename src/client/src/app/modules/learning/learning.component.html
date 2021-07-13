@@ -3,10 +3,10 @@
 <br>
 <br>
 <div>
-	<div class ="container">
-		<mat-card><mat-card-title class="title" (click)="selectCategory('All')">All</mat-card-title></mat-card>
+	<div class ="container" (click)="selectCategory('All')">
+		<mat-card><mat-card-title class="title" >All</mat-card-title></mat-card>
 	</div>
-	<div class="container" *ngFor="let category of categories">
-		<mat-card><mat-card-title class="title" (click)="selectCategory(category)">{{category.name}}</mat-card-title></mat-card>
+	<div class="container" *ngFor="let category of categories" (click)="selectCategory(category)">
+		<mat-card><mat-card-title class="title">{{category.name}}</mat-card-title></mat-card>
 	</div>
 </div>

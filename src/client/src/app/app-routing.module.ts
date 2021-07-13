@@ -9,9 +9,10 @@ import { HomeComponent } from './modules/home/home.component';
 import { LearningComponent } from './modules/learning/learning.component';
 import { UserProfileComponent } from './modules/user-profile/user-profile.component';
 import { RegisterComponent } from './modules/register/register.component';
-import { CommunityThreadsComponent } from './modules/community-threads/community-threads.component';
-import { CommunityThreadComponent } from './modules/community-thread/community-thread.component';
-import { VideoListComponent } from './modules/learning/video-list/video-list.component';
+import { CommunityThreadsComponent } from './modules/community/community-threads/community-threads.component';
+import { CommunityThreadComponent } from './modules/community/community-thread/community-thread.component';
+import { VideoListComponent } from './modules/learning/learning-videos/learning-videos.component';
+import { LearningVideoComponent } from './modules/learning/learning-video/learning-video.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,14 @@ const routes: Routes = [
         component: LearningComponent
       },
       {
+        path: 'learning/:category',
+        component: VideoListComponent
+      },
+      {
+        path: 'learning/:category/:term',
+        component: LearningVideoComponent
+      },
+      {
         path: 'profile',
         component: UserProfileComponent
       },
@@ -36,10 +45,6 @@ const routes: Routes = [
       {
         path: 'community/:term',
         component: CommunityThreadComponent
-      },
-      {
-        path: 'learning/:category',
-        component: VideoListComponent
       }
     ],
     canActivate: [AuthGuard]
