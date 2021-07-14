@@ -8,16 +8,16 @@
         
         <div class="form-field email-field">
           <mat-label>Email:</mat-label>
-          <input type="email" placeholder="Ex. pat@example.com" [(ngModel)]="loggingInUser.email" name="email">
+          <input type="email" placeholder="Required" [(ngModel)]="loggingInUser.email" name="email" required>
         </div>
 
         <div class="form-field password-field">
             <mat-label>Password:</mat-label>
-            <input type="password" [(ngModel)]="loggingInUser.password" name="password">
+            <input type="password" placeholder="Required" [(ngModel)]="loggingInUser.password" name="password" required>
         </div>
       
       </form>  
-      <br>  
+      <br>
       <a href="auth/register">Register</a>
       <button mat-raised-button class="form-control" color="accent" (click)="onLogin()">Login</button>
 </mat-card>
