@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/classes/user/user';
-import { ThreadsService } from '../threads/threads.service';
+import { ThreadService } from '../thread/thread.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
 
-  constructor(private _threadService: ThreadsService) { }
+  constructor(private _threadService: ThreadService) { }
   threadSearchResults: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
 
   public getThreadSearchResults$() {
     return this.threadSearchResults.asObservable();
   }
+  
   public searchThread(params: any) {
-    this._threadService.searchThread(params).subscribe((res: any) => {
+    this._threadService.search(params).subscribe((res: any) => {
       if(res.body === undefined) {
         this.threadSearchResults.next([]);
         return;
@@ -27,5 +28,5 @@ export class SearchService {
 
       this.threadSearchResults.next(res?.body);
     });
-  }
+  }  
 }

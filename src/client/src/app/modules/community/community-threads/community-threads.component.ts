@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Thread } from 'src/app/classes/thread/thread';
 import { SearchService } from 'src/app/services/search/search.service';
 import { ThreadService } from 'src/app/services/thread/thread.service';
-import { CreateThreadDialogComponent } from './create-thread-dialog/create-thread-dialog.component';
+import { CreateThreadDialogComponent } from '../create-thread-dialog/create-thread-dialog.component';
 
 @Component({
   selector: 'app-community-threads',

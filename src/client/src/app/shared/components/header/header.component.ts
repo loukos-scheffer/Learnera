@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
     private _threadService: ThreadService) {}
 
   searchText(searchQuery:string) {
+
     this._searchService.searchThread(searchQuery);
   }
 

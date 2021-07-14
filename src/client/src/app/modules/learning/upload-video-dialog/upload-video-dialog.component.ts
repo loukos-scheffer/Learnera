@@ -20,7 +20,7 @@ interface Content{
 export class UploadVideoDialogComponent implements OnInit {
 
   content : Content = {"title":"", "body":"", "url":"", "categories": []};
-  categoriesList: string[] = [];
+  categoriesList: any[] = [];
 
   constructor(
     public dialogRef: MatDialogRef<UploadVideoDialogComponent>,
@@ -33,16 +33,16 @@ export class UploadVideoDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onCategoryChange(ob: MatCheckboxChange, category: string) {
+  onCategoryChange(ob: MatCheckboxChange, category: any) {
     if(ob.checked){
-      this.content.categories.push(category);
+      this.content.categories.push(category.name);
     } else {
-      let index = this.content.categories.indexOf(category);
+      let index = this.content.categories.indexOf(category.name);
       if (index > -1) {
         this.content.categories.splice(index, 1);
       }
     }
-    console.log("checked: " + ob.checked);
+    
  } 
 
  ngOnInit(): void {

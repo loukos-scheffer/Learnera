@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Video } from 'src/app/classes/video/video';
 import { VideoService } from 'src/app/services/video/video.service';
 import { UploadVideoDialogComponent } from './upload-video-dialog/upload-video-dialog.component';
@@ -10,8 +11,8 @@ import { UploadVideoDialogComponent } from './upload-video-dialog/upload-video-d
   styleUrls: ['./learning.component.scss']
 })
 export class LearningComponent implements OnInit {
-  categories = [];
-  constructor(private _videoService: VideoService, public dialog: MatDialog) { }
+  categories: any[] = [];
+  constructor(private _videoService: VideoService, public dialog: MatDialog, private routerService: Router) { }
 
   ngOnInit(): void {
     this._videoService.getCategories().subscribe((data: any) => {
@@ -33,9 +34,14 @@ export class LearningComponent implements OnInit {
     });
   }
 
-  selectCategory(category: string){
+  selectCategory(category: any){
     // TODO: nick 
     // For the "All" category, display all videos in database
-    console.log(category);
+    if(category == "All"){
+      this.routerService.navigate(['learning/', category.toLowerCase()]);
+    }else{
+      this.routerService.navigate(['learning/', category.display_name]);
+    }
+    
   }
 }
