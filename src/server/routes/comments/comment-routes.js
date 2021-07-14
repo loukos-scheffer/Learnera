@@ -33,4 +33,30 @@ router.post('/post', AuthService.validateCookie, async (req, res) => {
     });
 });
 
+/** POST /api/comment/get-comments
+ @body: tid String
+ @return:
+ - 200 OK: Comments matching tid has been located and will be sent as a response.
+ - 400 BAD REQUEST: If the tid field does not exist in the request.
+ - 404 NOT FOUND: No threads found with the specified tid.
+ */
+router.post("/get-comments", async (req, res) => {
+    if(!req.body.tid){
+        return res.status(400).json({msg: "Please select a thread"});
+    }
+
+    Comment.find({tid: req.body.tid}, async (err, data) => {
+        if(err) console.log(err);
+
+        if (data.length === 1) {
+            let found_thread = data[0];
+            res.status(200).send(found_thread);
+        } else {
+            res.status(404).send({
+                msg: 'THREAD NOT FOUND'
+            });
+        }
+    })
+});
+
 module.exports = router;
