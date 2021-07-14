@@ -6,6 +6,7 @@ import { UserService } from './services/user/user.service';
 import { RestApiService } from './services/rest-api/rest-api.service';
 import { DefaultModule } from './layouts/default/default.module';
 import { FullscreenModule } from './layouts/fullscreen/fullscreen.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { FullscreenModule } from './layouts/fullscreen/fullscreen.module';
     AppRoutingModule,
     HttpClientModule,
     DefaultModule,
-    FullscreenModule
+    FullscreenModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     UserService, 
