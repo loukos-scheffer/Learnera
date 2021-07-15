@@ -7,11 +7,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommentsComponent } from './components/comments/comments.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    CommentsComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   exports: [
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    CommentsComponent
   ]
 })
 export class SharedModule { }
