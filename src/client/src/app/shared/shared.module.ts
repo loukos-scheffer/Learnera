@@ -7,23 +7,26 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RequiredLabelComponent } from './components/required-label/required-label.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    RequiredLabelComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FlexLayoutModule,
-    MaterialModule, 
-    BrowserModule, 
+    MaterialModule,
+    BrowserModule,
     FormsModule
   ],
   exports: [
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    RequiredLabelComponent
   ]
 })
 export class SharedModule { }
