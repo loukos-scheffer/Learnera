@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Thread } from 'src/app/classes/thread/thread';
 import { LikeService } from 'src/app/services/like/like.service';
 import { ThreadService } from 'src/app/services/thread/thread.service';
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'app-community-thread',
@@ -14,16 +15,17 @@ export class CommunityThreadComponent implements OnInit {
   thread: Thread | null = null;
   currColor: String = "";
   tid: String = "";
-  commentsEnabled = false;
-  
+  userName = "";
+
   constructor(
-    private routerService: Router, 
-    private _threadService: ThreadService, 
-    private _likeService: LikeService
+    private routerService: Router,
+    private _threadService: ThreadService,
+    private _likeService: LikeService,
+    private _userService: UserService
   ) {}
 
   ngOnInit(): void {
-    // router server read the url string, then find the 
+    // router server read the url string, then find the
     let url = this.routerService.url
     this.tid = url.substring(url.lastIndexOf('/') + 1);
     this.loadThread();
@@ -36,6 +38,7 @@ export class CommunityThreadComponent implements OnInit {
         let thread_info = data.body;
         delete thread_info._id;
         this.thread = thread_info;
+        this.loadUserName();
       }
     });
   }
@@ -61,7 +64,11 @@ export class CommunityThreadComponent implements OnInit {
     });
   }
 
-  showComments(): void{
-    this.commentsEnabled = !this.commentsEnabled;
+  loadUserName(): void {
+    this._userService.getUser(this.thread?.uid || "").subscribe( (data: any) => {
+        if (data.status == 200){
+          this.userName = data.body.firstName + " " + data.body.lastName;
+        }
+    });
   }
 }

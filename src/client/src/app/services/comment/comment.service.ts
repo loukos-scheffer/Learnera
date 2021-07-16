@@ -25,7 +25,7 @@ export class CommentService {
   getComments(id: String): Observable<{}> {
     var url = "/api/comment/get-comments";
 
-    return this.http.post(url, {"tid": id}, {observe: 'response'}).pipe(
+    return this.http.post(url, {"id": id}, {observe: 'response'}).pipe(
       map(this._restApiService.getData),
       catchError(err => this._restApiService.handleError(err))
     );

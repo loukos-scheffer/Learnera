@@ -6,11 +6,7 @@
 <div *ngIf="thread != null">
   <mat-card class="thread-card">
     <br>
-    <mat-card-header>
-      <div mat-card-avatar class="profile-image"></div>
-      <mat-card-title>{{thread.title}}</mat-card-title>
-      <mat-card-subtitle>{{thread.date | date:'medium'}}</mat-card-subtitle>
-    </mat-card-header>
+    <app-user-identity [date]="thread.date" [title]="thread.title" [userName]="userName"></app-user-identity>
     <mat-card-content>
       <p class="thread-body">
         {{thread.body}}
@@ -18,11 +14,10 @@
     </mat-card-content>
     <mat-card-actions>
         <button mat-button color={{currColor}} (click)="onLike()"><mat-icon>thumb_up</mat-icon> {{thread.likes}}</button>
-        <button mat-button (click)="showComments()">COMMENT</button>
     </mat-card-actions>
     <br>
 
-    <app-comments *ngIf="this.commentsEnabled" [id]="this.tid">
+    <app-comments [id]="this.tid">
     </app-comments>
   </mat-card>
 </div>

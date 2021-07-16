@@ -21,7 +21,7 @@ export class CommentsComponent implements OnInit {
   }
 
   postComment(): void{
-    this._commentService.post(new Comment("", this.id, "", this.body, new Date(), 0)).subscribe((data: any) =>{
+    this._commentService.post(new Comment("", this.id, "", "", "", this.body, new Date(), 0)).subscribe((data: any) =>{
       this.body = "";
       this.getComments();
     });
@@ -29,7 +29,9 @@ export class CommentsComponent implements OnInit {
 
   getComments(): void{
     this._commentService.getComments(this.id).subscribe((data: any) =>{
-      this.comments = data.body;
+      if (data.status == 200) {
+        this.comments = data.body;
+      }
     });
   }
 

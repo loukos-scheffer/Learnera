@@ -7,11 +7,19 @@ const commentSchema = new mongoose.Schema({
         unique: true,
         index: true
     },
-    tid: {
+    id: {
         type: String,
         required: true,
     },
     uid: {
+        type: String,
+        required: true
+    },
+    firstName:{
+        type: String,
+        required: true
+    },
+    lastName:{
         type: String,
         required: true
     },
