@@ -8,25 +8,28 @@ import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommentsComponent } from './components/comments/comments.component';
+import { RequiredLabelComponent } from './components/required-label/required-label.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
-    CommentsComponent
+    CommentsComponent,
+    RequiredLabelComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     FlexLayoutModule,
-    MaterialModule, 
-    BrowserModule, 
+    MaterialModule,
+    BrowserModule,
     FormsModule
   ],
   exports: [
     HeaderComponent,
     SidebarComponent,
-    CommentsComponent
+    CommentsComponent,
+    RequiredLabelComponent
   ]
 })
 export class SharedModule { }
