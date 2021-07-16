@@ -14,6 +14,7 @@ export class CommunityThreadComponent implements OnInit {
   thread: Thread | null = null;
   currColor: String = "";
   tid: String = "";
+  commentsEnabled = false;
   
   constructor(
     private routerService: Router, 
@@ -60,7 +61,7 @@ export class CommunityThreadComponent implements OnInit {
     });
   }
 
-  onComment(): void{
-    // Haiyang todo
+  showComments(): void{
+    this.commentsEnabled = !this.commentsEnabled;
   }
 }

@@ -7,12 +7,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../material.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommentsComponent } from './components/comments/comments.component';
 import { RequiredLabelComponent } from './components/required-label/required-label.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
+    CommentsComponent,
     RequiredLabelComponent
   ],
   imports: [
@@ -26,6 +28,7 @@ import { RequiredLabelComponent } from './components/required-label/required-lab
   exports: [
     HeaderComponent,
     SidebarComponent,
+    CommentsComponent,
     RequiredLabelComponent
   ]
 })
