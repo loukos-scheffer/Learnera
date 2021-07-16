@@ -17,8 +17,8 @@ export class HeaderComponent implements OnInit {
   constructor(private _searchService: SearchService,
     private routerService: Router,
     public dialog: MatDialog,
-    private _threadService: ThreadService,
-    private _videoService: VideoService) {}
+    private _videoService: VideoService
+  ) {}
     
   searchText(searchQuery:string) {
 
@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
 
   clearText() {
     this.searchTextVal = "";
-    this._searchService.searchThread("");
+    this.searchText("");
   }
 
   ngOnInit(): void {

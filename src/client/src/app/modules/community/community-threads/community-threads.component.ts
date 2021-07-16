@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Thread } from 'src/app/classes/thread/thread';
 import { SearchService } from 'src/app/services/search/search.service';
 import { ThreadService } from 'src/app/services/thread/thread.service';
@@ -18,7 +19,9 @@ export class CommunityThreadsComponent implements OnInit {
   constructor(private _threadService: ThreadService,
     private _searchService: SearchService,
     public dialog: MatDialog,
-    private routerService: Router) { }
+    private routerService: Router,
+    private toastrService: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this._searchService.getThreadSearchResults$().subscribe((data: any) => {
@@ -44,7 +47,12 @@ export class CommunityThreadsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
-        this._threadService.post(new Thread("", "", result.title, result.body, new Date(), new Date(), 0)).subscribe(data => {
+        this._threadService.post(new Thread("", "", result.title, result.body, new Date(), new Date(), 0)).subscribe((data: any) => {
+          if(data.status == 200) {
+            this.toastrService.success("Succesfully posted thread", "Success", {positionClass: "toast-bottom-right"});
+          } else {
+            this.toastrService.error("Could not post thread", "ERROR", {positionClass: "toast-bottom-right"});
+          }
           this.getThreads();
         });
       }

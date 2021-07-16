@@ -18,7 +18,8 @@
     .no-comments-header {
         display: flex;
         justify-content: center;
-        margin-top: 23%;
+        padding-top: 5%;
+        padding-bottom: 10%;
 
         i {
             color: rgb(128,128,128);
@@ -29,13 +30,13 @@
 .comment-list-container {
     word-wrap: break-word;
     display: block;
-
-
-    // size: 5;
 }
 
-.comment-list-container:not(:first-child) {
-    margin-bottom:20px;
+.comment-list-container:last-child {
+    padding-bottom:20px;
+    .line {
+        display: none;
+    }
 }
 
 .comment-container{

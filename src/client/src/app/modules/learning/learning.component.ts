@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Video } from 'src/app/classes/video/video';
 import { VideoService } from 'src/app/services/video/video.service';
 import { UploadVideoDialogComponent } from './upload-video-dialog/upload-video-dialog.component';
@@ -12,7 +13,12 @@ import { UploadVideoDialogComponent } from './upload-video-dialog/upload-video-d
 })
 export class LearningComponent implements OnInit {
   categories: any[] = [];
-  constructor(private _videoService: VideoService, public dialog: MatDialog, private routerService: Router) { }
+  constructor(
+    private _videoService: VideoService, 
+    public dialog: MatDialog, 
+    private routerService: Router,
+    private toastrService: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this._videoService.getCategories().subscribe((data: any) => {
@@ -29,14 +35,18 @@ export class LearningComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if(result != null){
-        this._videoService.upload(new Video("", "", result.title, result.body, result.url, result.categories, new Date(), 0)).subscribe(data => {});
+        this._videoService.upload(new Video("", "", result.title, result.body, result.url, result.categories, new Date(), 0)).subscribe((data: any) => {
+          if(data.status == 200) {
+            this.toastrService.success("Succesfully uploaded video", "Success", {positionClass: "toast-bottom-right"});
+          } else {
+            this.toastrService.error("Could not upload video", "ERROR", {positionClass: "toast-bottom-right"});
+          }
+        });
       }
     });
   }
 
   selectCategory(category: any){
-    // TODO: nick 
-    // For the "All" category, display all videos in database
     if(category == "All"){
       this.routerService.navigate(['learning/', category.toLowerCase()]);
     }else{
