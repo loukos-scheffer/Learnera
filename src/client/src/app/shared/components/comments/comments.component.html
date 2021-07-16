@@ -12,19 +12,18 @@
 
 <br>
 <br>
-  <div class="no-comments-container" *ngIf="comments.length == 0; else commentListContainer">
-    <div class="no-comments-header unselectable">
-      <i>No comments yet. Be the first to comment on this thread!</i>
-    </div>
+<div class="no-comments-container" *ngIf="comments.length == 0; else commentListContainer">
+  <div class="no-comments-header unselectable">
+    <i>No comments yet. Be the first to comment on this thread!</i>
   </div>
-  <ng-template class="ng-template-comment-container" #commentListContainer>
-
+</div>
+<ng-template class="ng-template-comment-container" #commentListContainer>
   <div class="comment-list-container" *ngFor="let comment of comments">
     <div class="comment-container">
-      <label class="comment-info">{{comment.firstName}} {{comment.lastName}} posted</label>
+      <label class="comment-info">{{comment.firstName}} {{comment.lastName}} commented:</label>
       <br>
       <label class="comment-content">{{comment.body}}</label>
     </div>
     <div class="line"></div>
-</div>
+  </div>
 </ng-template>

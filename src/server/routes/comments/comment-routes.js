@@ -43,14 +43,12 @@ router.post('/post', AuthService.validateCookie, async (req, res) => {
  - 404 NOT FOUND: No threads found with the specified tid.
  */
 router.post("/get-comments", async (req, res) => {
-    console.log(req.body)
     if(!req.body.id){
         return res.status(400).json({msg: "Please select a thread"});
     }
 
     Comment.find({id: req.body.id}, async (err, data) => {
         if(err) console.log(err);
-        console.log(data)
         if (data.length >= 1) {
             let found_thread = data;
             res.status(200).send(found_thread);
@@ -59,7 +57,7 @@ router.post("/get-comments", async (req, res) => {
                 msg: 'THREAD NOT FOUND'
             });
         }
-    })
+    });
 });
 
 module.exports = router;

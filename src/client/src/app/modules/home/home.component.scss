@@ -1,3 +1,5 @@
+@import "vars.scss";
+
 :host {
     height: 100%;
     width: 100%;
@@ -43,7 +45,7 @@
 
     .rectangle {
       width: 40vw; 
-      height: calc((80vh - 60px)/2 - 1vh);
+      height: calc((80vh - #{$header-height})/2 - 1vh);
       margin-top: 0px;
       margin-bottom: 0px;
       cursor: pointer;

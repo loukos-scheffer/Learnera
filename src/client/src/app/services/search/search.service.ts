@@ -9,9 +9,13 @@ import { VideoService } from '../video/video.service';
 })
 export class SearchService {
 
-  constructor(private _threadService: ThreadService, private _videoService: VideoService) { }
-  threadSearchResults: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+threadSearchResults: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   videoSearchResults: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+
+  constructor(
+    private _threadService: ThreadService, 
+    private _videoService: VideoService
+  ) {}
 
   public getVideoSearchResults$() {
     return this.videoSearchResults.asObservable();

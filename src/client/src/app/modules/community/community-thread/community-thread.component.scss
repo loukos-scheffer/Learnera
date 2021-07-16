@@ -1,4 +1,4 @@
-$header-height: 60px;
+@import "vars.scss";
 
 .no-thread-found {
     .no-thread-header {
@@ -13,7 +13,7 @@ $header-height: 60px;
 }
 
 :host {
-    height: 100%;
+    height: 1000px;
     background: rgb(128, 128, 128);
     border-radius: 0%;
     background-size: 100% 100%;
