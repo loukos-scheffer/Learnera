@@ -1,33 +1,53 @@
 <!-- <p>upload-video-dialog works!</p> -->
 <div mat-dialog-content>
-    <p>Enter title of the video</p>
+ 
+    <app-required-label [value]="'Enter title of the video'"></app-required-label>
     <mat-form-field class="title-input-form" appearance="fill">
       <mat-label>Title</mat-label>
-      <input matInput [(ngModel)]="content.title">
+      <input matInput [formControl]="titleFormControl" [errorStateMatcher]="matcher" [(ngModel)]="content.title">
+      <mat-error *ngIf="!descriptionFormControl.hasError('required')">
+        Please enter a title
+      </mat-error>
+      <mat-error *ngIf="descriptionFormControl.hasError('required')">
+        Title is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
-    <p>Enter description of the video</p>
+
+    <app-required-label [value]="'Enter description of the video'"></app-required-label>
     <mat-form-field class="body-input-form" appearance="fill">
-      <mat-label>description</mat-label>
-      <textarea matInput class="body-input" [(ngModel)]="content.body"></textarea>
+      <mat-label>Description</mat-label>
+      <textarea matInput class="body-input" [formControl]="descriptionFormControl" [errorStateMatcher]="matcher" [(ngModel)]="content.body"></textarea>
+      <mat-error *ngIf="!descriptionFormControl.hasError('required')">
+        Please enter a description
+      </mat-error>
+      <mat-error *ngIf="descriptionFormControl.hasError('required')">
+        Description is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
 
-    <p>Enter url of the video</p>
+    <app-required-label [value]="'Enter URL of the video'"></app-required-label>
     <mat-form-field class="title-input-form" appearance="fill">
-      <mat-label>url</mat-label>
-      <input matInput [(ngModel)]="content.url">
+      <mat-label>URL</mat-label>
+      <input matInput [formControl]="youtubelinkFormControl" [errorStateMatcher]="matcher" [(ngModel)]="content.url">
+      <mat-error *ngIf="youtubelinkFormControl.hasError('pattern')">
+        Please enter a valid youtube link 
+      </mat-error>
+      <mat-error *ngIf="youtubelinkFormControl.hasError('required')">
+        youtube URL is <strong>required</strong>
+      </mat-error>
+  
     </mat-form-field>
 
-    <section class="example-section">
-        <h4>Select your categories:</h4>
+    <section class="categories-selection-form">
+        <h4>Select appropriate categories:</h4>
         <p *ngFor="let category of categoriesList" >
             <mat-checkbox (change)="onCategoryChange($event, category)" >{{category.name}} </mat-checkbox>
         </p>
     </section>
-      
-  </div>
-
-  <div mat-dialog-actions>
-    <button mat-button (click)="onNoClick()">Cancel</button>
-    <button mat-button [mat-dialog-close]="content" cdkFocusInitial>Ok</button>
-  </div>
   
+</div>
+
+  <div mat-dialog-actions [formControl]="youtubelinkFormControl">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button [mat-dialog-close]="content" cdkFocusInitial [disabled] = "!content.body || !content.title || !content.url || youtubelinkFormControl.hasError('pattern')">Ok</button>
+  </div>
