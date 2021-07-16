@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Video } from 'src/app/classes/video/video';
 import { VideoService } from 'src/app/services/video/video.service';
+import { SearchService } from 'src/app/services/search/search.service';
 
 @Component({
   selector: 'app-video-list',
@@ -14,12 +15,16 @@ export class VideoListComponent implements OnInit {
   searchCategory = "";
 
   constructor(
+    private _searchService: SearchService,
     private routerService: Router,
     private router: ActivatedRoute,
     private _videoService: VideoService
   ) {}
 
   ngOnInit(): void {
+    this._searchService.getVideoSearchResults$().subscribe((data: any) => {
+      this.videos = data;
+    });
     let url = this.routerService.url;
     this.category = url.substring(url.lastIndexOf('/') + 1);
     if(this.category === "all"){
@@ -43,11 +48,7 @@ export class VideoListComponent implements OnInit {
     this.routerService.navigate(['./', selection.vid], {relativeTo: this.router});
   }
 
-  private searchVideos(category: String): void{
-    this._videoService.searchVideo("", category).subscribe((data: any)=>{
-      if(data.status == 200){
-        this.videos = data.body;
-      }
-    });
+  private searchVideos(category: string): void{
+    this._searchService.searchVideo("", category);
   }
 }
