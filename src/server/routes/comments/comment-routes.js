@@ -8,7 +8,7 @@ const JwtService = require("../../services/JwtService");
 let router = express.Router();
 
 /** POST /api/comment/post
- @body: tid String, body String
+ @body: id String, body String
  @return:
  - 200 OK: Comment is successfully created and uploaded to the database.
  - 400 BAD REQUEST: If the request is improperly formatted.
@@ -16,13 +16,15 @@ let router = express.Router();
 router.post('/post', AuthService.validateCookie, async (req, res) => {
     // creates new comment on the forum
     let user = await JwtService.getUserFromJwt(req.cookies.session_id);
-    if(!req.body.tid || !req.body.body){
+    if(!req.body.id || !req.body.body){
         return res.status(400).json({msg: "Please fill out all fields"});
     }
     const post = new Comment();
     post.cid = UuidService.generateUuid();
-    post.tid = req.body.tid;
+    post.id = req.body.id;
     post.uid = user.get("uid");
+    post.firstName = user.get("firstName");
+    post.lastName = user.get("lastName");
     post.body = req.body.body;
     post.likes = 0;
     post.date = Date.now();
@@ -42,11 +44,11 @@ router.post('/post', AuthService.validateCookie, async (req, res) => {
  */
 router.post("/get-comments", async (req, res) => {
     console.log(req.body)
-    if(!req.body.tid){
+    if(!req.body.id){
         return res.status(400).json({msg: "Please select a thread"});
     }
 
-    Comment.find({tid: req.body.tid}, async (err, data) => {
+    Comment.find({id: req.body.id}, async (err, data) => {
         if(err) console.log(err);
         console.log(data)
         if (data.length >= 1) {

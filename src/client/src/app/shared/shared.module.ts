@@ -9,13 +9,15 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommentsComponent } from './components/comments/comments.component';
 import { RequiredLabelComponent } from './components/required-label/required-label.component';
+import { UserIdentityComponent } from './components/user-identity/user-identity.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
     CommentsComponent,
-    RequiredLabelComponent
+    RequiredLabelComponent,
+    UserIdentityComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { RequiredLabelComponent } from './components/required-label/required-lab
     HeaderComponent,
     SidebarComponent,
     CommentsComponent,
-    RequiredLabelComponent
+    RequiredLabelComponent,
+    UserIdentityComponent
   ]
 })
 export class SharedModule { }

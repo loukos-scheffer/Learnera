@@ -106,4 +106,32 @@ router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
     });
 });
 
+/** POST /api/user/get-user
+ @body: uid String
+ @return:
+ - 200 OK: User matching uid has been located and will be sent as a response.
+ - 400 BAD REQUEST: If the uid field does not exist in the request.
+ - 404 NOT FOUND: No users found with the specified uid.
+ */
+router.post("/get-user", async (req, res) => {
+    console.log(req.body.uid);
+    if(!req.body.uid){
+        return res.status(400).json({msg: "Please select a user"});
+    }
+
+    User.find({uid: req.body.uid}, {password: 0, email: 0, _id: 0}, async (err, data) => {
+        if(err) console.log(err);
+
+        if (data.length === 1) {
+            let found_user = data[0];
+            res.status(200).send(found_user);
+        } else {
+            res.status(404).send({
+                msg: 'USER NOT FOUND'
+            });
+        }
+    })
+});
+
+
 module.exports = router;

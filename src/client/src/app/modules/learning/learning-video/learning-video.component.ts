@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Video } from 'src/app/classes/video/video';
 import { LikeService } from 'src/app/services/like/like.service';
 import { VideoService } from 'src/app/services/video/video.service';
+import {UserService} from "../../../services/user/user.service";
 
 @Component({
   selector: 'app-learning-video',
@@ -14,11 +15,13 @@ export class LearningVideoComponent implements OnInit {
   video: Video | null = null;
   currColor: String = "";
   vid: String = "";
+  userName = "";
 
   constructor(
     private routerService: Router,
     private _videoService: VideoService,
     private _likeService: LikeService,
+    private _userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +39,7 @@ export class LearningVideoComponent implements OnInit {
         let video_info = data.body;
         delete video_info._id;
         this.video = video_info;
+        this.loadUserName();
       }
     });
   }
@@ -63,5 +67,13 @@ export class LearningVideoComponent implements OnInit {
 
   onComment(): void {
     // TODO:
+  }
+
+  loadUserName(): void {
+    this._userService.getUser(this.video?.uid || "").subscribe( (data: any) => {
+      if (data.status == 200){
+        this.userName = data.body.firstName + " " + data.body.lastName;
+      }
+    });
   }
 }

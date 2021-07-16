@@ -14,7 +14,7 @@ export class UserService {
 
   login(user: User): Observable<{}> {
     var url = "/api/user/login";
-    
+
     return this.http.post(url, user, {observe: 'response'}).pipe(
       map(this._restApiService.getData),
       catchError(err => this._restApiService.handleError(err))
@@ -43,6 +43,15 @@ export class UserService {
     var url = "/api/user/me";
 
     return this.http.get(url, {observe: 'response'}).pipe(
+      map(this._restApiService.getData),
+      catchError(err => this._restApiService.handleError(err))
+    );
+  }
+
+  getUser(uid: string): Observable<{}> {
+    var url = "/api/user/get-user";
+
+    return this.http.post(url, {"uid": uid}, {observe: 'response'}).pipe(
       map(this._restApiService.getData),
       catchError(err => this._restApiService.handleError(err))
     );
