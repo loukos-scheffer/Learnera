@@ -17,6 +17,12 @@ router.get("/get-categories", async (req, res) => {
     });
 });
 
+/** POST /api/video/upload
+ @body: title String, body String
+ @return:
+ - 200 OK: Video is successfully created and uploaded to the database.
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ */
 router.post('/upload', AuthService.validateCookie, async (req, res) => {
     let user = await JwtService.getUserFromJwt(req.cookies.session_id);
     if(!req.body.title || !req.body.body || !req.body.url || !req.body.categories){

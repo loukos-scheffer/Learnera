@@ -50,15 +50,30 @@ Within app there are directories for Angular Material components, our custom com
  - 401 UNAUTHORIZED: A user was not found matching the current token.
  
  
+ ### POST /api/user/get-user  
+ @body: uid String  
+ @return:
+ - 200 OK: User matching uid has been located and will be sent as a response.
+ - 400 BAD REQUEST: If the uid field does not exist in the request.
+ - 404 NOT FOUND: No users found with the specified uid.
+ 
  
  ### POST /api/comment/post  
- @body: tid String, body String  
+ @body: id String, body String  
  @return:
  - 200 OK: Comment is successfully created and uploaded to the database.
  - 400 BAD REQUEST: If the request is improperly formatted.
  
  
-  ### POST /api/thread/post  
+ ### POST /api/comment/get-comments  
+ @body: tid String  
+ @return:
+ - 200 OK: Comments matching tid has been located and will be sent as a response.
+ - 400 BAD REQUEST: If the tid field does not exist in the request.
+ - 404 NOT FOUND: No threads found with the specified tid.
+ 
+ 
+ ### POST /api/thread/post  
  @body: title String, body String  
  @return:
  - 200 OK: Thread is successfully created and uploaded to the database.
@@ -79,16 +94,61 @@ Within app there are directories for Angular Material components, our custom com
  - 200 OK: Thread matching tid has been located and will be sent as a response.
  - 400 BAD REQUEST: If the tid field does not exist in the request.
  - 404 NOT FOUND: No threads found with the specified tid.
+
  
  ### GET /api/videos/get-categories  
  @body:  
  @return:
  - 200 OK: Sends the categories of E-Learning videos as the response body.
  
- ### POST /api/comment/get-comments  
- @body: tid String  
+
+ ### POST /api/video/search  
+ @body: query String  
  @return:
- - 200 OK: Comments matching tid has been located and will be sent as a response.
- - 400 BAD REQUEST: If the tid field does not exist in the request.
- - 404 NOT FOUND: No threads found with the specified tid.
+ - 200 OK: Threads with query matching a substring of the title have been located and will be sent as a response.
+ - 400 BAD REQUEST: If the query field does not exist in the request.
+ - 404 NOT FOUND: If no threads are found with query matching a substring of the title.
+ 
+ 
+ ### POST /api/video/upload  
+ @body: title String, body String  
+ @return:
+ - 200 OK: Video is successfully created and uploaded to the database.
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ 
+ 
+ ### POST /api/video/get-video  
+ @body: vid String  
+ @return:
+ - 200 OK: Video matching vid has been located and will be sent as a response.
+ - 400 BAD REQUEST: If the vid field does not exist in the request.
+ - 404 NOT FOUND: No threads found with the specified vid.
+ 
+ 
+ ### POST /api/like/thread  
+ @body: target String  
+ @return:
+ - 200 OK: Thread has successfully been liked or unliked
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ 
+ 
+ ### POST /api/like/video  
+ @body: target String  
+ @return:
+ - 200 OK: Video has successfully been liked or unliked
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ 
+ 
+ ### POST /api/like/comment  
+ @body: target String  
+ @return:
+ - 200 OK: Comment has successfully been liked or unliked
+ - 400 BAD REQUEST: If the request is improperly formatted.
+ 
+ 
+ ### POST /api/like/hasLiked  
+ @body: target String  
+ @return:
+ - 200 OK: Return whether or not the user has liked a target thread/video/comment/etc
+ - 400 BAD REQUEST: If the request is improperly formatted.
  
