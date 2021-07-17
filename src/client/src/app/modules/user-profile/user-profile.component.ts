@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { User } from '../../classes/user/user';
 import { UserService } from '../../services/user/user.service';
 
@@ -9,21 +10,33 @@ import { UserService } from '../../services/user/user.service';
 })
 export class UserProfileComponent implements OnInit {
 
-  currentUser = new User("","", "", "");
+  currentUser: User | any;
 
-  constructor(private _userService: UserService) { }
+  constructor(
+    private _userService: UserService,
+    private toastrService: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this._userService.me().subscribe((data: any) => {
-      this.currentUser.firstName = data.body.body.firstName;
-      this.currentUser.lastName = data.body.body.lastName;
-      this.currentUser.email = data.body.body.email;
+      if(data.status == 200) {
+        delete data.body._id;
+        this.currentUser = data.body;
+      }
     });
   }
 
   onClickUpdate() {
-    this._userService.updateUser(this.currentUser).subscribe((data: any) => {
-    });
+    if(this.currentUser != null) {
+      this._userService.updateUser(this.currentUser).subscribe((data: any) => {
+        if(data.status != 200) {
+          this.toastrService.clear();
+          this.toastrService.error("Could not update user", "ERROR", {positionClass: "toast-bottom-right"});
+        } else {
+          this.toastrService.clear();
+          this.toastrService.success("Succesfully updated user", "Success", {positionClass: "toast-bottom-right"});
+        }
+      });
+    }
   }
-
 }

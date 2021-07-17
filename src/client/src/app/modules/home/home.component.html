@@ -1,52 +1,36 @@
+<div class="rectangle welcome">
+  <label class="title">Welcome to BFS</label>
+</div>
 
-
-  <nav>
-      <label class="logo">Community</label>
-      <ul>
-         <li>
-           <a href="#">
-            <mat-icon>search</mat-icon>
-            </a>
-          </li>
-          
-          <li>
-            <a href="#">
-              <mat-icon >account_circle</mat-icon>
-             </a>
-           </li>
-      </ul>
-    </nav>
-    
+<div class="content">
+  <div class="row">
+    <div class="rectangle col1" (click)="onSeeVideoCategories()">
+      <label class="title">See video categories</label>
+      <div class="icon-wrapper">
+        <mat-icon class="icon">arrow_right_alt</mat-icon>
+      </div>
+    </div>
+    <div class="rectangle col2" (click)="onSeeAllVideos()">
+      <label class="title">See all videos</label>
+      <div class="icon-wrapper">
+        <mat-icon class="icon">arrow_right_alt</mat-icon>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="rectangle col1" (click)="onSeeAllThreads()">
+      <label class="title">See all threads</label>
+      <div class="icon-wrapper">
+        <mat-icon class="icon">arrow_right_alt</mat-icon>
+      </div>
+    </div>
+    <div class="rectangle col2"(click)="onEditProfile()">
+      <label class="title">Edit Profile</label>
+      <div class="icon-wrapper">
+        <mat-icon class="icon">arrow_right_alt</mat-icon>
+      </div>
+    </div>
+  </div>
   
   
-    <div class="rectangle">
-      <label class="thread-post-title">Thread Post Title</label>
-      <ul>
-        <li>
-          <a href="#">
-           <mat-icon> comment</mat-icon>
-           </a>
-         </li>
-     </ul>
-    </div>
-    <div class="rectangle">
-      <label class="thread-post-title">Thread Post Title</label>
-      <ul>
-        <li>
-          <a href="#">
-           <mat-icon> comment</mat-icon>
-           </a>
-         </li>
-     </ul>
-    </div>
-    <div class="rectangle">
-      <label class="thread-post-title">Thread Post Title</label>
-      <ul>
-        <li>
-          <a href="#">
-           <mat-icon> comment</mat-icon>
-           </a>
-         </li>
-     </ul>
-    </div>
-    <div class="thread-section">Test</div>
+</div>

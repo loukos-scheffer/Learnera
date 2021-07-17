@@ -1,76 +1,89 @@
+@import "vars.scss";
+
 :host {
     height: 100%;
     width: 100%;
 }
 
-nav{
-    height:  100px;
-    width:  75%;
-    background: #4fa4fa;
-    margin-top: 75px;
-    margin-left: 400px;
-
-  }
-
-label.logo {
-  font-size: 40px;
+.title {
+  font-size: 1.5em;
   font-weight: bold;
   color: white;
-  padding: 0 50px;
+  padding: 0 25px;
   line-height: 90px;
-
-
 }
-.thread-post-title{
-  font-size: 40px;
-  font-weight: bold;
-  color: white;
-  padding: 0 50px;
-  line-height: 90px;
 
-
+.mat-icon {
+  // margin-top: 15px;
+  // font-size: 40px;
+  transform:scale(1.5)
 }
-  nav ul{
-    float: right;
-    margin-right: 100px;
-  }
+
+.welcome {
+  margin: auto;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+
+  cursor: default;
   
-  nav li{
-    display:  inline-block;
-    margin:  0 25px;
+  width: 80vw;
+  height: 18vh;
 
+  .title {
+    font-size: 2em;
+  }
+}
+
+.content {
+  display: block;
+  margin: auto;
+  width: 80vw; // 85 vw to work with
+
+  .row {
+    display: flex;
+    margin: auto;
+
+    .rectangle {
+      width: 40vw; 
+      height: calc((80vh - #{$header-height})/2 - 1vh);
+      margin-top: 0px;
+      margin-bottom: 0px;
+      cursor: pointer;
+
+      .title {
+        cursor: pointer;
+      }
+    }
+
+    .col1 {
+      margin-right: 0.25vw;
+    }
+
+    .col2 {
+      margin-left: 0.25vw;
+    }
   }
 
-  nav a{
-    color: white;
+  .row:first-child {
+    margin-bottom:1vh;
   }
-
-  .mat-icon {
-    margin-top: 15px;
-    font-size: 40px;
-  }
-
-.thread-section{
-  border-style: solid;
-  height: 400px;
-  width: 50%;
-
 }
 
 .rectangle {
-  height: 300px;
-  width: 850px;
+  display: block;
+  position: relative;
   background-color: #4fa4fa;
-  margin: auto;
-  margin-top: 150px;
+  overflow: hidden;
 
-}
-.rectangle li{
-  display:  inline-block;
-  margin:  0 25px;
-}
+  .icon-wrapper {
+    margin:  0 25px;
+    color: white;
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
 
-div.rectangle a{
-  color: white;
-
+    .icon {
+      transform: scale(5);
+    }
+  }
 }

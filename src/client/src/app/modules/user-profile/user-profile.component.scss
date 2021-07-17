@@ -1,3 +1,8 @@
+@import "vars.scss";
+
+$height: 170px;
+$width: 500px;
+
 :host {
     display: flex;
     justify-content: center;
@@ -5,10 +10,11 @@
 }
 
 .profile-card {
-    margin: 20%;
+    top: calc(#{$header-height} + 30vh);
+    transform: translateY(-50%);
 
-    height: 200px;
-    width: 500px;
+    height: $height;
+    width: $width;
 
     form {
         display: table;

@@ -8,7 +8,7 @@ const JwtService = require("../../services/JwtService");
 const CookieService = require('../../services/CookieService');
 
 const User = require('../../models/userModel');
-const Auth = require('../../models/authModel');
+const Comment = require('../../models/commentModel');
 
 /** POST /api/user/login
  @body: email String, password String
@@ -73,7 +73,7 @@ router.post('/register', async (req, res) => {
  */
 router.get('/me', AuthService.validateCookie, async (req, res) => {
     let user = await JwtService.getUserFromJwt(req.cookies.session_id);
-    res.status(200).send({body: user});
+    res.status(200).send(user);
 });
 
 /** POST /api/user/updateuser
@@ -94,16 +94,59 @@ router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
         res.status(404).send({
             msg: 'User Not Found'
         });
+        return;
     }
 
     user.email = req.body.email;
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
-    user.save();
+    user.save((err, user) => {
+        if(err) {
+            res.status(409).send({
+                msg: 'Email already in use'
+            });
+        } else {
+            res.status(200).send({
+                msg: 'User Updated Succesfully'
+            });
 
-    res.status(200).send({
-        msg: 'User Updated Succesfully'
+            Comment.find({ uid: user.get("uid") }, (err, data) => {
+                for(let i in data) {
+                    let comment = data[i];
+                    comment.firstName = req.body.firstName;
+                    comment.lastName = req.body.lastName;
+                    comment.save();
+                }
+            });
+        }
     });
 });
+
+/** POST /api/user/get-user
+ @body: uid String
+ @return:
+ - 200 OK: User matching uid has been located and will be sent as a response.
+ - 400 BAD REQUEST: If the uid field does not exist in the request.
+ - 404 NOT FOUND: No users found with the specified uid.
+ */
+router.post("/get-user", async (req, res) => {
+    if(!req.body.uid){
+        return res.status(400).json({msg: "Please select a user"});
+    }
+
+    User.find({uid: req.body.uid}, {password: 0, email: 0, _id: 0}, async (err, data) => {
+        if(err) console.log(err);
+
+        if (data.length === 1) {
+            let found_user = data[0];
+            res.status(200).send(found_user);
+        } else {
+            res.status(404).send({
+                msg: 'USER NOT FOUND'
+            });
+        }
+    })
+});
+
 
 module.exports = router;
