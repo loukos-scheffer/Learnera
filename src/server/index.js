@@ -33,6 +33,9 @@ app.use("/api/video", videoRoutes);
 var likeRoutes = require('./routes/likes/like-routes');
 app.use("/api/like", likeRoutes);
 
+var companyRoutes = require('./routes/company/company-routes');
+app.use("/api/company", companyRoutes);
+
 // Connect to database
 mongoose.connect(config.get('dbConfig'), { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
 const db = mongoose.connection;

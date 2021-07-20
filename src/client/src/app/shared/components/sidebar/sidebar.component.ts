@@ -23,8 +23,8 @@ export class SidebarComponent implements OnInit {
       text: "Community"
     },
     {
-      path: "./profile",
-      text: "User Profile"
+      path: "./account",
+      text: "Account"
     }
   ];
 
