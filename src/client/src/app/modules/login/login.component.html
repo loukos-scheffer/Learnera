@@ -1,8 +1,6 @@
 <mat-card class="login-card">
-    <mat-card-header>
-        <div mat-card-avatar></div>
-        <mat-card-title>Login</mat-card-title>
-    </mat-card-header>
+  <mat-card-title>Login</mat-card-title>
+  <div class="line"></div>
 
     <form class="login-form" #userForm="ngForm">
         
@@ -19,6 +17,8 @@
       </form>  
       <br>
       <a href="auth/register">Register</a>
+      <br>
+      <br>
       <button mat-raised-button class="form-control" color="accent" (click)="onLogin()">Login</button>
 </mat-card>
 

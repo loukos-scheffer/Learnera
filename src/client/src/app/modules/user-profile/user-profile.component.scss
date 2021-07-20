@@ -1,6 +1,6 @@
 @import "vars.scss";
 
-$height: 170px;
+$height: 210px;
 $width: 500px;
 
 :host {
@@ -30,6 +30,7 @@ $width: 500px;
 
             input {
                 width: 90%;
+                color: black;
             }
         }
     }

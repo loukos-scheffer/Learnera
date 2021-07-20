@@ -14,3 +14,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     -ms-user-select: none;
     user-select: none;
 }
+
+#zmmtg-root {
+    display: none;
+}
+
+
+// @import "~@zoomus/websdk/dist/css/react-select.css";
+@import "~@zoomus/websdk/dist/css/bootstrap.css";

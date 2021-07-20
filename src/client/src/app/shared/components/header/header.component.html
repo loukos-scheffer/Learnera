@@ -1,8 +1,8 @@
-<div class = "container" flexLayout = "row">
+<div class = "header-container" flexLayout = "row">
     <b fxFlex = "10">BFS</b>
     <mat-form-field fxFlex = "84" class="search-container" appearance="fill">
         <mat-label>Search</mat-label>
-        <input matInput type="text" [(ngModel)]="searchTextVal" (ngModelChange)="searchText($event)">
+        <input matInput type="search" [(ngModel)]="searchTextVal" (ngModelChange)="searchText($event)">
         
         <button *ngIf="searchTextVal" matSuffix mat-icon-button aria-label="Clear" (click)="clearText()">
           <mat-icon>close</mat-icon>

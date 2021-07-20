@@ -33,6 +33,9 @@ app.use("/api/video", videoRoutes);
 var likeRoutes = require('./routes/likes/like-routes');
 app.use("/api/like", likeRoutes);
 
+var zoomRoutes = require('./routes/zoom/zoom-routes');
+app.use("/api/zoom", zoomRoutes);
+
 // Connect to database
 mongoose.connect(config.get('dbConfig'), { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
 const db = mongoose.connection;
