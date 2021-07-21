@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema({
         line1: String,
         city: String,
         province: String,
-        postalCode: Number,
+        postalCode: String,
         country: String,
         required: this.type === UserType.company
     },

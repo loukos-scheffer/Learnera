@@ -90,6 +90,7 @@ router.post('/register', async (req, res) => {
     
     new_user.save((err, user) => {
         if(err) {
+            console.log(err);
             res.status(409).send({
                 msg: 'Username already in use'
             });
