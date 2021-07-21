@@ -10,7 +10,7 @@ import { UserService } from '../../services/user/user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loggingInUser = new User("","", "", "", "", "", "", { line1: "", city: "", province: "", postalCode: 0, country: "" }, "", "", "");
+  loggingInUser = new User("","", "", "", "", "", "", { line1: "", city: "", province: "", postalCode: "", country: "" }, "", "", "");
 
   constructor(
     private _userService: UserService,
