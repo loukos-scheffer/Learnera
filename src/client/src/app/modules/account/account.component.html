@@ -1,0 +1,45 @@
+
+<div class="profile-card-container">
+    <mat-card class="profile-card" *ngIf="this.currentUser != null">
+        <mat-card-header>
+            <div mat-card-avatar></div>
+            <mat-card-title>Your Profile</mat-card-title>
+        </mat-card-header>
+    
+        <form class="profile-form" #userForm="ngForm">
+            <div class="form-field" *ngIf="!this.isCompanyUser">
+                <mat-label>First Name:</mat-label>
+                <input type="text" [(ngModel)]="currentUser.firstName" name="firstName">
+            </div>
+            <div class="form-field" *ngIf="!this.isCompanyUser">
+                <mat-label>Last Name:</mat-label>
+                <input type="text" [(ngModel)]="currentUser.lastName" name="lastName">
+            </div>
+            <div class="form-field" *ngIf="!this.isCompanyUser">
+                <mat-label>Username:</mat-label>
+                <input type="username" [(ngModel)]="currentUser.username" name="username">
+            </div>
+            <div class="form-field" *ngIf="this.isCompanyUser">
+                <mat-label>Company name:</mat-label>
+                <input type="text" [(ngModel)]="currentUser.companyName" [disabled]="this.isCompanyUser" name="companyName">
+            </div>
+            <div class="form-field" *ngIf="this.isCompanyUser">
+                <mat-label>Website:</mat-label>
+                <input type="text" [(ngModel)]="currentUser.website" [disabled]="this.isCompanyUser" name="website">
+            </div>
+            <div class="form-field" *ngIf="this.isCompanyUser">
+                <mat-label>Phone:</mat-label>
+                <input type="username" [(ngModel)]="currentUser.phone" [disabled]="this.isCompanyUser" name="phone">
+            </div>
+            <div class="form-field" *ngIf="this.isCompanyUser">
+                <mat-label>Address:</mat-label>
+                <input type="username" [ngModel]="currentUser.address | address" [disabled]="this.isCompanyUser" name="address">
+            </div>
+            <br>
+            <div class="btn-tbl">
+                <button mat-raised-button class="form-control update-btn" color="accent" [disabled]="this.isCompanyUser" (click)="onClickUpdate()">Update</button>
+            </div>
+        </form>  
+    </mat-card>
+</div>
+<app-companies></app-companies>

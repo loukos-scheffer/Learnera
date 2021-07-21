@@ -5,6 +5,7 @@ export class Comment {
         public uid: String,
         public firstName: String,
         public lastName: String,
+        public companyName: String,
         public body: String,
         public date: Date,
         public likes: Number
