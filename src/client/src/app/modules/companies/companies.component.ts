@@ -23,17 +23,7 @@ export class CompaniesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._userService.me().subscribe((data: any) => {
-      if(data.status == 200) {
-        this._companyService.getCompanies(data.body.uid).subscribe((data: any) => {
-          if(data.status == 200) {
-            this.companies = data.body;
-          } else {
-            this.companies = [];
-          }
-        });
-      }
-    });
+    this.getCompanies();
   }
 
   onRegisterNewCompany(): void {
@@ -43,13 +33,26 @@ export class CompaniesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
-        console.log(result);
-
         this._userService.register(result).subscribe((data: any) => {
           if(data.status == 200) {
             this.toastrService.success("Succesfully registered company account", "Success", {positionClass: "toast-bottom-right"});
+            this.getCompanies();
           } else {
             this.toastrService.error("Could not register company account", "ERROR", {positionClass: "toast-bottom-right"});
+          }
+        });
+      }
+    });
+  }
+
+  getCompanies(): void{
+    this._userService.me().subscribe((data: any) => {
+      if(data.status == 200) {
+        this._companyService.getCompanies(data.body.uid).subscribe((data: any) => {
+          if(data.status == 200) {
+            this.companies = data.body;
+          } else {
+            this.companies = [];
           }
         });
       }
