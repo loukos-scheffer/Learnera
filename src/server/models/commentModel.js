@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const UserType = require('../enums/UserType');
 
 const commentSchema = new mongoose.Schema({
     cid: {
@@ -17,11 +18,15 @@ const commentSchema = new mongoose.Schema({
     },
     firstName:{
         type: String,
-        required: true
+        required: this.type === UserType.personal
     },
     lastName:{
         type: String,
-        required: true
+        required: this.type === UserType.personal
+    },
+    companyName: {
+        type: String,
+        required: this.type === UserType.company
     },
     body:{
         type: String,
