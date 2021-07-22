@@ -2,10 +2,11 @@
 
 const express = require("express");
 const Conference = require('../../models/conferenceModel');
-const User = require('../../models/userModel');
+const ConferenceService = require("../../services/ConferenceService");
 const AuthService = require("../../services/AuthService");
 const UuidService = require("../../services/UuidService");
 const JwtService = require("../../services/JwtService");
+const config = require('config');
 let router = express.Router();
 
 /** POST /api/conference/post
@@ -69,6 +70,51 @@ router.post('/search', async (req, res) => {
             }
         }).sort({expiryDate: 1});
     }
+});
+
+
+/** POST /api/conference/get-conference
+ @body: conId String
+ @return:
+ - 200 OK: Conference matching conId has been located and will be sent as a response.
+ - 400 BAD REQUEST: If the conId field does not exist in the request.
+ - 404 NOT FOUND: No conference found with the specified conId.
+ */
+ router.post("/get-conference", async (req, res) => {
+    if(!req.body.conId){
+        return res.status(400).json({msg: "conId is a required field"});
+    }
+
+    Conference.find({conId: req.body.conId}, {_id: 0}, async (err, data) => {
+        if(err) console.log(err);
+        
+        if (data.length === 1) {
+            let found_conference = data[0]; 
+            res.status(200).send(found_conference);
+        } else {
+            res.status(404).send({
+                msg: 'CONFERENCE NOT FOUND'
+            });
+        }
+    })
+});
+
+/** POST /api/conference/signature
+ @body: meetingNumber Number, role Number (0-1)
+ @return:
+ - 200 OK: signature created by the provided meetingNumber and role.
+ - 400 BAD REQUEST: If the meetingNumber or role field does not exist in the request.
+ */
+router.post("/signature", AuthService.validateCookie, async (req, res) => {
+    if(req.body.meetingNumber === undefined || req.body.role === undefined) {
+        return res.status(400).json({msg: "Meeting number and Role are required"});
+    }
+
+    let signature = ConferenceService.generateSignature(config.get("zoomApiKey"), config.get("zoomSecretKey"), req.body.meetingNumber, req.body.role);
+
+    res.status(200).send({
+        "signature": signature
+    });
 });
 
 

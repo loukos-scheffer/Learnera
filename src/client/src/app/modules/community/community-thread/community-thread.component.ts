@@ -71,6 +71,7 @@ export class CommunityThreadComponent implements OnInit {
           this.userName = data.body.firstName + " " + data.body.lastName;
           this.profileImageUrl = data.body.profileImageUrl;
         }
+
     });
   }
 }

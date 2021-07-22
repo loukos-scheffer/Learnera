@@ -21,6 +21,16 @@ export class UserService {
     );
   }
 
+  logout(): Observable<{}> {
+    var url = "/api/user/logout";
+
+    return this.http.post(url, {}, {observe: 'response'}).pipe(
+      map(this._restApiService.getData),
+      catchError(err => this._restApiService.handleError(err))
+    );
+  }
+
+
   register(user: User): Observable<{}> {
     var url = "/api/user/register";
 
