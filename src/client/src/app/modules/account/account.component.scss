@@ -7,10 +7,15 @@ $width: 500px;
     padding: 30px;
 }
 
+.profile-image-card{
+    margin-bottom: 1.5%;
+}
+
 .profile-card {
     width: $width;
     margin: auto;
     margin-bottom: 30px;
+    
 
     form {
         display: table;
@@ -22,6 +27,7 @@ $width: 500px;
             mat-label, input {
                 display: table-cell;
                 margin-bottom: 5px;
+                width: 25%;
             }
 
             input {

@@ -9,7 +9,7 @@ const CookieService = require('../../services/CookieService');
 const UserService = require('../../services/UserService');
 
 const UserType = require('../../enums/UserType');
-
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const User = require('../../models/userModel');
 const Comment = require('../../models/commentModel');
 
@@ -121,7 +121,7 @@ router.get('/me', AuthService.validateCookie, async (req, res) => {
  */
 router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
     // updates an existing user
-    if(!req.body.username || !req.body.firstName || !req.body.lastName){
+    if(!req.body.username || !req.body.firstName || !req.body.lastName || !req.body.profileImageUrl){
         return res.status(400).json({msg: "Please fill out all fields"});
     }
     let user = await JwtService.getUserFromJwt(req.cookies.session_id);
@@ -137,9 +137,15 @@ router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
         return;
     }
 
+    if(imageExists(req.body.profileImageUrl)){
+        user.profileImageUrl = req.body.profileImageUrl;
+    } else {
+        return res.status(400).json({msg: "Invalid image link"});
+    }
     user.username = req.body.username;
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
+    
     user.save((err, user) => {
         if(err) {
             res.status(409).send({
@@ -161,6 +167,14 @@ router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
         }
     });
 });
+
+function imageExists(image_url){
+    var http = new XMLHttpRequest();
+    http.open('HEAD', image_url, false);
+    http.send();
+    // console.log(http.status);
+    return http.status == 200;
+}
 
 /** POST /api/user/get-user
  @body: uid String

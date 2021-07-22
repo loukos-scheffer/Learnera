@@ -16,6 +16,7 @@ export class LearningVideoComponent implements OnInit {
   currColor: String = "";
   vid: String = "";
   userName = "";
+  profileImageUrl = "";
 
   constructor(
     private routerService: Router,
@@ -73,6 +74,7 @@ export class LearningVideoComponent implements OnInit {
     this._userService.getUser(this.video?.uid || "").subscribe( (data: any) => {
       if (data.status == 200){
         this.userName = data.body.firstName + " " + data.body.lastName;
+        this.profileImageUrl = data.body.profileImageUrl;
       }
     });
   }

@@ -13,7 +13,8 @@ export class User {
         public address: Address,
         public phone: string,
         public website: string,
-        public type: string
+        public type: string,
+        public profileImageUrl: string
     ) {}
     
 }

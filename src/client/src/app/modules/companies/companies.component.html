@@ -1,9 +1,8 @@
 
-<mat-card class="companies-list-card">
-    <mat-card-header>
-        <div mat-card-avatar></div>
+<mat-card class="companies-list-card" style="text-align: center;">
+
         <mat-card-title>Your Companies</mat-card-title>
-    </mat-card-header>
+   
 
     <div class="no-threads-container" *ngIf="companies.length == 0; else threadListContainer">
         <div class="no-threads-header unselectable">
