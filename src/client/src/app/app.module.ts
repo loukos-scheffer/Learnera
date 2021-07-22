@@ -21,7 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   providers: [
     UserService, 
-    RestApiService
+    RestApiService,
   ],
   bootstrap: [AppComponent]
 })

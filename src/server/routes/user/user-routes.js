@@ -10,8 +10,11 @@ const UserService = require('../../services/UserService');
 
 const UserType = require('../../enums/UserType');
 
+const Auth = require('../../models/authModel');
 const User = require('../../models/userModel');
 const Comment = require('../../models/commentModel');
+
+const bcrypt = require('bcrypt');
 
 /** POST /api/user/login
  @body: username String, password String
@@ -24,11 +27,20 @@ router.post("/login", async (req, res) => {
         return res.status(400).json({msg: "Please fill out all fields"});
     }
 
-    User.find({username: req.body.username, password: req.body.password}, async (err, data) => {
+    User.find({username: req.body.username}, async (err, data) => {
         if(err) console.log(err);
-        
+
         if (data.length === 1) {
             let found_user = data[0]; 
+
+            const passwordValid = await bcrypt.compare(req.body.password, found_user.password);
+            if(!passwordValid){
+                res.status(401).send({
+                    msg: 'LOGIN FAILED'
+                });
+                return;
+            }
+            
             let jwt = JwtService.generateAuthJwt(found_user);
 
             AuthService.saveAuthDocument(found_user, jwt);
@@ -61,7 +73,8 @@ router.post('/register', async (req, res) => {
     var new_user = new User();
     new_user.uid = UuidService.generateUuid();
     new_user.username = req.body.username;
-    new_user.password = req.body.password;
+    const hashedPass = await bcrypt.hash(req.body.password, 5);
+    new_user.password = hashedPass;
 
     if(req.body.type == UserType.company) {
 
@@ -187,6 +200,28 @@ router.post("/get-user", async (req, res) => {
         }
     })
 });
+
+/** POST /api/user/get-user
+ @body: uid String
+ @return:
+ - 200 OK: JWT has been successfully removed from the database 
+ - 401 Not Authenticated: User is not currently logged in
+ - 500 INTERNAL SERVER: Error with the database query
+ */
+router.post("/logout", AuthService.validateCookie, async (req, res) => {
+    Auth.findOneAndDelete({jwt: req.cookies.session_id}, async (err, data)=>{
+        if(err){
+            console.log(err);
+            res.status(500).send();
+        }else{
+            res.clearCookie("session_id");
+            res.status(200).send({
+                msg: "LOGOUT SUCCESSFUL",
+                status: 200
+            });
+        }
+    })
+})
 
 
 module.exports = router;
