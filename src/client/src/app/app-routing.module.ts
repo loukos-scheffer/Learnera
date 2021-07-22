@@ -13,6 +13,7 @@ import { CommunityThreadsComponent } from './modules/community/community-threads
 import { CommunityThreadComponent } from './modules/community/community-thread/community-thread.component';
 import { VideoListComponent } from './modules/learning/learning-videos/learning-videos.component';
 import { LearningVideoComponent } from './modules/learning/learning-video/learning-video.component';
+import { ZoomComponent } from './modules/zoom/zoom.component';
 
 const routes: Routes = [
   {
@@ -61,6 +62,9 @@ const routes: Routes = [
         component: RegisterComponent
       }
     ],
+  },
+  {
+    path: 'zoom', component: ZoomComponent, canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '' }
 ];
