@@ -1,5 +1,21 @@
-<main>
-    <h1>Zoom WebSDK Sample Angular</h1>
+<div class="rectangle welcome">
+    <label class="title">Join a zoom conference</label>
+</div>
   
-    <button (click)="getSignature()">Join Meeting</button>
-</main>
+<div class="content">
+    <div class="row">
+        <div class="rectangle col1" >
+            <label class="title">Join with your zoom account</label>
+            <div class="icon-wrapper">
+                <mat-icon class="icon">arrow_right_alt</mat-icon>
+            </div>
+        </div>
+        <div class="rectangle col2" (click)="getSignature()">
+            <label class="title">Join without an account</label>
+            <div class="icon-wrapper">
+                <mat-icon class="icon">arrow_right_alt</mat-icon>
+            </div>
+        </div>
+    </div>
+</div>
+  

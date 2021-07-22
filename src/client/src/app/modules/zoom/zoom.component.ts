@@ -3,23 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { DOCUMENT } from '@angular/common';
 
 import { ZoomMtg } from '@zoomus/websdk';
-import { ZoomService } from 'src/app/services/zoom/zoom.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { ActivatedRoute } from '@angular/router';
+import { ConferenceService } from 'src/app/services/conference/conference.service';
 
-
-ZoomMtg.preLoadWasm();
-ZoomMtg.prepareJssdk();
-// loads language files, also passes any error messages to the ui
-ZoomMtg.i18n.load('en-US');
-ZoomMtg.i18n.reload('en-US');
-
-
-/* Example to route to this page with parameters. parameter roomNumber should be set.
-<a routerLink="{{route.path}}" [queryParams]="route.params" mat-list-item>
-  <span mat-line>{{route.text}}</span>
-</a>
-*/
 @Component({
   selector: 'app-zoom',
   templateUrl: './zoom.component.html',
@@ -27,17 +14,15 @@ ZoomMtg.i18n.reload('en-US');
 })
 export class ZoomComponent implements OnInit {
 
-  // setup your signature endpoint here: https://github.com/zoom/websdk-sample-signature-node.js
-  apiKey = '6Dv-V5LvQoueNe_kwjTddw';
+  zoomLink = "";
+  conId = "";
   meetingNumber = 0;
-  role = 0;
   leaveUrl = 'http://localhost:4200';
   userName = "";
-  userEmail = "";
-  passWord = "";
+  password = "";
 
   constructor(
-    private _zoomService: ZoomService,
+    private _conferenceService: ConferenceService,
     private _userService: UserService,
     public httpClient: HttpClient, 
     private route: ActivatedRoute,
@@ -45,6 +30,11 @@ export class ZoomComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    ZoomMtg.preLoadWasm();
+    ZoomMtg.prepareJssdk();
+    // loads language files, also passes any error messages to the ui
+    ZoomMtg.i18n.load('en-US');
+    ZoomMtg.i18n.reload('en-US');
     this._userService.me().subscribe((data: any) => {
       if(data.status == 200) {
         delete data.body._id;
@@ -53,19 +43,27 @@ export class ZoomComponent implements OnInit {
     });
 
     this.route.queryParams.subscribe((params: any) => {
-      this.meetingNumber = params.meetingNumber;
+      this.conId = params.conId;
+      this._conferenceService.getConference(this.conId).subscribe((data: any) => {
+        if(data.status == 200) {
+          this.meetingNumber = data.body.meetingId;
+          this.password = data.body.passcode;
+          this.zoomLink = data.body.zoomLink;
+          console.log(data.body);
+        }
+      });
     });
   }
 
   getSignature() {
-    this._zoomService.getSignature(this.meetingNumber, 0).toPromise().then((data: any) => {
+    this._conferenceService.getSignature(this.meetingNumber, 0).toPromise().then((data: any) => {
       if(data.body.signature) {
-        this.startMeeting(data.body.signature)
+        this.startMeeting(data.body.signature);
       } else {
-        console.log(data)
+        console.log(data);
       }
     }).catch((error) => {
-      console.log(error)
+      console.log(error);
     })
   }
 
@@ -78,32 +76,26 @@ export class ZoomComponent implements OnInit {
 
     ZoomMtg.init({
       leaveUrl: this.leaveUrl,
-      isSupportAV: true,
       success: (success: any) => {
-        console.log(success)
+        console.log(success);
         ZoomMtg.join({
           signature: signature,
-          meetingNumber: this.meetingNumber,
+          meetingNumber: 83786378532 ,
           userName: this.userName,
-          apiKey: this.apiKey,
-          userEmail: this.userEmail,
-          passWord: this.passWord,
+          apiKey: '6Dv-V5LvQoueNe_kwjTddw',
+          userEmail: "",
+          passWord: "dENK3E",
           success: (success: any) => {
-            console.log("SUCESS");
-            console.log(success)
+            console.log(success);
           },
           error: (error: any) => {
-            console.log(error)
-            console.log("FAILEDDD");
-
+            console.log(error);
           }
         })
-
       },
       error: (error: any) => {
-        console.log(error)
+        console.log(error);
       }
     })
   }
-
 }

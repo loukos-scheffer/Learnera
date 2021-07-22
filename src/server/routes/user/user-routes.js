@@ -216,12 +216,11 @@ router.post("/logout", AuthService.validateCookie, async (req, res) => {
         }else{
             res.clearCookie("session_id");
             res.status(200).send({
-                msg: "LOGOUT SUCCESSFUL",
-                status: 200
+                msg: "LOGOUT SUCCESSFUL"
             });
         }
     })
-})
+});
 
 
 module.exports = router;

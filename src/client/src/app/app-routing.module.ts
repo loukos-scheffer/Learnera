@@ -64,7 +64,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'zoom', component: ZoomComponent
+    path: 'zoom', component: ZoomComponent, canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '' }
 ];

@@ -66,9 +66,9 @@ export class CommunityThreadComponent implements OnInit {
 
   loadUserName(): void {
     this._userService.getUser(this.thread?.uid || "").subscribe( (data: any) => {
-        if (data.status == 200){
-          this.userName = data.body.firstName + " " + data.body.lastName;
-        }
+      if (data.status == 200){
+        this.userName = data.body.firstName + " " + data.body.lastName;
+      }
     });
   }
 }

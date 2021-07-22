@@ -33,9 +33,6 @@ app.use("/api/video", videoRoutes);
 var likeRoutes = require('./routes/likes/like-routes');
 app.use("/api/like", likeRoutes);
 
-var zoomRoutes = require('./routes/zoom/zoom-routes');
-app.use("/api/zoom", zoomRoutes);
-
 var conferenceRoutes = require('./routes/conferences/conference-routes');
 app.use("/api/conference", conferenceRoutes);
 

@@ -71,6 +71,7 @@ export class HeaderComponent implements OnInit {
 
   onClickLogout(): void {
     this._userService.logout().subscribe((data: any) => {
+      console.log(data);
       if(data.status == 200){
         window.location.reload();
       }
