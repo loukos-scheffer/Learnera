@@ -8,4 +8,17 @@
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
+
+      
+
+      <div class="menu-container">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onClickAccount()">Account</button>
+          <button mat-menu-item (click)="onClickLogout()">Logout</button>
+        </mat-menu>
+      </div>
 </div>
+

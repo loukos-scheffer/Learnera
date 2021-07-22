@@ -21,7 +21,7 @@ export class CommentsComponent implements OnInit {
   }
 
   postComment(): void{
-    this._commentService.post(new Comment("", this.id, "", "", "", this.body, new Date(), 0)).subscribe((data: any) =>{
+    this._commentService.post(new Comment("", this.id, "", "", "", "", this.body, new Date(), 0)).subscribe((data: any) =>{
       this.body = "";
       this.getComments();
     });

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavigationStart, Router } from '@angular/router';
 import { SearchService } from 'src/app/services/search/search.service';
-import { ThreadService } from 'src/app/services/thread/thread.service';
 import { VideoService } from 'src/app/services/video/video.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -13,11 +13,12 @@ import { VideoService } from 'src/app/services/video/video.service';
 export class HeaderComponent implements OnInit {
 
   searchTextVal = "";
-
+  menu = "";
   constructor(private _searchService: SearchService,
     private routerService: Router,
     public dialog: MatDialog,
-    private _videoService: VideoService
+    private _videoService: VideoService,
+    private _userService: UserService
   ) {}
     
   searchText(searchQuery:string) {
@@ -61,6 +62,17 @@ export class HeaderComponent implements OnInit {
             }
           });
         }
+      }
+    });
+  }
+  onClickAccount(): void {
+    this.routerService.navigate(['account' ]);
+  }
+
+  onClickLogout(): void {
+    this._userService.logout().subscribe((data: any) => {
+      if(data.status == 200){
+        window.location.reload();
       }
     });
   }

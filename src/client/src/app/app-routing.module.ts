@@ -7,7 +7,7 @@ import { FullscreenComponent } from './layouts/fullscreen/fullscreen.component';
 import { LoginComponent } from './modules/login/login.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LearningComponent } from './modules/learning/learning.component';
-import { UserProfileComponent } from './modules/user-profile/user-profile.component';
+import { AccountComponent } from './modules/account/account.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { CommunityThreadsComponent } from './modules/community/community-threads/community-threads.component';
 import { CommunityThreadComponent } from './modules/community/community-thread/community-thread.component';
@@ -36,8 +36,8 @@ const routes: Routes = [
         component: LearningVideoComponent
       },
       {
-        path: 'profile',
-        component: UserProfileComponent
+        path: 'account',
+        component: AccountComponent
       },
       {
         path: 'community',
