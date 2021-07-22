@@ -2,7 +2,7 @@
 
 
 $width: 98vw;
-$welcome-height: 18vh;
+$welcome-height: 100px;
 $row-height: calc(100vh - #{$welcome-height} - 3vh);
 
 .title {
@@ -11,6 +11,11 @@ $row-height: calc(100vh - #{$welcome-height} - 3vh);
     color: white;
     padding: 0 25px;
     line-height: 90px;
+}
+
+.subtitle {
+    color: white;
+    padding: 0 25px;
 }
 
 .mat-icon {
@@ -27,6 +32,25 @@ $row-height: calc(100vh - #{$welcome-height} - 3vh);
 
     .title {
         font-size: 2em;
+        height: 2em;
+    }
+
+    
+    .back-anchor-container {
+        cursor: pointer;
+        margin:  0 25px;
+        color: white;
+
+        .icon {
+            position: relative;
+            top: 0.3em;
+            right: -10px;
+        }
+
+        .back-anchor {
+            color: white;
+            cursor: pointer;
+        }
     }
 }
 
@@ -79,5 +103,15 @@ $row-height: calc(100vh - #{$welcome-height} - 3vh);
         .icon {
             transform: scale(5);
         }
+    }
+}
+
+.rectangle.disabled {
+    background-color: gray;
+    opacity: 0.5;
+    cursor: default !important;
+
+    .title {
+        cursor: default !important;
     }
 }

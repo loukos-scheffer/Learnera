@@ -4,7 +4,7 @@ import { DOCUMENT } from '@angular/common';
 
 import { ZoomMtg } from '@zoomus/websdk';
 import { UserService } from 'src/app/services/user/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConferenceService } from 'src/app/services/conference/conference.service';
 
 @Component({
@@ -26,7 +26,8 @@ export class ZoomComponent implements OnInit {
     private _userService: UserService,
     public httpClient: HttpClient, 
     private route: ActivatedRoute,
-    @Inject(DOCUMENT) document: any
+    private routerService: Router,
+    @Inject(DOCUMENT) private document: Document
   ) {}
 
   ngOnInit() {
@@ -49,7 +50,6 @@ export class ZoomComponent implements OnInit {
           this.meetingNumber = data.body.meetingId;
           this.password = data.body.passcode;
           this.zoomLink = data.body.zoomLink;
-          console.log(data.body);
         }
       });
     });
@@ -80,11 +80,11 @@ export class ZoomComponent implements OnInit {
         console.log(success);
         ZoomMtg.join({
           signature: signature,
-          meetingNumber: 83786378532 ,
+          meetingNumber: this.meetingNumber,
           userName: this.userName,
           apiKey: '6Dv-V5LvQoueNe_kwjTddw',
           userEmail: "",
-          passWord: "dENK3E",
+          passWord: this.password,
           success: (success: any) => {
             console.log(success);
           },
@@ -97,5 +97,20 @@ export class ZoomComponent implements OnInit {
         console.log(error);
       }
     })
+  }
+
+  onJoinWithAccount():void {
+    if(!this.isJoinWithAccountDisabled()) {
+      window.open(this.zoomLink, "_blank");
+    }
+  }
+
+  isJoinWithAccountDisabled():boolean {
+    return this.zoomLink === undefined || this.zoomLink === '';  
+  }
+
+  routeHome(): void {
+    console.log('here');
+    this.routerService.navigate(['']);
   }
 }
