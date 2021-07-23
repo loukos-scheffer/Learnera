@@ -19,10 +19,14 @@
 </div>
 <ng-template class="ng-template-comment-container" #commentListContainer>
   <div class="comment-list-container" *ngFor="let comment of comments">
+
     <div class="comment-container">
-      <label class="comment-info">{{comment.firstName}} {{comment.lastName}} commented:</label>
+      <div class="identity-container">
+        <img mat-card-avatar [src]="comment.profileImageUrl" alt="Not Found">
+        <label class="comment-info"> {{comment.comment.firstName}} {{comment.comment.lastName}} commented:</label>
+      </div>
       <br>
-      <label class="comment-content">{{comment.body}}</label>
+      <label class="comment-content">{{comment.comment.body}}</label>
     </div>
     <div class="line"></div>
   </div>

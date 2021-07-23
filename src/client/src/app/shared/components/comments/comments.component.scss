@@ -6,6 +6,17 @@
     width: 100%;
 }
 
+.identity-container{
+    display: flex;
+    align-items: center;
+    
+    .comment-info{
+        font-size: medium;
+        vertical-align: middle;
+        position: relative;
+        left: 10px;
+    }
+}
 .post-comment-btn{
     margin-bottom: 20px;
 
@@ -46,7 +57,7 @@
 }
 
 .comment-content{
-    font-size: larger;
+    font-size: medium;
 }
 
 .line{

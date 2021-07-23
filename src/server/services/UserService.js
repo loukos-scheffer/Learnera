@@ -1,4 +1,6 @@
 const UserType = require("../enums/UserType");
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 
 module.exports.createPersonalUser = function(user, req) {
     user.firstName = req.body.firstName;
@@ -16,4 +18,11 @@ module.exports.createCompanyUser = function(user, req, ownerUser) {
     user.ownerId = ownerUser.uid;
     user.companyName = req.body.companyName;
     return user;
+}
+
+module.exports.imageExists = function(url){
+    var http = new XMLHttpRequest();
+    http.open('HEAD', url, false);
+    http.send();
+    return http.status == 200;
 }

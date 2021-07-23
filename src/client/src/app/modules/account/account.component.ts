@@ -38,11 +38,6 @@ export class AccountComponent implements OnInit {
       
       this._userService.updateUser(this.currentUser).subscribe((data: any) => {
         if(data.status != 200) {
-          console.log("poop");
-         
-          console.log(data.getString("msg"));
-  
-          console.log(data.body.msg);
           this.toastrService.clear();
           this.toastrService.error("Could not update user", "ERROR", {positionClass: "toast-bottom-right"});
         } else {

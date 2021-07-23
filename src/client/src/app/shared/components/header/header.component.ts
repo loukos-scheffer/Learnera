@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
 
     this._videoService.getCategories().subscribe((data: any) => {
       if(data.status == 200) {
-        if (category = "all") {
+        if (category === "all") {
             this._searchService.searchVideo(searchQuery, "");
           }
         else{

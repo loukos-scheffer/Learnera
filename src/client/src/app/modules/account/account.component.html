@@ -1,10 +1,10 @@
 
 <div class="profile-card-container">
     <mat-card class="profile-card" style="text-align: center;" *ngIf="this.currentUser != null">
-        <div class="profile-image-card "><img mat-card-avatar [src]="profileImageUrl" alt="User Avatar"></div>
-        
+        <div class="profile-image-card ">
+            <img mat-card-avatar [src]="profileImageUrl" alt="User Avatar">
+        </div>
         <mat-card-title>Your Profile</mat-card-title>
-        
         <form class="profile-form" #userForm="ngForm">
             <div class="form-field" *ngIf="!this.isCompanyUser">
                 <mat-label>First Name:</mat-label>

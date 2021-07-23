@@ -9,7 +9,6 @@ const CookieService = require('../../services/CookieService');
 const UserService = require('../../services/UserService');
 
 const UserType = require('../../enums/UserType');
-const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const User = require('../../models/userModel');
 const Comment = require('../../models/commentModel');
 
@@ -136,8 +135,8 @@ router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
         });
         return;
     }
-
-    if(imageExists(req.body.profileImageUrl)){
+    
+    if(UserService.imageExists(req.body.profileImageUrl)){
         user.profileImageUrl = req.body.profileImageUrl;
     } else {
         return res.status(400).json({msg: "Invalid image link"});
@@ -168,14 +167,6 @@ router.put('/updateuser', AuthService.validateCookie, async (req, res) => {
     });
 });
 
-function imageExists(image_url){
-    var http = new XMLHttpRequest();
-    http.open('HEAD', image_url, false);
-    http.send();
-    // console.log(http.status);
-    return http.status == 200;
-}
-
 /** POST /api/user/get-user
  @body: uid String
  @return:
@@ -201,6 +192,5 @@ router.post("/get-user", async (req, res) => {
         }
     })
 });
-
 
 module.exports = router;
