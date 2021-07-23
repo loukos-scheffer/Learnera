@@ -6,7 +6,7 @@
 <div *ngIf="video != null">
     <mat-card class="video-card">
         <br>
-        <app-user-identity [title]="video.title" [date]="video.date" [userName]="userName"></app-user-identity>
+        <app-user-identity [title]="video.title" [date]="video.date" [userName]="userName" [profileImageUrl]="profileImageUrl"></app-user-identity>
         <div class="youtube-player-wrapper">
             <iframe
                 [src]="('https://www.youtube.com/embed/' + (this.video.url | youtubeId)) | safe"

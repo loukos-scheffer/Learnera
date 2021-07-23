@@ -12,6 +12,8 @@ export class UserIdentityComponent implements OnInit {
   userName: String = "";
   @Input()
   date: Date | null = null;
+  @Input()
+  profileImageUrl: String ="";
 
   constructor() { }
 

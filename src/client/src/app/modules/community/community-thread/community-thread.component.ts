@@ -16,6 +16,7 @@ export class CommunityThreadComponent implements OnInit {
   currColor: String = "";
   tid: String = "";
   userName = "";
+  profileImageUrl = "";
 
   constructor(
     private routerService: Router,
@@ -38,7 +39,7 @@ export class CommunityThreadComponent implements OnInit {
         let thread_info = data.body;
         delete thread_info._id;
         this.thread = thread_info;
-        this.loadUserName();
+        this.loadUser();
       }
     });
   }
@@ -64,11 +65,13 @@ export class CommunityThreadComponent implements OnInit {
     });
   }
 
-  loadUserName(): void {
+  loadUser(): void {
     this._userService.getUser(this.thread?.uid || "").subscribe( (data: any) => {
-      if (data.status == 200){
-        this.userName = data.body.firstName + " " + data.body.lastName;
-      }
+        if (data.status == 200){
+          this.userName = data.body.firstName + " " + data.body.lastName;
+          this.profileImageUrl = data.body.profileImageUrl;
+        }
+
     });
   }
 }

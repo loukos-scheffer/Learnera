@@ -13,6 +13,7 @@ export class AccountComponent implements OnInit {
 
   currentUser: User | any;
   isCompanyUser : boolean = false;
+  profileImageUrl : String = "";
 
   constructor(
     private _userService: UserService,
@@ -27,12 +28,14 @@ export class AccountComponent implements OnInit {
         if(data.body.type === UserType.Company) {
           this.isCompanyUser = true;
         }
+        this.profileImageUrl = this.currentUser.profileImageUrl;
       }
     });
   }
 
   onClickUpdate() {
     if(this.currentUser != null) {
+      
       this._userService.updateUser(this.currentUser).subscribe((data: any) => {
         if(data.status != 200) {
           this.toastrService.clear();
@@ -40,6 +43,7 @@ export class AccountComponent implements OnInit {
         } else {
           this.toastrService.clear();
           this.toastrService.success("Succesfully updated user", "Success", {positionClass: "toast-bottom-right"});
+          this.profileImageUrl = this.currentUser.profileImageUrl;
         }
       });
     }
