@@ -65,9 +65,8 @@ $row-height: calc(100vh - #{$welcome-height} - 3vh);
         margin: auto;
 
         .rectangle {
-            width: $width / 2; 
+            width: calc(#{$width} / 2); 
             height: $row-height;
-    
             margin-top: 0px;
             margin-bottom: 0px;
             cursor: pointer;
