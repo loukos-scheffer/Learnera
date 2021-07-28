@@ -6,6 +6,16 @@ const config = require('config');
 const errorHandler = require('./services/ErrorHandler');
 
 const app = express();
+
+if(process.env.NODE_ENV === "production") {
+    const cors = require('cors');
+    const corsOptions = {
+        origin: 'http://asdy.joshuacarrasco.com',
+        optionsSuccessStatus: 200
+    }
+    app.options('*', cors(corsOptions));
+}
+
 app.use(express.json());
 app.use ((error, req, res, next) => {
     //Catch json parsing error
