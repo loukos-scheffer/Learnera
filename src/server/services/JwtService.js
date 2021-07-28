@@ -1,6 +1,6 @@
 const jwtService = require('jsonwebtoken');
 const config = require('config');
-const secret = config.get('SECRET_KEY');
+const secret = config.get('JWT_SECRET_KEY');
 const User = require('../models/userModel');
 
 // Generates a Jwt token for a specified user
