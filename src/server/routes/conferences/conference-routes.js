@@ -110,7 +110,7 @@ router.post("/signature", AuthService.validateCookie, async (req, res) => {
         return res.status(400).json({msg: "Meeting number and Role are required"});
     }
 
-    let signature = ConferenceService.generateSignature(config.get("zoomApiKey"), config.get("zoomSecretKey"), req.body.meetingNumber, req.body.role);
+    let signature = ConferenceService.generateSignature(config.get("ZOOM_API_KEY"), config.get("ZOOM_SECRET_KEY"), req.body.meetingNumber, req.body.role);
 
     res.status(200).send({
         "signature": signature

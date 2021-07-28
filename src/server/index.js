@@ -1,17 +1,31 @@
 const express = require('express');
 const cookieParser = require("cookie-parser");
-
 const mongoose = require('mongoose');
 const config = require('config');
-const errorHandler = require('./services/ErrorHandler');
-
 const app = express();
+
+// Allows CORS requests from CORS_ORIGIN
+if(process.env.NODE_ENV === "production") {
+    app.use((req, res, next) => {
+        res.setHeader('Access-Control-Allow-Origin', config.get("CORS_ORIGIN"));
+        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+        res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+        res.setHeader('Access-Control-Allow-Credentials', true);
+        next();
+    });
+}
+
+// Content-Type: application/json
 app.use(express.json());
+
 app.use ((error, req, res, next) => {
     //Catch json parsing error
+    const errorHandler = require('./services/ErrorHandler');
+
     errorHandler.sendJsonError(res);
 });
 
+// Parse cookies using cookie parser
 app.use(cookieParser());
 
 // Routes
@@ -39,13 +53,13 @@ app.use("/api/conference", conferenceRoutes);
 var companyRoutes = require('./routes/company/company-routes');
 app.use("/api/company", companyRoutes);
 
-// Connect to database
-mongoose.connect(config.get('dbConfig'), { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
+// Connects to database located at MONGO_CONFIG
+mongoose.connect(config.get('MONGO_CONFIG'), { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false });
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.once('open', () => console.log('Connected to database'));
 
-// Listen to requests
+// Listens to requests on PORT
 const PORT = config.get('PORT') || process.env.PORT || 5000;
 app.listen(PORT, () => console.log('Server started on port ' + PORT));
 

@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  server_host: "http://your-domain2.com"
 };
