@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   }
 
   onEditProfile(): void {
-    this.routerService.navigate(["profile/"]);
+    this.routerService.navigate(["account/"]);
   }
 
 }

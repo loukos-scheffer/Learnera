@@ -1,10 +1,13 @@
 @import "forms.scss";
-
+@import "backgroundstyle.scss";
 $height: 220px;
 $width: 500px;
 
-.background {
-    background: blue;
+
+.register-button{
+    color: white;
+    text-decoration: underline;
+    
 }
 .login-card {
     position: fixed;
