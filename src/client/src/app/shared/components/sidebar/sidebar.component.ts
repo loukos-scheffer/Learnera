@@ -21,6 +21,10 @@ export class SidebarComponent implements OnInit {
     {
       path: "./community",
       text: "Community"
+    },
+    {
+      path: "./conferences",
+      text: "Conferences"
     }
   ];
 

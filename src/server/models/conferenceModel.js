@@ -21,7 +21,7 @@ const conferenceSchema = new mongoose.Schema({
         },
         expiryDate: {
             type: Date,
-            default: Date.now
+            default: new Date().setDate(new Date().getDate() + 1)
         },
         date: {
             type: Date,
