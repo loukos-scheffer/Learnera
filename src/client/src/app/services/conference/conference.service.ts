@@ -42,5 +42,16 @@ export class ConferenceService {
     );
   }
 
+  searchConference(title: string): Observable<{}> {
+    var url = "/api/conference/search";
+
+    return this.http.post(url, {"query": title}, {observe: 'response'}).pipe(
+      map(this._restApiService.getData),
+      catchError(err => this._restApiService.handleError(err))
+    );
+  }
+
+
+
 
 }
