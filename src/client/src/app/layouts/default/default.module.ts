@@ -20,6 +20,8 @@ import { LearningVideoComponent } from '../../modules/learning/learning-video/le
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { CompaniesComponent } from '../../modules/companies/companies.component';
 import { RegisterCompanyDialogComponent } from '../../modules/companies/register-company-dialog/register-company-dialog.component';
+import { ConferencesComponent } from '../../modules/conferences/conference-list/conferences.component';
+import { CreateConferenceDialogComponent } from 'src/app/modules/conferences/create-conference-dialog/create-conference-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { RegisterCompanyDialogComponent } from '../../modules/companies/register
     VideoListComponent,
     LearningVideoComponent,
     CompaniesComponent,
-    RegisterCompanyDialogComponent
+    RegisterCompanyDialogComponent,
+    ConferencesComponent,
+    CreateConferenceDialogComponent
   ],
   imports: [
     BrowserModule,

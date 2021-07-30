@@ -14,6 +14,7 @@ import { CommunityThreadComponent } from './modules/community/community-thread/c
 import { VideoListComponent } from './modules/learning/learning-videos/learning-videos.component';
 import { LearningVideoComponent } from './modules/learning/learning-video/learning-video.component';
 import { ZoomComponent } from './modules/zoom/zoom.component';
+import { ConferencesComponent } from './modules/conferences/conference-list/conferences.component';
 
 const routes: Routes = [
   {
@@ -46,7 +47,12 @@ const routes: Routes = [
       {
         path: 'community/:term',
         component: CommunityThreadComponent
+      },
+      {
+        path: 'conferences',
+        component: ConferencesComponent
       }
+
     ],
     canActivate: [AuthGuard]
   },

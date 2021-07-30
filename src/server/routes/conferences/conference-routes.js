@@ -18,7 +18,7 @@ let router = express.Router();
 router.post('/post', AuthService.validateCookie, async (req, res) => {
     // creates new conference on the forum
     let user = await JwtService.getUserFromJwt(req.cookies.session_id);
-    if(!req.body.title || !req.body.zoomLink || !req.body.meetingId || !req.body.passcode || !req.body.date){
+    if (!req.body.title || !req.body.zoomLink || !req.body.passcode || !req.body.meetingId) {
         return res.status(400).json({msg: "Please fill out all fields"});
     }
     const post = new Conference();
@@ -29,8 +29,14 @@ router.post('/post', AuthService.validateCookie, async (req, res) => {
     post.passcode = req.body.passcode;
     post.meetingId = req.body.meetingId;
     post.likes = 0;
-    post.date = req.body.date
-    post.expiryDate = new Date(post.date.getTime() + 86400000);;
+    if (req.body.date) {
+        var parsedDate = Date.parse(req.body.date);
+        if (isNaN(parsedDate) == true) {
+            return res.status(400).json({msg: "Date is invalid"});
+        }
+        post.date = req.body.date;
+        post.expiryDate = new Date(post.date.getTime() + 86400000);
+    }
     post.save();
 
     res.status(200).send({
