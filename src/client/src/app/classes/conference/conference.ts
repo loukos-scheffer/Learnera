@@ -6,6 +6,7 @@ export class Conference {
     public date: Date,
     public meetingId: string,
     public passcode: string,
+    public conId: string
   ) {}
 
 }

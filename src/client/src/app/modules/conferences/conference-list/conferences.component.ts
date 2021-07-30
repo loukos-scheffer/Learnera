@@ -34,6 +34,10 @@ export class ConferencesComponent implements OnInit {
     this.getConferences();
   }
 
+  onSelect(conference: Conference) {
+    this.routerService.navigate(['/zoom'], { queryParams: {conId: conference.conId} });
+  }
+
   showCreateConferenceForm() {
     const dialogRef = this.dialog.open(CreateConferenceDialogComponent, {
       width: '500px'
@@ -41,7 +45,7 @@ export class ConferencesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result != null) {
-        this._conferenceService.postConference(new Conference(result.title, result.zoomLink, this.parseDate(result.date), result.meetingId, result.passcode)).subscribe((data: any) => {
+        this._conferenceService.postConference(new Conference(result.title, result.zoomLink, this.parseDate(result.date), result.meetingId, result.passcode, "")).subscribe((data: any) => {
           if(data.status == 200) {
             this.toastrService.success("Succesfully posted conference", "Success", {positionClass: "toast-bottom-right"});
           } else {
