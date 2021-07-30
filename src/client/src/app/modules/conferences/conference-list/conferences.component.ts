@@ -13,7 +13,7 @@ import { Conference } from 'src/app/classes/conference/conference';
   styleUrls: ['./conferences.component.scss']
 })
 export class ConferencesComponent implements OnInit {
-
+  conferences: Conference[] = [];
   constructor(private _conferenceService: ConferenceService,
               private _searchService: SearchService,
               public dialog: MatDialog,
@@ -22,6 +22,16 @@ export class ConferencesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this._searchService.getConferenceSearchResults$().subscribe((data: any) => {
+
+      data.forEach((element: any) => {
+        if (element.body?.length > 500) {
+          element.body = element.body.substring(0, 500) + "...";
+        }
+      });
+      this.conferences = data;
+    });
+    this.getConferences();
   }
 
   showCreateConferenceForm() {
@@ -37,7 +47,7 @@ export class ConferencesComponent implements OnInit {
           } else {
             this.toastrService.error("Could not post conference", "ERROR", {positionClass: "toast-bottom-right"});
           }
-          // this.getThreads();
+          this.getConferences();
         });
       }
 
@@ -45,15 +55,17 @@ export class ConferencesComponent implements OnInit {
   }
 
   parseDate(str: string): Date {
-    console.log(str);
     var splitStr = str.split("-");
     var date = new Date();
     date.setFullYear(splitStr[0] as unknown as number);
     date.setMonth((splitStr[1] as unknown as number) - 1);
     date.setDate(splitStr[2] as unknown as number);
     date.setHours(splitStr[3] as unknown as number, splitStr[4] as unknown as number);
-    console.log(date);
     return date;
+  }
+
+  getConferences(): void {
+    this._searchService.searchConference("");
   }
 
 }

@@ -26,10 +26,12 @@ export class HeaderComponent implements OnInit {
     if(this.routerService.url.split('/')[1] == "learning"){
       this.searchVideoHelper(searchQuery);
     }
-    else {
+    else if(this.routerService.url.split('/')[1] == "conferences"){
+      this._searchService.searchConference(searchQuery)
+
+    } else {
       this._searchService.searchThread(searchQuery);
     }
-
   }
 
   clearText() {

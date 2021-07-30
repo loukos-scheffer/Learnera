@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Conference } from 'src/app/classes/conference/conference';
 import { User } from 'src/app/classes/user/user';
+import { ConferenceService } from '../conference/conference.service';
 import { ThreadService } from '../thread/thread.service';
 import { VideoService } from '../video/video.service';
 
@@ -9,12 +11,13 @@ import { VideoService } from '../video/video.service';
 })
 export class SearchService {
 
-threadSearchResults: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+  threadSearchResults: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   videoSearchResults: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
-
+  conferenceSearchResults: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   constructor(
     private _threadService: ThreadService, 
-    private _videoService: VideoService
+    private _videoService: VideoService,
+    private _conferenceService: ConferenceService
   ) {}
 
   public getVideoSearchResults$() {
@@ -54,4 +57,29 @@ threadSearchResults: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
       this.threadSearchResults.next(res?.body);
     });
   }  
+
+
+
+  public getConferenceSearchResults$() {
+    return this.conferenceSearchResults.asObservable();
+  }
+  
+  public searchConference(params: any) {
+    this._conferenceService.searchConference(params).subscribe((res: any) => {
+      if(res.body === undefined) {
+        this.conferenceSearchResults.next([]);
+        return;
+      }
+      
+      res?.body.forEach((element: any) => {
+        delete element._id;
+      });
+
+      this.conferenceSearchResults.next(res?.body);
+    });
+  }  
 }
+
+
+  
+

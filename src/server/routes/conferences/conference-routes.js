@@ -69,7 +69,6 @@ router.post('/search', async (req, res) => {
     } else {
         const query = Conference.find({title: {"$regex": req.body.query, "$options": "i"}, expiryDate: {$gte: Date.now()}}, async (err, data) => {
             if (err){
-                console.log(err);
                 res.status(500).send();
             }else{
                 res.status(200).send(data);
