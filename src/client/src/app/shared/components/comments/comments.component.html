@@ -23,7 +23,7 @@
     <div class="comment-container">
       <div class="identity-container">
         <img mat-card-avatar [src]="comment.profileImageUrl" alt="Not Found">
-        <label class="comment-info"> {{comment.comment.firstName}} {{comment.comment.lastName}} commented:</label>
+        <label class="comment-info" > {{comment.comment.displayName}} commented:</label>
       </div>
       <br>
       <label class="comment-content">{{comment.comment.body}}</label>

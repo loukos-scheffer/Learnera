@@ -26,10 +26,9 @@ router.post('/post', AuthService.validateCookie, async (req, res) => {
     post.uid = user.get("uid");
 
     if(user.type == UserType.company) {
-        post.companyName = user.get("companyName");
+        post.displayName = user.get("companyName");
     } else {
-        post.firstName = user.get("firstName");
-        post.lastName = user.get("lastName");
+        post.displayName = user.get("firstName") + " " + user.get("lastName");
     }
     post.body = req.body.body;
     post.likes = 0;
