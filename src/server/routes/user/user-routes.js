@@ -58,7 +58,8 @@ router.post("/login", async (req, res) => {
 });
 
 /** POST /api/user/register
- @body: username String, password String, firstName String, lastName String
+ @body: username String, password String, firstName String, lastName String OR companyName String, phone Number, ownerId String.
+ @desc: Creates a BFS user. If authenticated as a BFS user, ability to create company accounts is enabled.
  @return:
  - 200 OK: A user is created with the information provided.
  */
@@ -206,7 +207,7 @@ router.post("/get-user", async (req, res) => {
     })
 });
 
-/** POST /api/user/get-user
+/** POST /api/user/logout
  @body: uid String
  @return:
  - 200 OK: JWT has been successfully removed from the database 
