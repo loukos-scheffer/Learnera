@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Video } from 'src/app/classes/video/video';
+import { UserType } from 'src/app/enums/UserType';
 import { LikeService } from 'src/app/services/like/like.service';
 import { VideoService } from 'src/app/services/video/video.service';
 import {UserService} from "../../../services/user/user.service";
@@ -73,7 +74,11 @@ export class LearningVideoComponent implements OnInit {
   loadUserName(): void {
     this._userService.getUser(this.video?.uid || "").subscribe( (data: any) => {
       if (data.status == 200){
-        this.userName = data.body.firstName + " " + data.body.lastName;
+        if (data.body.type == UserType.Personal){
+          this.userName = data.body.firstName + " " + data.body.lastName;
+        } else {
+          this.userName = data.body.companyName;
+        }
         this.profileImageUrl = data.body.profileImageUrl;
       }
     });

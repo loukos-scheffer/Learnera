@@ -16,17 +16,9 @@ const commentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    firstName:{
+    displayName: {
         type: String,
-        required: this.type === UserType.personal
-    },
-    lastName:{
-        type: String,
-        required: this.type === UserType.personal
-    },
-    companyName: {
-        type: String,
-        required: this.type === UserType.company
+        required: true
     },
     body:{
         type: String,

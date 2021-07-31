@@ -3,9 +3,7 @@ export class Comment {
         public cid: String,
         public id: String,
         public uid: String,
-        public firstName: String,
-        public lastName: String,
-        public companyName: String,
+        public displayName: String,
         public body: String,
         public date: Date,
         public likes: Number
