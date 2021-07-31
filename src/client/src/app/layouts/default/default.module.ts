@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/material.module';
-import { UserProfileComponent } from 'src/app/modules/user-profile/user-profile.component';
+import { AccountComponent } from 'src/app/modules/account/account.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommunityThreadsComponent } from 'src/app/modules/community/community-threads/community-threads.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +18,10 @@ import { UploadVideoDialogComponent } from '../../modules/learning/upload-video-
 import { VideoListComponent } from '../../modules/learning/learning-videos/learning-videos.component';
 import { LearningVideoComponent } from '../../modules/learning/learning-video/learning-video.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
+import { CompaniesComponent } from '../../modules/companies/companies.component';
+import { RegisterCompanyDialogComponent } from '../../modules/companies/register-company-dialog/register-company-dialog.component';
+import { ConferencesComponent } from '../../modules/conferences/conference-list/conferences.component';
+import { CreateConferenceDialogComponent } from 'src/app/modules/conferences/create-conference-dialog/create-conference-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,12 +29,16 @@ import { PipesModule } from 'src/app/pipes/pipes.module';
     LearningComponent,
     HomeComponent,
     CommunityThreadsComponent,
-    UserProfileComponent,
+    AccountComponent,
     CommunityThreadComponent,
     CreateThreadDialogComponent,
     UploadVideoDialogComponent,
     VideoListComponent,
-    LearningVideoComponent
+    LearningVideoComponent,
+    CompaniesComponent,
+    RegisterCompanyDialogComponent,
+    ConferencesComponent,
+    CreateConferenceDialogComponent
   ],
   imports: [
     BrowserModule,

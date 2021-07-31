@@ -6,7 +6,7 @@
 <div *ngIf="thread != null">
   <mat-card class="thread-card">
     <br>
-    <app-user-identity [date]="thread.date" [title]="thread.title" [userName]="userName"></app-user-identity>
+    <app-user-identity [date]="thread.date" [title]="thread.title" [userName]="userName" [profileImageUrl]="profileImageUrl"></app-user-identity>
     <mat-card-content>
       <p class="thread-body">
         {{thread.body}}

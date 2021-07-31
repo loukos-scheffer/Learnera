@@ -1,15 +1,21 @@
 @import "forms.scss";
+@import "backgroundstyle.scss";
+$height: 220px;
+$width: 500px;
 
-.background {
-    background: blue;
+
+.register-button{
+    color: white;
+    text-decoration: underline;
+    
 }
 .login-card {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 150px;
-    width: 500px;
+    height: $height;
+    width: $width;
 
     form {
         display: table;
@@ -25,12 +31,18 @@
 
             input {
                 width: 90%;
+                color: black;
             }
         }
     }
 
     button {
         float: right;
+    }
+
+    .line {
+        border-bottom: 1px solid rgb(128,128,128);
+        margin-bottom: 10px;
     }
 
 }

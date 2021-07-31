@@ -1,10 +1,11 @@
 @import "vars.scss";
 
-.container {
+.default-layout-container {
     display:block;
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
+    background-color: rgb(242,242,242);
 
     app-header {
         border-bottom: 1px solid black;

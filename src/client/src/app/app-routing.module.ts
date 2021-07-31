@@ -7,12 +7,14 @@ import { FullscreenComponent } from './layouts/fullscreen/fullscreen.component';
 import { LoginComponent } from './modules/login/login.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LearningComponent } from './modules/learning/learning.component';
-import { UserProfileComponent } from './modules/user-profile/user-profile.component';
+import { AccountComponent } from './modules/account/account.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { CommunityThreadsComponent } from './modules/community/community-threads/community-threads.component';
 import { CommunityThreadComponent } from './modules/community/community-thread/community-thread.component';
 import { VideoListComponent } from './modules/learning/learning-videos/learning-videos.component';
 import { LearningVideoComponent } from './modules/learning/learning-video/learning-video.component';
+import { ZoomComponent } from './modules/zoom/zoom.component';
+import { ConferencesComponent } from './modules/conferences/conference-list/conferences.component';
 
 const routes: Routes = [
   {
@@ -35,8 +37,8 @@ const routes: Routes = [
         component: LearningVideoComponent
       },
       {
-        path: 'profile',
-        component: UserProfileComponent
+        path: 'account',
+        component: AccountComponent
       },
       {
         path: 'community',
@@ -45,7 +47,12 @@ const routes: Routes = [
       {
         path: 'community/:term',
         component: CommunityThreadComponent
+      },
+      {
+        path: 'conferences',
+        component: ConferencesComponent
       }
+
     ],
     canActivate: [AuthGuard]
   },
@@ -61,6 +68,9 @@ const routes: Routes = [
         component: RegisterComponent
       }
     ],
+  },
+  {
+    path: 'zoom', component: ZoomComponent, canActivate: [AuthGuard]
   },
   { path: '**', redirectTo: '' }
 ];

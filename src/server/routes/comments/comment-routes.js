@@ -5,6 +5,7 @@ const Comment = require('../../models/commentModel');
 const AuthService = require("../../services/AuthService");
 const UuidService = require("../../services/UuidService");
 const JwtService = require("../../services/JwtService");
+const UserType = require('../../enums/UserType');
 let router = express.Router();
 
 /** POST /api/comment/post
@@ -23,8 +24,12 @@ router.post('/post', AuthService.validateCookie, async (req, res) => {
     post.cid = UuidService.generateUuid();
     post.id = req.body.id;
     post.uid = user.get("uid");
-    post.firstName = user.get("firstName");
-    post.lastName = user.get("lastName");
+
+    if(user.type == UserType.company) {
+        post.displayName = user.get("companyName");
+    } else {
+        post.displayName = user.get("firstName") + " " + user.get("lastName");
+    }
     post.body = req.body.body;
     post.likes = 0;
     post.date = Date.now();

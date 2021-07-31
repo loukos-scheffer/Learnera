@@ -14,8 +14,6 @@
 }
 
 .mat-icon {
-  // margin-top: 15px;
-  // font-size: 40px;
   transform:scale(1.5)
 }
 
@@ -57,11 +55,34 @@
 
     .col1 {
       margin-right: 0.25vw;
+      // background-image: url("https://static.thenounproject.com/png/2426185-200.png");   
+      // background-repeat: no-repeat;
+      // background-position: center center;    
     }
 
     .col2 {
+      // background-image: url("https://static.thenounproject.com/png/4113817-200.png");   
+      // background-repeat: no-repeat;
+      // background-position: center center;    
       margin-left: 0.25vw;
     }
+
+    .col3 {
+      // background-image: url("https://static.thenounproject.com/png/4115129-200.png");
+      // background-repeat: no-repeat;
+      // background-position: center center;    
+      margin-right: 0.25vw;
+    }
+
+    .col4 {
+      // background-image: url("https://static.thenounproject.com/png/4115487-200.png");
+      // background-repeat: no-repeat;
+      // background-position: center center;    
+      margin-left: 0.25vw;
+    }
+
+    
+
   }
 
   .row:first-child {
@@ -69,10 +90,12 @@
   }
 }
 
+
 .rectangle {
   display: block;
   position: relative;
-  background-color: #4fa4fa;
+  // background-color: rgba(99, 95, 95, 0.753);
+  background-color: gray;
   overflow: hidden;
 
   .icon-wrapper {
@@ -86,4 +109,12 @@
       transform: scale(5);
     }
   }
+    .rectangle-icon {
+      position: relative;
+      transform: scale(5);
+      left: 18vw;
+      top: 8vh;
+      color: white;
+  }
+
 }

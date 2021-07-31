@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { UserType } from 'src/app/enums/UserType';
 import { User } from '../../classes/user/user';
 import { UserService } from '../../services/user/user.service';
 
 @Component({
-  selector: 'app-user-profile',
-  templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  selector: 'app-account',
+  templateUrl: './account.component.html',
+  styleUrls: ['./account.component.scss']
 })
-export class UserProfileComponent implements OnInit {
+export class AccountComponent implements OnInit {
 
   currentUser: User | any;
+  isCompanyUser : boolean = false;
+  profileImageUrl : String = "";
 
   constructor(
     private _userService: UserService,
@@ -22,12 +25,17 @@ export class UserProfileComponent implements OnInit {
       if(data.status == 200) {
         delete data.body._id;
         this.currentUser = data.body;
+        if(data.body.type === UserType.Company) {
+          this.isCompanyUser = true;
+        }
+        this.profileImageUrl = this.currentUser.profileImageUrl;
       }
     });
   }
 
   onClickUpdate() {
     if(this.currentUser != null) {
+      
       this._userService.updateUser(this.currentUser).subscribe((data: any) => {
         if(data.status != 200) {
           this.toastrService.clear();
@@ -35,6 +43,7 @@ export class UserProfileComponent implements OnInit {
         } else {
           this.toastrService.clear();
           this.toastrService.success("Succesfully updated user", "Success", {positionClass: "toast-bottom-right"});
+          this.profileImageUrl = this.currentUser.profileImageUrl;
         }
       });
     }

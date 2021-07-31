@@ -1,20 +1,21 @@
 @import "vars.scss";
 
-$height: 170px;
 $width: 500px;
 
 :host {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    padding: 30px;
+}
+
+.profile-image-card{
+    margin-bottom: 1.5%;
 }
 
 .profile-card {
-    top: calc(#{$header-height} + 30vh);
-    transform: translateY(-50%);
-
-    height: $height;
     width: $width;
+    margin: auto;
+    margin-bottom: 30px;
+    
 
     form {
         display: table;
@@ -26,16 +27,19 @@ $width: 500px;
             mat-label, input {
                 display: table-cell;
                 margin-bottom: 5px;
+                width: 25%;
             }
 
             input {
                 width: 90%;
+                color: black;
             }
         }
     }
+}
 
-    button {
-        float: right;
-    }
-
+app-companies {
+    width: $width;
+    margin: auto;
+    margin-top: 30px;
 }

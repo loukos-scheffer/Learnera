@@ -1,8 +1,7 @@
 <mat-card class="register-card">
-    <mat-card-header>
-        <div mat-card-avatar></div>
-        <mat-card-title>Register</mat-card-title>
-    </mat-card-header>
+    
+    <mat-card-title>Register</mat-card-title>
+    <div class="line"></div>
 
     <form class="register-form" #userForm="ngForm">
         <div class="form-field name-field">
@@ -13,9 +12,9 @@
             <mat-label>Last Name:</mat-label>
             <input type="text" placeholder="Required" [(ngModel)]="registerUser.lastName" name="lastName" required>
         </div>
-        <div class="form-field email-field">
-          <mat-label>Email:</mat-label>
-          <input type="email" placeholder="Required" [(ngModel)]="registerUser.email" name="email" required>
+        <div class="form-field username-field">
+          <mat-label>Username:</mat-label>
+          <input type="username" placeholder="Required" [(ngModel)]="registerUser.username" name="username" required>
         </div>
 
         <div class="form-field password-field">
@@ -24,6 +23,8 @@
         </div>
       </form>  
       <br>  
-      <a href="auth/login">Login</a>
+      <a class="login-button" href="auth/login">Already have an account? Log in!</a>
+      <br>
+      <br>
       <button mat-raised-button class="form-control" color="accent" (click)="onRegister()">Register</button>
 </mat-card>

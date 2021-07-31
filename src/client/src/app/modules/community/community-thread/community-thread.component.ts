@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Thread } from 'src/app/classes/thread/thread';
+import { UserType } from 'src/app/enums/UserType';
 import { LikeService } from 'src/app/services/like/like.service';
 import { ThreadService } from 'src/app/services/thread/thread.service';
 import {UserService} from "../../../services/user/user.service";
@@ -16,6 +17,7 @@ export class CommunityThreadComponent implements OnInit {
   currColor: String = "";
   tid: String = "";
   userName = "";
+  profileImageUrl = "";
 
   constructor(
     private routerService: Router,
@@ -38,7 +40,7 @@ export class CommunityThreadComponent implements OnInit {
         let thread_info = data.body;
         delete thread_info._id;
         this.thread = thread_info;
-        this.loadUserName();
+        this.loadUser();
       }
     });
   }
@@ -64,11 +66,17 @@ export class CommunityThreadComponent implements OnInit {
     });
   }
 
-  loadUserName(): void {
+  loadUser(): void {
     this._userService.getUser(this.thread?.uid || "").subscribe( (data: any) => {
         if (data.status == 200){
-          this.userName = data.body.firstName + " " + data.body.lastName;
+          if (data.body.type == UserType.Personal){
+            this.userName = data.body.firstName + " " + data.body.lastName;
+          } else {
+            this.userName = data.body.companyName;
+          }
+          this.profileImageUrl = data.body.profileImageUrl;
         }
+
     });
   }
 }

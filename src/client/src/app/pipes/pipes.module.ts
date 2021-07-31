@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { YoutubeIdPipe } from './youtube-pipe/youtube-id.pipe';
 import { SafePipe } from './safe/safe.pipe';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { AddressPipe } from './address/address.pipe';
 
 
 @NgModule({
   declarations: [
     YoutubeIdPipe,
-    SafePipe
+    SafePipe,
+    AddressPipe
   ],
   imports: [
     CommonModule
@@ -20,7 +20,8 @@ import { BrowserModule } from '@angular/platform-browser';
   ],
   exports: [
     YoutubeIdPipe,
-    SafePipe
+    SafePipe,
+    AddressPipe
   ]
 })
 export class PipesModule { }

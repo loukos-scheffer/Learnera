@@ -11,7 +11,7 @@ import { UserService } from '../../services/user/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registerUser = new User("","", "", "");
+  registerUser = new User("","", "", "", "", "", "", { line1: "", city: "", province: "", postalCode: "", country: "" }, "", "", "", "");
 
   constructor(
     private _userService: UserService,

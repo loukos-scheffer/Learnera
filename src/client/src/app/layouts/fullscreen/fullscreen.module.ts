@@ -10,13 +10,14 @@ import { LoginComponent } from 'src/app/modules/login/login.component';
 import { RegisterComponent } from 'src/app/modules/register/register.component';
 import { UserService } from 'src/app/services/user/user.service';
 import { RestApiService } from 'src/app/services/rest-api/rest-api.service';
-import { ToastrModule } from 'ngx-toastr';
+import { ZoomComponent } from '../../modules/zoom/zoom.component';
 
 @NgModule({
   declarations: [
     FullscreenComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ZoomComponent
   ],
   imports: [
     CommonModule,
