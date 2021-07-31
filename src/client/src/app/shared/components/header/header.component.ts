@@ -14,6 +14,9 @@ export class HeaderComponent implements OnInit {
 
   searchTextVal = "";
   menu = "";
+  profileImageUrl = "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg";
+
+
   constructor(private _searchService: SearchService,
     private routerService: Router,
     public dialog: MatDialog,
@@ -43,6 +46,11 @@ export class HeaderComponent implements OnInit {
     this.routerService.events.subscribe((event) => {
       if(event instanceof NavigationStart) {
         this.searchTextVal = "";
+      }
+    });
+    this._userService.me().subscribe((data: any) => {
+      if(data.status == 200) {
+        this.profileImageUrl = data.body.profileImageUrl;
       }
     });
   }
