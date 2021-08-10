@@ -23,7 +23,8 @@ import { environment } from 'src/environments/environment';
   providers: [
     RestApiService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
-    { provide: "BASE_API_URL", useValue: environment.server_host }
+    { provide: "BASE_API_URL", useValue: environment.server_host },
+    { provide: "BASE_WEB_URL", useValue: environment.webserver_host }
   ],
   bootstrap: [AppComponent]
 })
