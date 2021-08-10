@@ -17,7 +17,7 @@ export class ZoomComponent implements OnInit {
   zoomLink = "";
   conId = "";
   meetingNumber = 0;
-  leaveUrl = 'http://localhost:4200';
+  leaveUrl = this.webHostUrl;
   userName = "";
   password = "";
 
@@ -27,7 +27,8 @@ export class ZoomComponent implements OnInit {
     public httpClient: HttpClient, 
     private route: ActivatedRoute,
     private routerService: Router,
-    @Inject(DOCUMENT) private document: Document
+    @Inject(DOCUMENT) private document: Document,
+    @Inject('BASE_WEB_URL') private webHostUrl: string
   ) {}
 
   ngOnInit() {
